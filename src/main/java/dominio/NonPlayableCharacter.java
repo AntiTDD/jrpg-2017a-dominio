@@ -8,7 +8,13 @@ public class NonPlayableCharacter implements Peleable {
 	private String nombre;
 	private int nivel;
 	private static final int dificultadAleatoria = -1;
-
+/**<p>
+ *  Construye al NPC a partir de una dificultad Aleatoria estatica dada,
+ *  si la dificultad aleatoria del parametro es igual a la aleatoria, le asignara
+ *  un valor random entre 1 y 3 para setear los valores de fuerza, defensa y salud que seran
+ *  distintos dependiendo del valor obtenido.
+   </p>
+ */
 	public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
 		this.nombre = nombre;
 		this.nivel = nivel;
@@ -66,7 +72,7 @@ public class NonPlayableCharacter implements Peleable {
 		this.nivel = nivel;
 	}
 
-	public boolean estaVivo() {
+	public boolean estaVivo() { 
 		return salud > 0;
 	}
 
@@ -86,19 +92,37 @@ public class NonPlayableCharacter implements Peleable {
 		this.salud = salud;
 	}
 
+	/**
+	 * 
+	 * <p> 
+	 * La probabilidad de golpe critico para todos los NPC sera del 15%, por lo que siempre que obtenga un valor
+	 * de daño menor, este se incrementara en un 50%.
+	 * De lo contrario, el ataque estara basado en la fuerza del NPC.
+	 * </p>
+	 * 
+	 */
+	
 	public int atacar(Peleable atacado) {
 		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes criticos
 			return atacado.serAtacado((int) (this.getAtaque() * 1.5));
 		} else
 			return atacado.serAtacado(this.getAtaque());
 	}
+	/**
+	 * 
+	 * <p> cuando ataquen al NPC, el daño se calcula en base a su defensa, pero esta sera la mitad que la de un personaje jugable.
+	 *	Si la defensa es mayor que su daño no recibira el golpe.
+	 * 	si el daño es mayor a la salud , su salud quedara en 0 sino se le restara el daño.
+	 * </p>
+	 * 
+	 */
 
-	public int serAtacado(int daÃ±o) {
+	public int serAtacado(int daño) {
 		if (MyRandom.nextDouble() >= 0.15) {
-			daÃ±o -= this.getDefensa() / 2;
-			if (daÃ±o > 0) {
-				salud -= daÃ±o;
-				return daÃ±o;
+			daño -= this.getDefensa() / 2;
+			if (daño > 0) {
+				salud -= daño;
+				return daño;
 			}
 			return 0;// no le hace daÃ±o ya que la defensa fue mayor
 		}

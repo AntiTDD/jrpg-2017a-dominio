@@ -1,9 +1,15 @@
 package dominio;
-
+/** * Casta del personaje. Cualquier personaje puede tener cualquier casta 
+ * y esta clase es la de casta Asesino. * Ejemplo: Un Personje Orco puede 
+ * ser tanto de casta Asesino, como Guerrero o Hechicero. 
+ * Idem para los personajes * Elfo y Humano. 
+ * 
+ * 
+ * */
 public class Asesino extends Casta {
 
-	public Asesino(double prob_crit, double evasion, double da√±o_crit) {
-		super(prob_crit, evasion, da√±o_crit);
+	public Asesino(double prob_crit, double evasion, double daÒo_crit) {
+		super(prob_crit, evasion, daÒo_crit);
 		this.nombreCasta="Asesino";
 	}
 
@@ -16,24 +22,45 @@ public class Asesino extends Casta {
 		habilidadesCasta[2] = "Robar";
 	}
 
-	// Golpe Cr√≠tico
+/** * El presente metodo devuelve un booleano indicando 
+ * si este objeto de casta Asesino le mete, o no, 
+ * un golpe * critico al atacado. 
+ * @param caster Objeto Personaje el cual ataca. 
+ * @param atacado Objeto Peleable el cual es el atacado.
+ *  Puede ser atacado tanto un Personaje como un NPC, 
+ *  por Èsto es un objeto Peleable. 
+ *  @return Booleano que indica si se ejecuta un golpe critico.
+ *  
+ *   
+ *  */
+// Golpe Cr√≠tico
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDa√±oCritico())) > 0)
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDaÒoCritico())) > 0)
 				return true;
 		}
 		return false;
 	}
-
+/** * El presente metodo abstracto devuelve un booleano indicando si este 
+ * objeto de casta Asesino puede * incrementar, o no, la evasion del objeto Peleable 
+ * que es el objeto a quien se le intenta subir la evasion. 
+ * @param caster Objeto Personaje el cual intenta subir la evasion. 
+ * @param atacado Objeto Peleable al cual se le intenta subir la evasion. 
+ * Esta evasion puede llegar a sÌ mismo, a cualquier objeto Personaje como a un NPC. 
+ * @return Booleano que indica si este objeto pudo subir la evasion a su objeto destinatario. 
+ * 
+ * 
+ * 
+ * */
 	// Aumentar Evasion
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (this.getProbabilidadEvitarDa√±o() + 0.15 < 0.5)
-				this.probabilidadEvitarDa√±o += 0.15;
+			if (this.getProbabilidadEvitarDaÒo() + 0.15 < 0.5)
+				this.probabilidadEvitarDaÒo += 0.15;
 			else
-				this.probabilidadEvitarDa√±o = 0.5;
+				this.probabilidadEvitarDaÒo = 0.5;
 			return true;
 		}
 		return false;

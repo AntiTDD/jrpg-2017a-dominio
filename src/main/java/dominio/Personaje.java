@@ -41,7 +41,10 @@ public abstract class Personaje implements Peleable, Serializable {
 	public String[] getHabilidadesCasta() {
 		return casta.getHabilidadesCasta();
 	}
-
+	/**<p>
+	 * Carga una tabla para saber cuanta experiencia necesitara el personaje para pasar de nivel.
+	 * </p>
+	 */
 	public static void cargarTablaNivel() {
 		Personaje.tablaDeNiveles = new int[101];
 		Personaje.tablaDeNiveles[0] = 0;
@@ -50,6 +53,7 @@ public abstract class Personaje implements Peleable, Serializable {
 			Personaje.tablaDeNiveles[i] = Personaje.tablaDeNiveles[i - 1] + 50;
 	}
 
+	
 	public Personaje(String nombre, Casta casta, int id) {
 		this.nombre = nombre;
 		this.casta = casta;
@@ -139,7 +143,7 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	public void setClan(Alianza clan) {
 		this.clan = clan;
-		clan.aÃ±adirPersonaje(this);
+		clan.añadirPersonaje(this);
 	}
 
 	public int getSalud() {
@@ -237,7 +241,11 @@ public abstract class Personaje implements Peleable, Serializable {
 	public void setEnergiaTope(int energiaTope) {
 		this.energiaTope = energiaTope;
 	}
-
+	/**<p>
+	 * Si la salud es mayor a 0, realizara el ataque en el cual se calculara si es golpe critico o no
+	 * dependiendo de la probabilidad de obtener el mismo y la destreza.
+	 * </p>
+	 */
 	public int atacar(Peleable atacado) {
 		if (salud == 0)
 			return 0;
@@ -252,7 +260,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	}
 
 	public int golpe_critico() {
-		return (int) (this.ataque * this.getCasta().getDaÃ±oCritico());
+		return (int) (this.ataque * this.getCasta().getDañoCritico());
 	}
 
 	public void despuesDeTurno() {
@@ -292,56 +300,78 @@ public abstract class Personaje implements Peleable, Serializable {
 	public boolean estaVivo() {
 		return salud > 0;
 	}
+	
+	/**
+	 * 
+	 * <p> cuando ataquen al personaje, el daño se calcula en base a su defensa.
+	 *	Si la defensa es mayor que su daño no recibira el golpe.
+	 * 	si el daño es mayor a la salud , su salud quedara en 0 sino se le restara el daño.
+	 * </p>
+	 * 
+	 */
 
-	public int serAtacado(int daÃ±o) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaÃ±o()) {
-			daÃ±o -= this.defensa;
-			if (daÃ±o > 0) {
-				if (salud <= daÃ±o) {
-					daÃ±o = salud;
+	public int serAtacado(int daño) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
+			daño -= this.defensa;
+			if (daño > 0) {
+				if (salud <= daño) {
+					daño = salud;
 					salud = 0;
 				} else {
-					salud -= daÃ±o;
+					salud -= daño;
 				}
-				return daÃ±o;
+				return daño;
 			}
 			return 0;
 		}
 		return 0;
 	}
+	
+	
 
-	public int serRobadoSalud(int daÃ±o) {
-		daÃ±o -= this.defensa;
-		if (daÃ±o <= 0)
+	public int serRobadoSalud(int daño) {
+		daño -= this.defensa;
+		if (daño <= 0)
 			return 0;
-		if ((salud - daÃ±o) >= 0)
-			salud -= daÃ±o;
+		if ((salud - daño) >= 0)
+			salud -= daño;
 		else {
-			daÃ±o = salud;// le queda menos salud que el daÃ±o inflingido
+			daño = salud;// le queda menos salud que el daÃ±o inflingido
 			salud = 0;
 		}
-		return daÃ±o;
+		return daño;
 	}
 
-	public int serDesernegizado(int daÃ±o) {
-		daÃ±o -= this.defensa;
-		if (daÃ±o <= 0)
+	public int serDesernegizado(int daño) {
+		daño -= this.defensa;
+		if (daño <= 0)
 			return 0;
-		if ((energia - daÃ±o) >= 0)
-			energia -= daÃ±o;
+		if ((energia - daño) >= 0)
+			energia -= daño;
 		else {
-			daÃ±o = energia;// le queda menos energia que el daÃ±o inflingido
+			daño = energia;// le queda menos energia que el daÃ±o inflingido
 			energia = 0;
 		}
-		return daÃ±o;
+		return daño;
 	}
-
+	
+	/**
+	 * 
+	 * <p> cura al personaje sin exceder su salud tope</p>
+	 * 
+	 */
 	public void serCurado(int salud) {
 		if ((this.salud + salud) <= this.saludTope)
 			this.salud += salud;
 		else
 			this.salud = this.saludTope;
 	}
+	
+	/**
+	 * 
+	 * <p> le otorga energia al personaje sin exceder su energia tope</p>
+	 * 
+	 */
 
 	public void serEnergizado(int energia) {
 		if ((this.energia + energia) <= this.energiaTope)
@@ -352,7 +382,7 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	public void crearAlianza(String nombre_alianza) {
 		this.clan = new Alianza(nombre_alianza);
-		this.clan.aÃ±adirPersonaje(this);
+		this.clan.añadirPersonaje(this);
 	}
 
 	public void salirDeAlianza() {
@@ -366,12 +396,12 @@ public abstract class Personaje implements Peleable, Serializable {
 		if (this.clan == null) {
 			Alianza a = new Alianza("Alianza 1");
 			this.clan = a;
-			a.aÃ±adirPersonaje(this);
+			a.añadirPersonaje(this);
 		}
 
 		if (nuevo_aliado.clan == null) {
 			nuevo_aliado.clan = this.clan;
-			this.clan.aÃ±adirPersonaje(nuevo_aliado);
+			this.clan.añadirPersonaje(nuevo_aliado);
 			return true;
 		} else
 			return false;
@@ -386,6 +416,14 @@ public abstract class Personaje implements Peleable, Serializable {
 			this.inteligencia += inteligencia;
 		this.modificarAtributos();
 	}
+	
+	/**
+	 * 
+	 * <p> compara la experiencia que tiene con respecto a la tabla de nivel
+	 * 	   para saber si el personaje puede subir de nivel.
+	 * 	</p>
+	 * 
+	 */
 
 	public void subirNivel() {
 

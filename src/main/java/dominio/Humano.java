@@ -1,5 +1,12 @@
 package dominio;
 
+/**
+ * El proposito de la clase Humano es poder crear instancias con los atributos de 
+ * saludTope, energiaTope, salud, energia, y nombreRaza. Con los metodos correspondientes a este personaje
+ * 
+ *
+ */
+
 public class Humano extends Personaje {
 
 	public Humano(String nombre, Casta casta, int id) {
@@ -21,6 +28,18 @@ public class Humano extends Personaje {
 		habilidadesRaza[1] = "Golpe Fatal";
 	}
 
+	/**
+	 * Este metodo permite usar la habilidad "Incentivar" si la energia del humano es mayor a 10
+	 * en caso afirmativo, le resta 10 de energia al ser atacado, y ademas, le suma al nivel de ataque del atacado,
+	 * el nivel de magia del humano
+	 * 
+	 * de lo contrario, devuelve que el humano no puede atacar
+	 * 
+	 * 
+	 * @param atacado de tipo Peleable
+	 * @return true o false de tipo boolean 
+	 */
+	
 	// Incentivar
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
@@ -31,6 +50,19 @@ public class Humano extends Personaje {
 		return false;
 	}
 
+	/**
+	 * Este metodo permite usar la habilidad "Golpe Fatal" si la energia del humano es mayor a 10
+	 * y ademas la salud del atacado divido 2 es mayor a 0
+	 * 
+	 * en caso afirmativo, retorna que se puede efectuar la habilidad y le resta 10 a la energia del humano
+	 * 
+	 * en caso negativo, le resta 10 a la energia del humano y retorna que no puede efectuar la habilidad
+	 * 
+	 * 
+	 * @param atacado de tipo Peleable
+	 * @return true o false de tipo boolean 
+	 */
+	
 	// Golpe Fatal
 	public boolean habilidadRaza2(Peleable atacado) {
 		if (this.getEnergia() > 10) {
