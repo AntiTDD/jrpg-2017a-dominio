@@ -6,11 +6,11 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	protected int salud;
 	protected int energia;
-	protected int defensa;// depende de la destreza
-	protected int ataque;// depende de la fuerza
-	protected int magia;// depende de la inteligencia
+	protected int defensa;
+	protected int ataque;
+	protected int magia;
 
-	protected String nombre;// hay que agregarlo a todos los constructores
+	protected String nombre;
 	protected String nombreRaza;
 
 	protected int saludTope;
@@ -78,7 +78,6 @@ public abstract class Personaje implements Peleable, Serializable {
 		ataque = this.calcularPuntosDeAtaque();
 		defensa = this.calcularPuntosDeDefensa();
 		magia = this.calcularPuntosDeMagia();
-
 	}
 
 	public Personaje(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
@@ -336,7 +335,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		if ((salud - daño) >= 0)
 			salud -= daño;
 		else {
-			daño = salud;// le queda menos salud que el daÃ±o inflingido
+			daño = salud;
 			salud = 0;
 		}
 		return daño;
@@ -349,7 +348,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		if ((energia - daño) >= 0)
 			energia -= daño;
 		else {
-			daño = energia;// le queda menos energia que el daÃ±o inflingido
+			daño = energia;
 			energia = 0;
 		}
 		return daño;
@@ -456,7 +455,6 @@ public abstract class Personaje implements Peleable, Serializable {
 		return this.nivel * 40;
 	}
 
-	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}

@@ -33,7 +33,6 @@ public class Asesino extends Casta {
  *  
  *   
  *  */
-// Golpe Crítico
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -53,7 +52,6 @@ public class Asesino extends Casta {
  * 
  * 
  * */
-	// Aumentar Evasion
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -66,7 +64,6 @@ public class Asesino extends Casta {
 		return false;
 	}
 
-	// Robar
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		return false;
 	}

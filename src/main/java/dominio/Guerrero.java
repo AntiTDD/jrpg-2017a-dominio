@@ -5,10 +5,8 @@ package dominio;
  * Ejemplo: Un Personje Orco puede ser tanto de casta Asesino, como Guerrero o 
  * Hechicero. Idem para los personajes * Elfo y Humano.
  * 
- *  
- *  
- *  */
-public class Guerrero extends Casta {
+ */ 
+ public class Guerrero extends Casta {
 
 	public Guerrero(double prob_crit, double evasion, double daño_crit) {
 		super(prob_crit, evasion, daño_crit);
@@ -35,7 +33,6 @@ public class Guerrero extends Casta {
  *   
  *   
  *   */
-	// Ataque Doble
 	public boolean habilidad1(Personaje caster, Peleable atacado) { 
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -58,7 +55,6 @@ public class Guerrero extends Casta {
  *  
  *  
  *  */
-	// Aumentar Defensa
 	public boolean habilidad2(Personaje caster, Peleable atacado) { 
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -67,8 +63,7 @@ public class Guerrero extends Casta {
 		}
 		return false;
 	}
-
-	// Ignorar Defensa
+	
 	public boolean habilidad3(Personaje caster, Peleable atacado) { 
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);

@@ -4,9 +4,6 @@ package dominio;
  * esta clase es la de casta Hechocero. * Ejemplo: Un Personje Orco puede ser 
  * tanto de casta Asesino, como Guerrero o Hechicero. Idem para los personajes 
  * Elfo y Humano. 
- * 
- * 
- * 
  * */
 public class Hechicero extends Casta {
 
@@ -32,12 +29,8 @@ public class Hechicero extends Casta {
  * <br>
  * Puede ser atacado tanto un Personaje como un NPC, 
  * por ésto es un objeto Peleable.
- * @return Booleano que indica si se ejecuta un ataque con bola de fuego. 
- * 
- * 
- * 
+ * @return Booleano que indica si se ejecuta un ataque con bola de fuego.  
  * */
-	// Bola de Fuego
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -54,10 +47,7 @@ public class Hechicero extends Casta {
  * Puede ser atacado tanto un Personaje como un NPC, por ésto es un objeto Peleable.
  * @return Booleano que indica si se ejecuta el heal sobre el aliado o sobre sí mismo. 
  * 
- * 
- * 
  * */
-	// Curar Aliado
 	public boolean habilidad2(Personaje caster, Peleable aliado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -68,8 +58,7 @@ public class Hechicero extends Casta {
 		}
 		return false;
 	}
-
-	// Robar Energia y Salud
+	
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);

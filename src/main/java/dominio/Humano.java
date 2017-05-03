@@ -39,8 +39,7 @@ public class Humano extends Personaje {
 	 * @param atacado de tipo Peleable
 	 * @return true o false de tipo boolean 
 	 */
-	
-	// Incentivar
+
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
@@ -63,7 +62,6 @@ public class Humano extends Personaje {
 	 * @return true o false de tipo boolean 
 	 */
 	
-	// Golpe Fatal
 	public boolean habilidadRaza2(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			if (atacado.serAtacado(atacado.getSalud() / 2) > 0) {

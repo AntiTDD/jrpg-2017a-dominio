@@ -124,9 +124,9 @@ public class NonPlayableCharacter implements Peleable {
 				salud -= daño;
 				return daño;
 			}
-			return 0;// no le hace daÃ±o ya que la defensa fue mayor
+			return 0;
 		}
-		return 0;// esquivo el golpe
+		return 0;
 	}
 
 	public void despuesDeTurno() { }
@@ -134,13 +134,11 @@ public class NonPlayableCharacter implements Peleable {
 	public void ganarExperiencia(int exp) {
 
 	}
-
-	@Override
+	
 	public int getAtaque() {
 		return fuerza;
 	}
-
-	@Override
+	
 	public void setAtaque(int ataque) {
 		this.fuerza = ataque;
 	}
