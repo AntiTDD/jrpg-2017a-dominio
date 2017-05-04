@@ -2,11 +2,11 @@ package dominio;
 
 import java.io.Serializable;
 
-public abstract class Personaje implements Peleable, Serializable {
+public abstract class Personaje extends PersonajePadre implements Peleable, Serializable {
 
-	protected int salud;
+	
 	protected int energia;
-	protected int defensa;
+	
 	protected int ataque;
 	protected int magia;
 
@@ -16,7 +16,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	protected int saludTope;
 	protected int energiaTope;
 
-	protected int fuerza;
+	
 	protected int destreza;
 	protected int inteligencia;
 	protected Casta casta;
@@ -25,7 +25,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	protected int y;
 	
 	protected int experiencia;
-	protected int nivel;
+	
 
 	protected int idPersonaje;
 
@@ -55,7 +55,7 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	
 	public Personaje(String nombre, Casta casta, int id) {
-		this.nombre = nombre;
+		super(nombre);
 		this.casta = casta;
 		this.idPersonaje = id;
 		experiencia = 0;
@@ -84,7 +84,7 @@ public abstract class Personaje implements Peleable, Serializable {
 			int experiencia, int nivel,
 			int idPersonaje) {
 
-		this.nombre = nombre;
+		super(nombre);
 		this.salud = salud;
 		this.energia = energia;
 		this.fuerza = fuerza;
@@ -145,25 +145,18 @@ public abstract class Personaje implements Peleable, Serializable {
 		clan.añadirPersonaje(this);
 	}
 
-	public int getSalud() {
-		return salud;
-	}
-
-	public void setSalud(int salud) {
-		this.salud = salud;
+	
+	
+	
+	public void setEnergia(int energia) {
+		this.energia = energia;
 	}
 
 	public int getEnergia() {
 		return energia;
 	}
 
-	public void setEnergia(int energia) {
-		this.energia = energia;
-	}
 
-	public int getFuerza() {
-		return fuerza;
-	}
 
 	public void setFuerza(int fuerza) {
 		this.fuerza = fuerza;
@@ -201,13 +194,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.experiencia = experiencia;
 	}
 
-	public int getNivel() {
-		return nivel;
-	}
 
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
 
 	public int getIdPersonaje() {
 		return idPersonaje;
@@ -217,13 +204,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.idPersonaje = idPersonaje;
 	}
 
-	public int getDefensa() {
-		return defensa;
-	}
-
-	public void setDefensa(int defensa) {
-		this.defensa = defensa;
-	}
+	
 
 	public int getSaludTope() {
 		return saludTope;
@@ -257,6 +238,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		}
 		return 0;
 	}
+	
 
 	public int golpe_critico() {
 		return (int) (this.ataque * this.getCasta().getDañoCritico());
@@ -296,9 +278,7 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.magia = this.calcularPuntosDeMagia();
 	}
 
-	public boolean estaVivo() {
-		return salud > 0;
-	}
+	
 	
 	/**
 	 * 

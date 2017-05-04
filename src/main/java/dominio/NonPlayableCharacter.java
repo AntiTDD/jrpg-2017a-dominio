@@ -1,12 +1,8 @@
 package dominio;
 
-public class NonPlayableCharacter implements Peleable {
+public class NonPlayableCharacter extends PersonajePadre implements Peleable {
 
-	private int salud;
-	private int fuerza;
-	private int defensa;
-	private String nombre;
-	private int nivel;
+	
 	private static final int dificultadAleatoria = -1;
 /**<p>
  *  Construye al NPC a partir de una dificultad Aleatoria estatica dada,
@@ -16,7 +12,7 @@ public class NonPlayableCharacter implements Peleable {
    </p>
  */
 	public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
-		this.nombre = nombre;
+		super (nombre);
 		this.nivel = nivel;
 		int dificultad;
 		if (dificultadNPC == dificultadAleatoria)
@@ -48,50 +44,7 @@ public class NonPlayableCharacter implements Peleable {
 		return this.nivel * 30;
 	}
 
-	public int getFuerza() {
-		return fuerza;
-	}
-
-	public void setFuerza(int fuerza) {
-		this.fuerza = fuerza;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public int getNivel() {
-		return nivel;
-	}
-
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
-
-	public boolean estaVivo() { 
-		return salud > 0;
-	}
-
-	public int getDefensa() {
-		return defensa;
-	}
-
-	public void setDefensa(int defensa) {
-		this.defensa = defensa;
-	}
-
-	public int getSalud() {
-		return salud;
-	}
-
-	public void setSalud(int salud) {
-		this.salud = salud;
-	}
-
+	
 	/**
 	 * 
 	 * <p> 
@@ -135,11 +88,16 @@ public class NonPlayableCharacter implements Peleable {
 
 	}
 	
+	                        
+	
 	public int getAtaque() {
-		return fuerza;
-	}
+	    return fuerza;
+	}                        
 	
 	public void setAtaque(int ataque) {
-		this.fuerza = ataque;
+	    this.fuerza = ataque;
 	}
+	
+	
+	
 }
