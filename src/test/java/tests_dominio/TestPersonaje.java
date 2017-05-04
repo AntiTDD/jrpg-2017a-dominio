@@ -199,7 +199,19 @@ public class TestPersonaje {
 		
 		Assert.assertTrue(e1.distanciaCon(e2) == 0 );
 		
-		
 	}
 	
+	@Test
+	public void testeoAlianza(){ 
+		Elfo e1 = new Elfo("Secchik",new Asesino(),23);
+		
+		e1.crearAlianza("AntiTDD");
+		
+		Assert.assertTrue(e1.getClan().obtenerNombre() == "AntiTDD" );
+		
+		e1.salirDeAlianza();
+		
+		Assert.assertTrue(e1.getClan() == null );
+		
+	}
 }
