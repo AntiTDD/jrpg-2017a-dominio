@@ -78,4 +78,45 @@ public class TestPersonaje {
 		Assert.assertTrue(o3.getDestreza() == 15);
 		Assert.assertTrue(o3.getInteligencia() == 10);
 	}
+	
+	@Test
+	public void testeoGetySet(){
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		Hechicero h = new Hechicero();
+		
+		e.setNombre("Lucas");
+		e.setNombreRaza("Elfo Junior");
+		e.setAtaque(40);
+		e.setSalud(100);
+		e.setEnergia(300);
+		e.setCasta(h);
+		e.setMagia(20);
+		e.setNivel(99);
+		e.setExperiencia(110);
+		e.setIdPersonaje(24);
+		e.setSaludTope(120);
+		e.setEnergiaTope(120);
+		e.setDestreza(42);
+		e.setInteligencia(500);
+		
+		Assert.assertTrue(e.getNombre() == "Lucas");
+		Assert.assertTrue(e.getNombreRaza() == "Elfo Junior");
+		Assert.assertTrue(e.getAtaque() == 40);
+		Assert.assertTrue(e.getSalud() == 100);
+		Assert.assertTrue(e.getEnergia() == 300);
+		Assert.assertTrue(e.getCasta() == h);
+		Assert.assertTrue(e.getMagia() == 20);
+		Assert.assertTrue(e.getNivel() == 99);
+		Assert.assertTrue(e.getExperiencia() == 110);
+		Assert.assertTrue(e.getIdPersonaje() == 24);
+		Assert.assertTrue(e.getSaludTope() == 120);
+		Assert.assertTrue(e.getEnergiaTope() == 120);
+		Assert.assertTrue(e.getHabilidadesCasta()[0] == "Bola de Fuego");
+		Assert.assertTrue(e.getHabilidadesCasta()[1] == "Curar Aliado");
+		Assert.assertTrue(e.getHabilidadesCasta()[2] == "Robar Energia y Salud");
+		Assert.assertTrue(e.getHabilidadesRaza()[0] == "Golpe Level");
+		Assert.assertTrue(e.getHabilidadesRaza()[1] == "Ataque Bosque");
+		
+	}
+	
 }
