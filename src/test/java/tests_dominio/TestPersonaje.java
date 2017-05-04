@@ -172,6 +172,25 @@ public class TestPersonaje {
 		
 	}
 	
+	@Test
+	public void testeoSerCurado(){
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setSalud(20);
+		e.serCurado(30);
+		
+		Assert.assertTrue(e.getSalud() == 50 );
+	}
+	
+	@Test
+	public void testeoSerCuradoTope(){
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setSalud(20);
+		e.serCurado(500);
+		
+		Assert.assertTrue(e.getSalud() == 100 );
+	}
 	
 	
 }
