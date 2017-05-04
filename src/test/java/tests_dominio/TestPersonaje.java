@@ -192,5 +192,14 @@ public class TestPersonaje {
 		Assert.assertTrue(e.getSalud() == 100 );
 	}
 	
+	@Test
+	public void testeoDistancias(){ 
+		Elfo e1 = new Elfo("Secchik",new Asesino(),23);
+		Elfo e2 = new Elfo("ElfoRand",new Asesino(),23);
+		
+		Assert.assertTrue(e1.distanciaCon(e2) == 0 );
+		
+		
+	}
 	
 }
