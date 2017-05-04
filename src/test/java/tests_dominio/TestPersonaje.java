@@ -130,6 +130,16 @@ public class TestPersonaje {
 		Assert.assertTrue(e.getSaludTope() == 100);
 	}
 	
+	@Test
+	public void testeoRestablecesEnergia(){
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setSalud( 40);
+		
+		e.restablecerEnergia();
+		
+		Assert.assertTrue(e.getEnergiaTope() == 110);
+	}
 	
 	
 }
