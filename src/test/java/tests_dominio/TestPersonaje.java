@@ -141,5 +141,26 @@ public class TestPersonaje {
 		Assert.assertTrue(e.getEnergiaTope() == 110);
 	}
 	
+	@Test
+	public void testeoPuedoAtacar(){ 
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setEnergia(11);
+		
+		Assert.assertTrue(e.puedeAtacar() == true );
+		
+	}
+	
+	
+	@Test
+	public void testeoNoPuedoAtacar(){ 
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setEnergia(0);
+		
+		Assert.assertTrue(e.puedeAtacar() == false );
+		
+	}
+	
 	
 }
