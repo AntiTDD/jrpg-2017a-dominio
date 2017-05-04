@@ -119,4 +119,17 @@ public class TestPersonaje {
 		
 	}
 	
+	@Test
+	public void testeoRestablecesSalud(){
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setSalud( 40);
+		
+		e.restablecerSalud();
+		
+		Assert.assertTrue(e.getSaludTope() == 100);
+	}
+	
+	
+	
 }
