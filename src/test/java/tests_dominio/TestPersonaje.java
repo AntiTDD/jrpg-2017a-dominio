@@ -162,5 +162,16 @@ public class TestPersonaje {
 		
 	}
 	
+	@Test
+	public void testeoEstaVivo(){ 
+		Elfo e = new Elfo("Secchik",new Asesino(),23);
+		
+		e.setSalud(0);
+		
+		Assert.assertTrue(e.estaVivo() == false );
+		
+	}
+	
+	
 	
 }
