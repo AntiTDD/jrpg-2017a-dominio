@@ -214,4 +214,41 @@ public class TestPersonaje {
 		Assert.assertTrue(e1.getClan() == null );
 		
 	}
+	
+	@Test
+	public void testDefensa() {
+		Elfo e = new Elfo("Secchik", new Asesino(), 23);
+		e.setDefensa(100);
+		Assert.assertTrue(e.serAtacado(99) == 0);
+		Assert.assertTrue(e.serRobadoSalud(99) == 0);
+		Assert.assertTrue(e.serDesernegizado(99) == 0);
+	}
+	@Test
+	public void testRoboDeVida() {
+		Elfo e = new Elfo("Secchik", new Asesino(), 23);
+		e.setSalud(10);
+		e.setDefensa(10);
+		Assert.assertTrue(e.serRobadoSalud(100) == 10);
+		Assert.assertTrue(e.getSalud() == 0);
+	}
+	
+	@Test
+	public void testRoboDeEnergia() {
+		Elfo e = new Elfo("Secchik", new Asesino(), 23);
+		e.setEnergia(10);
+		e.setDefensa(10);
+		Assert.assertTrue(e.serDesernegizado(100) == 10);
+		Assert.assertTrue(e.getEnergia() == 0);
+	}
+	
+	@Test
+	public void testTenerClan() {
+		Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
+		Elfo e2 = new Elfo("Mica", new Asesino(), 2);
+		Elfo e3 = new Elfo("Kandangar", new Asesino(), 3);
+		
+		Assert.assertTrue(e2.aliar(e3) == true);
+		Assert.assertTrue(e1.aliar(e2) == false);
+	}
+	
 }
