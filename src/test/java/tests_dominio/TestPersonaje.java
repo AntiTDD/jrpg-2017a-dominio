@@ -256,4 +256,45 @@ public class TestPersonaje {
 		Assert.assertTrue(e2.aliar(e3) == true);
 		Assert.assertTrue(e1.aliar(e2) == false);
 	}
+	
+	@Test
+	public void testDespuesDeTurno() 
+	{
+		Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
+		e1.despuesDeTurno();
+	}
+	
+	
+	@Test
+	public void queUnPersonajeConAltaProbabilidadDeEvitarElDañoNoPuedaSerAtacado()
+	{
+		Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
+		Elfo e2 = new Elfo("La mole Moli",new Guerrero(1000,10000000,1000),1);
+		Assert.assertEquals(0, e1.atacar(e2));
+	}
+	
+	
+	@Test
+	public void queAUnPersonajeSeLeLleneLaBarritaDeEnergia()
+	{
+		Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
+		e1.setEnergia(e1.getEnergia()/2);
+		Assert.assertNotEquals(e1.getEnergiaTope(), e1.getEnergia());
+		e1.serEnergizado(100000000);
+		Assert.assertEquals(e1.getEnergiaTope(), e1.getEnergia());
+	}
+	
+	
+	@Test
+	public void queUnPersonajeQuedeSinClanCuandoPidaSalir()
+	{
+		Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
+		Elfo e2 = new Elfo("Mica", new Asesino(), 2);
+		e1.crearAlianza("Eapepe");
+		e1.aliar(e2);
+		Assert.assertNotNull(e1.getClan());
+		Assert.assertNotNull(e2.getClan());
+		e2.salirDeAlianza();
+		Assert.assertNull(e2.getClan());
+	}
 }
