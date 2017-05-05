@@ -15,13 +15,12 @@ public class Humano extends Personaje {
   * @param id Entero que identifica univocamente a este objeto.
   */
   public Humano(String nombre, Casta casta, int id) {
-    super(nombre, casta, id);
+    super(nombre, casta, id , "Humano" , "Incentivar" ,"Golpe Fatal");
     final int cinco = 5;
     saludTope += cinco;
     energiaTope += cinco;
     salud = saludTope;
     energia = energiaTope;
-    nombreRaza = "Humano";
   }
 
 
@@ -42,13 +41,7 @@ public class Humano extends Personaje {
   public Humano(String nombre, int salud, int energia, int fuerza, int destreza,
       int inteligencia, Casta casta, int experiencia, int nivel, int idPersonaje) {
     super(nombre, salud, energia, fuerza, destreza, inteligencia, casta,
-        experiencia, nivel, idPersonaje);
-
-    nombreRaza = "Humano";
-
-    habilidadesRaza = new String[2];
-    habilidadesRaza[0] = "Incentivar";
-    habilidadesRaza[1] = "Golpe Fatal";
+        experiencia, nivel, idPersonaje,"Humano" , "Incentivar" ,"Golpe Fatal");
   }
 
   // Incentivar
@@ -65,7 +58,7 @@ public class Humano extends Personaje {
   */
   public boolean habilidadRaza1(Peleable atacado) {
     final int diez = 10;
-    if (this.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (this.getEnergia() > diez) {  
       this.setEnergia(this.getEnergia() - diez);
       atacado.setAtaque(atacado.getAtaque() + this.getMagia());
       return true;

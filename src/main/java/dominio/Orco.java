@@ -15,16 +15,11 @@ public class Orco extends Personaje {
   * @param id Entero que identifica univocamente a este objeto.
   */
   public Orco(String nombre, Casta casta, int id) {
-    super(nombre, casta, id);
+    super(nombre, casta, id ,"Orco","Golpe Defensa","Mordisco de Vida");
     final int diez = 10;
     saludTope += diez;
     salud = saludTope;
     energia = energiaTope;
-    nombreRaza = "Orco";
-
-    habilidadesRaza = new String[2];
-    habilidadesRaza[0] = "Golpe Defensa";
-    habilidadesRaza[1] = "Mordisco de Vida";
   }
 
 
@@ -45,13 +40,7 @@ public class Orco extends Personaje {
   public Orco(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia,
       Casta casta, int experiencia, int nivel, int idPersonaje) {
     super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel,
-        idPersonaje);
-
-    nombreRaza = "Orco";
-
-    habilidadesRaza = new String[2];
-    habilidadesRaza[0] = "Golpe Defensa";
-    habilidadesRaza[1] = "Mordisco de Vida";
+        idPersonaje,"Orco","Golpe Defensa","Mordisco de Vida");
   }
 
   // Golpe Defensa
@@ -90,7 +79,7 @@ public class Orco extends Personaje {
   */
   public boolean habilidadRaza2(Peleable atacado) {
     final int diez = 10;
-    if (this.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (this.getEnergia() > diez) { 
       this.setEnergia(this.getEnergia() - diez);
       int daño_causado = atacado.serAtacado(this.getFuerza());
       final int cero = 0;

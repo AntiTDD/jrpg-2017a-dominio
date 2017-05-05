@@ -28,6 +28,7 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	
 
 	protected int idPersonaje;
+	protected static final int HABILIDADES = 2;
 
 	protected Alianza clan = null;
 	public static int tablaDeNiveles[];
@@ -54,10 +55,12 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	}
 
 	
-	public Personaje(String nombre, Casta casta, int id) {
+	public Personaje(String nombre, Casta casta, int id , String raza, String hab1,String hab2) {
 		super(nombre);
 		this.casta = casta;
 		this.idPersonaje = id;
+		this.nombreRaza = raza;
+		this.asignarHabilidades(hab1, hab2);
 		experiencia = 0;
 		nivel = 1;
 		fuerza = 10;
@@ -81,8 +84,7 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	}
 
 	public Personaje(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
-			int experiencia, int nivel,
-			int idPersonaje) {
+			int experiencia, int nivel, int idPersonaje , String raza , String hab1, String hab2) {
 
 		super(nombre);
 		this.salud = salud;
@@ -102,6 +104,9 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 		this.defensa = this.calcularPuntosDeDefensa();
 		this.ataque = this.calcularPuntosDeAtaque();
 		this.magia = this.calcularPuntosDeMagia();
+		
+		this.nombreRaza = raza;
+		this.asignarHabilidades(hab1, hab2);
 	}
 
 	public String getNombreRaza() {
@@ -453,6 +458,13 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 
 	public boolean habilidadCasta3(Peleable atacado) {
 		return this.getCasta().habilidad3(this, atacado);
+	}
+	
+	public void asignarHabilidades(String habilidad1,String habilidad2){ 
+		habilidadesRaza = new String [HABILIDADES];
+		
+		habilidadesRaza[0]= habilidad1;
+		habilidadesRaza[1]= habilidad2;
 	}
 
 	public abstract boolean habilidadRaza1(Peleable atacado);

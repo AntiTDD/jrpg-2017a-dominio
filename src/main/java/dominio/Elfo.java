@@ -15,16 +15,11 @@ public class Elfo extends Personaje {
   * @param id Entero que identifica univocamente a este objeto.
   */
   public Elfo(String nombre, Casta casta, int id) {
-    super(nombre, casta, id);
-    final int diez = 10;
-    energiaTope += diez;
+   
+	super(nombre,casta,id,"Elfo","Golpe Level","Ataque Bosque"); 
     salud = saludTope;
     energia = energiaTope;
-    nombreRaza = "Elfo";
-
-    habilidadesRaza = new String[2];
-    habilidadesRaza[0] = "Golpe Level";
-    habilidadesRaza[1] = "Ataque Bosque";
+   
   }
 
 
@@ -45,13 +40,7 @@ public class Elfo extends Personaje {
   public Elfo(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia,
       Casta casta, int experiencia, int nivel, int idPersonaje) {
         super(nombre, salud, energia, fuerza, destreza, inteligencia, casta,
-          experiencia, nivel, idPersonaje);
-
-    nombreRaza = "Elfo";
-
-    habilidadesRaza = new String[2];
-    habilidadesRaza[0] = "Golpe Level";
-    habilidadesRaza[1] = "Ataque Bosque";
+          experiencia, nivel, idPersonaje,"Elfo","Golpe Level","Ataque Bosque");
   }
 
   // Golpe Level
@@ -66,7 +55,7 @@ public class Elfo extends Personaje {
   */
   public boolean habilidadRaza1(Peleable atacado) {
     final int diez = 10;
-    if (this.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (this.getEnergia() > diez) {  
       this.setEnergia(this.getEnergia() - diez);
       final int cero=0;
       if (atacado.serAtacado(this.getFuerza() + this.getNivel() * diez) > cero) { // PREGUNTAR: En vez de "this.getFuerza()" no deberia ser "this.getAtaque()" o "ataque"? //
