@@ -57,4 +57,11 @@ public class TestAsesino {
 		e.setEnergia(0);
 		Assert.assertFalse(e.habilidadCasta2(o));
 	}
+	
+	@Test
+	public void testHabilidad3() 
+	{
+		Elfo e=new Elfo("Frodo Bolson",new Asesino(),1);
+		Assert.assertFalse(new Asesino().habilidad3(e, e));
+	}
 }
