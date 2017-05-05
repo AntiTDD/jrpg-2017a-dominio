@@ -12,7 +12,9 @@ public class PersonajePadre {
 	public PersonajePadre(final String nom) {
 		this.nombre = nom;
 	}
-	  
+	
+
+
 	public int getSalud() {
 		return salud;
 	}
@@ -54,6 +56,10 @@ public class PersonajePadre {
 	
 	public String getNombre() {
 	    return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 
