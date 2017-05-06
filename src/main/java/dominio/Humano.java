@@ -44,7 +44,6 @@ public class Humano extends Personaje {
         experiencia, nivel, idPersonaje,"Humano" , "Incentivar" ,"Golpe Fatal");
   }
 
-  // Incentivar
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Humano
   * puede, o no, incentivar el ataque de cualquier otro objeto Peleable. Sea
@@ -65,8 +64,7 @@ public class Humano extends Personaje {
     }
     return false;
   }
-
-  // Golpe Fatal
+  
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Humano
   * puede, o no, asestar un golpe fatal a su atacado que es un objeto Peleable.
@@ -76,14 +74,14 @@ public class Humano extends Personaje {
   */
   public boolean habilidadRaza2(Peleable atacado) {
     final int diez = 10;
-    if (this.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (this.getEnergia() > diez) {
       final int dos = 2, cero = 0;
       if (atacado.serAtacado(atacado.getSalud() / dos) > cero) {
         this.setEnergia(this.getEnergia() / dos);
         return true;
       }
     }
-    this.setEnergia(this.getEnergia() - diez);  // PREGUNTAR: Esta linea podria setear la energia de este objeto en negativa. Esta bien eso o es mejor poner "energia=0" o "this.setEnergia(0)". //
+    this.setEnergia(this.getEnergia() - diez);
     return false;
   }
 }

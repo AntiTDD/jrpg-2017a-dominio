@@ -20,7 +20,10 @@ package dominio;
     super(prob_crit, evasion, daño_crit);
     this.nombreCasta = "Asesino";
   }
-
+  
+  public void mejorarAtributoCasta(Personaje personaje){
+	  
+  }
 
   /**
   * Constructor de objetos de profesion Asesino.
@@ -35,7 +38,6 @@ package dominio;
     habilidadesCasta[2] = "Robar";
   }
 
-  // Golpe Crítico
   /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Asesino le mete, o no, un golpe critico al atacado.
@@ -46,16 +48,15 @@ package dominio;
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
     final int energiaMinimaIndispensable = 10;
-    if (caster.getEnergia() > energiaMinimaIndispensable) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > energiaMinimaIndispensable) {  
       caster.setEnergia(caster.getEnergia() - energiaMinimaIndispensable);
-      if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) { // PREGUNTAR: En vez de poner caster.getCasta().getDañoCritico() no se podia poner this.dañoCritico? //
+      if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) {
         return true;
       }
     }
     return false;
   }
 
-  // Aumentar Evasion
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede
   * incrementar, o no, la evasion del objeto Peleable que es el objeto a
@@ -69,7 +70,7 @@ package dominio;
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     final int energiaMinimaIndispensable = 10;
-    if (caster.getEnergia() > energiaMinimaIndispensable) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > energiaMinimaIndispensable) {
       caster.setEnergia(caster.getEnergia() - energiaMinimaIndispensable);
       final float ceroPuntoQuince = 0.15f;
       final float ceroPuntoCinco = 0.5f;
@@ -83,7 +84,6 @@ package dominio;
     return false;
   }
 
-  // Robar
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, robar al objeto atacado.

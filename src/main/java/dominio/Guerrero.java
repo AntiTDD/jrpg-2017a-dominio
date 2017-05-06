@@ -34,8 +34,7 @@ package dominio;
     habilidadesCasta[1] = "Aumentar Defensa";
     habilidadesCasta[2] = "Ignorar Defensa";
   }
-
-  // Ataque Doble
+  
   /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Guerrero le mete, o no, un ataque doble a su oponente que es un objeto
@@ -47,7 +46,7 @@ package dominio;
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) {
       caster.setEnergia(caster.getEnergia() - diez);
       final int dos = 2, cero = 0;
       if (atacado.serAtacado(caster.ataque * dos) > cero) {
@@ -56,8 +55,7 @@ package dominio;
     }
     return false;
   }
-
-  // Aumentar Defensa
+  
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede
   * aumentar la defensa del objeto Peleable que es el destinatario. Por ser
@@ -71,15 +69,22 @@ package dominio;
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) {
       caster.setEnergia(caster.getEnergia() - diez);
       caster.setDefensa(caster.getDefensa() + caster.magia);
       return true;
     }
     return false;
   }
+  
+  /**
+   * Aumenta en 5 el atributo Fuerza ya que es la "especial" de la casta Guerrero
+   */
+ public void mejorarAtributoCasta(Personaje personaje){
+	  personaje.setFuerza(personaje.getFuerza() + 5);
+  }
 
-  // Ignorar Defensa
+  
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, atacar ignorando la defensa del objeto atacado.
@@ -90,17 +95,17 @@ package dominio;
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) {
       caster.setEnergia(caster.getEnergia() - diez);
-      if (atacado instanceof Personaje) {
-        int defensa_original = ((Personaje) atacado).getDefensa();
-        final int cero = 0;
-        ((Personaje) atacado).setDefensa(cero);  // NOTA: No me parece bien esta linea ya que momentaneamente le baja la defensa a 0 al atacado y, si esto corriese en un hilo y justo despues de ejecutar esta linea entra en ejecucion otro hilo que tambien este atacando a este mismo personaje, tambien recibiria otro golpe ignorandosele su defensa. //
+     
+    int defensa_original = ((Personaje) atacado).getDefensa();
+    final int cero = 0;
+    ((Personaje) atacado).setDefensa(cero); 
         if (atacado.serAtacado(caster.ataque) > cero) {
           ((Personaje) atacado).setDefensa(defensa_original);
           return true;
         }
-      }
+      
 
     }
     return false;

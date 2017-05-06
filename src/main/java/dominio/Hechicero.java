@@ -34,7 +34,6 @@ package dominio;
     habilidadesCasta[2] = "Robar Energia y Salud";
   }
 
-  // Bola de Fuego
   /**
   * El presente metodo devuelve un booleano indicando si este objeto le mete a
   *  su atacado, o no, un ataque con bola de fuego. El atacado es un objeto
@@ -46,7 +45,7 @@ package dominio;
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) { 
       caster.setEnergia(caster.getEnergia() - diez);
       final float unoPuntoCinco = 1.5f;
       final int cero = 0;
@@ -57,8 +56,12 @@ package dominio;
     }
     return false;
   }
+  
+ public void mejorarAtributoCasta(Personaje personaje){
+	  personaje.setInteligencia(personaje.getInteligencia() + 5);
+  }
 
-  // Curar Aliado
+  
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, curar a un aliado o a si mismo.
@@ -70,17 +73,14 @@ package dominio;
   */
   public boolean habilidad2(Personaje caster, Peleable aliado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) {
       caster.setEnergia(caster.getEnergia() - diez);
-      if (aliado instanceof Personaje) {
-        ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
+      ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
         return true;
       }
-    }
     return false;
   }
 
-  // Robar Energia y Salud
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, robar energia y salud al objeto atacado.
@@ -90,19 +90,20 @@ package dominio;
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     final int diez = 10;
-    if (caster.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (caster.getEnergia() > diez) {
       caster.setEnergia(caster.getEnergia() - diez);
-      if (atacado instanceof Personaje) {
-        int energia_robada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
-        final int dos = 2;
-        int salud_robada = ((Personaje) atacado).serRobadoSalud(
-          caster.calcularPuntosDeMagia() / dos);
-        caster.serEnergizado(energia_robada);
-        caster.serCurado(salud_robada);
-        return true;
-      }
-
+      
+      int energia_robada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
+      final int dos = 2;
+      
+      int salud_robada = ((Personaje) atacado).serRobadoSalud(
+      
+      caster.calcularPuntosDeMagia() / dos);
+      caster.serEnergizado(energia_robada);
+      caster.serCurado(salud_robada);
+      return true;
     }
+    
     return false;
   }
 }

@@ -66,12 +66,8 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 		fuerza = 10;
 		inteligencia = 10;
 		destreza = 10;
-		if (casta instanceof Guerrero)
-			fuerza += 5;
-		if (casta instanceof Hechicero)
-			inteligencia += 5;
-		if (casta instanceof Asesino)
-			destreza += 5;
+		
+		casta.mejorarAtributoCasta(this);
 
 		x = 0;
 		y = 0;
@@ -151,8 +147,6 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	}
 
 	
-	
-	
 	public void setEnergia(int energia) {
 		this.energia = energia;
 	}
@@ -160,7 +154,6 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	public int getEnergia() {
 		return energia;
 	}
-
 
 
 	public void setFuerza(int fuerza) {
@@ -209,7 +202,6 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 		this.idPersonaje = idPersonaje;
 	}
 
-	
 
 	public int getSaludTope() {
 		return saludTope;

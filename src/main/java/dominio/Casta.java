@@ -79,6 +79,11 @@ import java.io.Serializable;
   */
   public abstract boolean habilidad3(Personaje caster, Peleable atacado);
 
+ /**
+  * mejorarAtributoCasta va a ser sobreescrita en las clases hijas
+  * @param personaje
+  */
+ public abstract void mejorarAtributoCasta(Personaje personaje);
 
   /**
   * Metodo el cual sirve para obtener el nombre de este objeto.<br>

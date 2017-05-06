@@ -43,7 +43,6 @@ public class Orco extends Personaje {
         idPersonaje,"Orco","Golpe Defensa","Mordisco de Vida");
   }
 
-  // Golpe Defensa
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Orco
   * puede, o no, asestar un golpe Defensa el cual es un golpe acorde a la
@@ -55,7 +54,7 @@ public class Orco extends Personaje {
   */
   public boolean habilidadRaza1(Peleable atacado) {
     final int diez = 10;
-    if (this.getEnergia() > diez) {  // PREGUNTAR: No se deberia tambien preguntar si el atacado tiene salud mayor a 0? O sea, en esta linea poner: "if(energia>10 && atacado.getSalud()>0" //
+    if (this.getEnergia() > diez) {
       this.setEnergia(this.getEnergia() - diez);
       final int dos = 2, cero = 0;
       if (atacado.serAtacado(this.getDefensa() * dos) > cero) {
@@ -65,7 +64,6 @@ public class Orco extends Personaje {
     return false;
   }
 
-  // Mordisco de Vida
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Orco
   * puede, o no, asestar un Mordisco de Vida a su atacado el cual es un objeto
