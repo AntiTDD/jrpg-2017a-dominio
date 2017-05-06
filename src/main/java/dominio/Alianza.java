@@ -7,6 +7,7 @@ import java.util.LinkedList;
  * 
  *
  */
+//probar si sale mi username cuando commiteo
 
 public class Alianza { 
 	String nombre;
