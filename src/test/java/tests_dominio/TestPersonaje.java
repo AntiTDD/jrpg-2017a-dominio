@@ -3,7 +3,12 @@ package tests_dominio;
 import org.junit.Assert;
 import org.junit.Test;
 
-import dominio.*;
+import dominio.Asesino;
+import dominio.Elfo;
+import dominio.Guerrero;
+import dominio.Hechicero;
+import dominio.Humano;
+import dominio.Orco;
 
 public class TestPersonaje {
 
@@ -215,6 +220,7 @@ public class TestPersonaje {
 		
 	}
 	
+	
 	@Test
 	public void testDefensa() {
 		Elfo e = new Elfo("Secchik", new Asesino(), 23);
@@ -250,5 +256,4 @@ public class TestPersonaje {
 		Assert.assertTrue(e2.aliar(e3) == true);
 		Assert.assertTrue(e1.aliar(e2) == false);
 	}
-	
 }

@@ -1,9 +1,11 @@
 package tests_dominio;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import dominio.*;
-import org.junit.Assert;
+import dominio.Guerrero;
+import dominio.Humano;
+import dominio.Personaje;
 
 public class TestAsignarPuntos {
 

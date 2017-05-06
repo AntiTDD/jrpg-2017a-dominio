@@ -6,7 +6,9 @@ import org.junit.Test;
 import dominio.Asesino;
 import dominio.Elfo;
 import dominio.Guerrero;
+import dominio.Hechicero;
 import dominio.Humano;
+import dominio.Orco;
 
 public class TestGuerrero {
 
@@ -43,5 +45,34 @@ public class TestGuerrero {
 		else
 			Assert.assertTrue(e.getSalud() == 100);
 	}
-
+	
+	
+	@Test
+	public void queUnGuerreroNoPuedaEjecutarSuHabilidad1PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Guerrero(),1);
+		Orco o=new Orco("Uruk-Hai",new Hechicero(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta1(o));
+	}
+	
+	
+	@Test
+	public void queUnGuerreroNoPuedaEjecutarSuHabilidad2PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Guerrero(),1);
+		Orco o=new Orco("Uruk-Hai",new Hechicero(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta2(o));
+	}
+	
+	
+	@Test
+	public void queUnGuerreroNoPuedaEjecutarSuHabilidad3PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Guerrero(),1);
+		Orco o=new Orco("Uruk-Hai",new Hechicero(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta3(o));
+	}
 }

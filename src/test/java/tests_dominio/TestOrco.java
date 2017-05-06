@@ -38,4 +38,24 @@ public class TestOrco {
 			Assert.assertTrue(h.getSalud() == 100);
 		}
 	}
+	
+	
+	@Test
+	public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia()
+	{
+		Orco o=new Orco("Uruk-Hai",new Guerrero(),1);
+		Humano e=new Humano("Aragorn",new Guerrero(),1);
+		o.setEnergia(0);
+		Assert.assertFalse(o.habilidadRaza1(e));
+	}
+	
+	
+	@Test
+	public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia()
+	{
+		Orco o=new Orco("Uruk-Hai",new Guerrero(),1);
+		Humano e=new Humano("Aragorn",new Guerrero(),1);
+		o.setEnergia(0);
+		Assert.assertFalse(o.habilidadRaza2(e));
+	}
 }

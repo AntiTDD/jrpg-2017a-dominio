@@ -97,7 +97,6 @@ public class NonPlayableCharacter extends PersonajePadre implements Peleable {
 	public void setAtaque(int ataque) {
 	    this.fuerza = ataque;
 	}
-	
-	
+
 	
 }

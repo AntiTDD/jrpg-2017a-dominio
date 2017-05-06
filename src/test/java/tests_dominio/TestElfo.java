@@ -5,7 +5,10 @@ import org.junit.Test;
 
 import dominio.Asesino;
 import dominio.Elfo;
+import dominio.Guerrero;
+import dominio.Hechicero;
 import dominio.Humano;
+import dominio.Orco;
 
 public class TestElfo {
 
@@ -31,5 +34,25 @@ public class TestElfo {
 			Assert.assertTrue(h.getSalud() < 100);
 		else
 			Assert.assertTrue(h.getSalud() == 100);
+	}
+	
+	
+	@Test
+	public void queUnElfoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Hechicero(),1);
+		Orco o=new Orco("Uruk-Hai",new Guerrero(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadRaza1(o));
+	}
+	
+	
+	@Test
+	public void queUnElfoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Hechicero(),1);
+		Orco o=new Orco("Uruk-Hai",new Guerrero(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadRaza2(o));
 	}
 }

@@ -7,6 +7,7 @@ import dominio.Asesino;
 import dominio.Elfo;
 import dominio.Hechicero;
 import dominio.Humano;
+import dominio.Orco;
 
 public class TestHechicero {
 
@@ -51,5 +52,35 @@ public class TestHechicero {
 			Assert.assertTrue(h.getEnergia() < 50);
 			Assert.assertTrue(e.getSalud() == 100);
 		}
+	}
+	
+	
+	@Test
+	public void queUnHechiceroNoPuedaEjecutarSuHabilidad1PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Hechicero(),1);
+		Orco o=new Orco("Uruk-Hai",new Asesino(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta1(o));
+	}
+	
+	
+	@Test
+	public void queUnHechiceroNoPuedaEjecutarSuHabilidad2PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Hechicero(),1);
+		Orco o=new Orco("Uruk-Hai",new Asesino(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta2(o));
+	}
+	
+	
+	@Test
+	public void queUnHechiceroNoPuedaEjecutarSuHabilidad3PorNoTenerEnergia()
+	{
+		Elfo e=new Elfo("Legolas",new Hechicero(),1);
+		Orco o=new Orco("Uruk-Hai",new Asesino(),1);
+		e.setEnergia(0);
+		Assert.assertFalse(e.habilidadCasta3(o));
 	}
 }
