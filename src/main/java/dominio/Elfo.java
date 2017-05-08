@@ -8,6 +8,13 @@ public class Elfo extends Personaje {
 
 
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int ENERGIA_MINIMA = 10;
+
+
+/**
   * Constructor de objetos de raza Elfo.
   * @param nombre String que indica el nombre de este objeto.
   * @param casta Objeto de tipo Casta que indica la profesion a la que pertenece
@@ -53,11 +60,9 @@ public class Elfo extends Personaje {
   * @return Booleano que indica si el golpe por nivel pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza1(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) {  
-      this.setEnergia(this.getEnergia() - diez);
-      final int cero=0;
-      if (atacado.serAtacado(this.getFuerza() + this.getNivel() * diez) > cero) {
+    if (this.getEnergia() > ENERGIA_MINIMA) {  
+      this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
+      if (atacado.serAtacado(this.getFuerza() + this.getNivel() * ENERGIA_MINIMA) > 0) {
         return true;
       }
     }
@@ -71,14 +76,12 @@ public class Elfo extends Personaje {
   * Peleable, tanto los objetos Personaje como los NPC, pueden ser atacados.
   * @param atacado Objeto Peleable el cual es el destinatario del ataque Bosque,
   * o sea, el atacado.
-  * @return Booleano que indica si el ataque Bosque dañó al atacado, o no.
+  * @return Booleano que indica si el ataque Bosque daï¿½ï¿½ al atacado, o no.
   */
   public boolean habilidadRaza2(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) {
-      this.setEnergia(this.getEnergia() - diez);
-      final int cero = 0;
-      if (atacado.serAtacado((int) (this.magia)) > cero) {
+    if (this.getEnergia() > ENERGIA_MINIMA) {
+      this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
+      if (atacado.serAtacado((int) (this.magia)) > 0) {
         return true;
       }
     }

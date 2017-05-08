@@ -28,7 +28,7 @@ public class Alianza {
 	
 	/**
 	 * 
-	 * <p> Este método retorna el nombre de la Alianza </p>
+	 * <p> Este mï¿½todo retorna el nombre de la Alianza </p>
 	 * @return String que indica el nombre de la alianza
 	 */
 
@@ -38,7 +38,7 @@ public class Alianza {
 	
 	/**
 	 * 
-	 * <p> Este método elimina un personaje de la alianza </p>
+	 * <p> Este mï¿½todo elimina un personaje de la alianza </p>
 	 * @param pj el cual va a ser eliminado de la alianza
 	 * 
 	 */
@@ -49,11 +49,11 @@ public class Alianza {
 	
 	/**
 	 * 
-	 * <p> Este métopdo añade un personaje a la alianza </p>
+	 * <p> Este mï¿½topdo aï¿½ade un personaje a la alianza </p>
 	 * @param pj el cual se va a agregar a la alianza
 	 */
 	
-	public void añadirPersonaje(Personaje pj){
+	public void aÃ±adirPersonaje(Personaje pj){
 		aliados.add(pj);
 	}
 }

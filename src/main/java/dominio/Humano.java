@@ -8,6 +8,15 @@ public class Humano extends Personaje {
 
 
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private static final int ENERGIA_MINIMA = 10;
+	private static final int VIDA_NULA = 0;
+	private static final int PLUS_HUMANO = 5;
+
+/**
   * Constructor de objetos de raza Humano.
   * @param nombre String que indica el nombre de este objeto.
   * @param casta Objeto de tipo Casta que indica la profesion a la que
@@ -16,9 +25,8 @@ public class Humano extends Personaje {
   */
   public Humano(String nombre, Casta casta, int id) {
     super(nombre, casta, id , "Humano" , "Incentivar" ,"Golpe Fatal");
-    final int cinco = 5;
-    saludTope += cinco;
-    energiaTope += cinco;
+    saludTope += PLUS_HUMANO;
+    energiaTope += PLUS_HUMANO;
     salud = saludTope;
     energia = energiaTope;
   }
@@ -47,7 +55,7 @@ public class Humano extends Personaje {
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Humano
   * puede, o no, incentivar el ataque de cualquier otro objeto Peleable. Sea
-  * éste un Humano, Elfo u Orco, como tambien un NPC o sí mismo.<br> Si se
+  * ï¿½ste un Humano, Elfo u Orco, como tambien un NPC o sï¿½ mismo.<br> Si se
   * puede incentivar, entonces el ataque del objeto incentivado es igual a su
   * ataque normal adicionado a la magia de este objeto (el Humano que
   * incentiva).
@@ -56,9 +64,8 @@ public class Humano extends Personaje {
   * @return Booleano que indica si el incentivo pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza1(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) {  
-      this.setEnergia(this.getEnergia() - diez);
+    if (this.getEnergia() > ENERGIA_MINIMA) {  
+      this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
       atacado.setAtaque(atacado.getAtaque() + this.getMagia());
       return true;
     }
@@ -73,15 +80,13 @@ public class Humano extends Personaje {
   * @return Booleano que indica si el golpe fatal pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza2(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) {
-      final int dos = 2, cero = 0;
-      if (atacado.serAtacado(atacado.getSalud() / dos) > cero) {
-        this.setEnergia(this.getEnergia() / dos);
+    if (this.getEnergia() > ENERGIA_MINIMA) {
+      if (atacado.serAtacado(atacado.getSalud() / 2) > VIDA_NULA) {
+        this.setEnergia(this.getEnergia() / 2);
         return true;
       }
     }
-    this.setEnergia(this.getEnergia() - diez);
+    this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
     return false;
   }
 }

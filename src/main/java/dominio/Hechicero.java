@@ -6,17 +6,23 @@ package dominio;
   * de casta Asesino, como Guerrero o Hechicero. Idem para los personajes Elfo y
   * Humano.
   */
-  public class Hechicero extends Casta {
-
+  public class Hechicero extends Casta {  
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int ENERGIA_MINIMA = 10; 
+	  private static final float PLUS_MAGIA = 1.5f;
+	  private static final int ATAQUE_NULO = 0;
   /**
   * Constructor de objetos de profesion Guerrero.
   * @param prob_crit Double que indica la probabilidad de meter un critico que
   * tiene este objeto.
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * @param daño_crit Double que indica el daño critico que tiene este objeto.
+  * @param daï¿½o_crit Double que indica el daï¿½o critico que tiene este objeto.
   */
-  public Hechicero(double prob_crit, double evasion, double daño_crit) {
-    super(prob_crit, evasion, daño_crit);
+  public Hechicero(double prob_crit, double evasion, double daÃ±o_crit) {
+    super(prob_crit, evasion, daÃ±o_crit);
     this.nombreCasta = "Hechicero";
   }
 
@@ -40,17 +46,14 @@ package dominio;
   *  Peleable y por ende pueden ser atacados tanto objetos Personaje como NPC's.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado.<br>Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta un ataque con bola de fuego.
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) { 
-      caster.setEnergia(caster.getEnergia() - diez);
-      final float unoPuntoCinco = 1.5f;
-      final int cero = 0;
+    if (caster.getEnergia() > ENERGIA_MINIMA) { 
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
       if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia()
-        * unoPuntoCinco)) > cero) {
+        * PLUS_MAGIA)) > ATAQUE_NULO) {
         return true;
       }
     }
@@ -58,7 +61,7 @@ package dominio;
   }
   
  public void mejorarAtributoCasta(Personaje personaje){
-	  personaje.setInteligencia(personaje.getInteligencia() + 5);
+	  personaje.inteligencia += personaje.casta.getBonusInteligencia();
   }
 
   
@@ -67,14 +70,13 @@ package dominio;
   * o no, curar a un aliado o a si mismo.
   * @param caster Objeto Personaje el cual intenta curar.
   * @param aliado Objeto Peleable el cual es al que se intenta curar.<br>Puede
-  * ser curado tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * ser curado tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta el heal sobre el aliado o sobre
-  * sí mismo.
+  * sï¿½ mismo.
   */
   public boolean habilidad2(Personaje caster, Peleable aliado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) {
-      caster.setEnergia(caster.getEnergia() - diez);
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
       ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
         return true;
       }
@@ -89,16 +91,13 @@ package dominio;
   * @return Booleano que indica si se ejecuta el robo de energia y salud, o no.
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) {
-      caster.setEnergia(caster.getEnergia() - diez);
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
       
       int energia_robada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
-      final int dos = 2;
-      
       int salud_robada = ((Personaje) atacado).serRobadoSalud(
       
-      caster.calcularPuntosDeMagia() / dos);
+      caster.calcularPuntosDeMagia() / 2);
       caster.serEnergizado(energia_robada);
       caster.serCurado(salud_robada);
       return true;

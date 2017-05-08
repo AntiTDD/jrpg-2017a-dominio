@@ -5,6 +5,11 @@ import java.io.Serializable;
 public abstract class Personaje extends PersonajePadre implements Peleable, Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected int energia;
 	
 	protected int ataque;
@@ -66,14 +71,11 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 		fuerza = 10;
 		inteligencia = 10;
 		destreza = 10;
-		
-		casta.mejorarAtributoCasta(this);
-
 		x = 0;
 		y = 0;
 		saludTope = 100;
 		energiaTope = 100;
-
+		
 		ataque = this.calcularPuntosDeAtaque();
 		defensa = this.calcularPuntosDeDefensa();
 		magia = this.calcularPuntosDeMagia();
@@ -143,7 +145,7 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 
 	public void setClan(Alianza clan) {
 		this.clan = clan;
-		clan.añadirPersonaje(this);
+		clan.aÃ±adirPersonaje(this);
 	}
 
 	
@@ -238,7 +240,7 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	
 
 	public int golpe_critico() {
-		return (int) (this.ataque * this.getCasta().getDañoCritico());
+		return (int) (this.ataque * this.getCasta().getDaÃ±oCritico());
 	}
 
 	public void despuesDeTurno() {
@@ -279,24 +281,24 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	
 	/**
 	 * 
-	 * <p> cuando ataquen al personaje, el daño se calcula en base a su defensa.
-	 *	Si la defensa es mayor que su daño no recibira el golpe.
-	 * 	si el daño es mayor a la salud , su salud quedara en 0 sino se le restara el daño.
+	 * <p> cuando ataquen al personaje, el daï¿½o se calcula en base a su defensa.
+	 *	Si la defensa es mayor que su daï¿½o no recibira el golpe.
+	 * 	si el daï¿½o es mayor a la salud , su salud quedara en 0 sino se le restara el daï¿½o.
 	 * </p>
 	 * 
 	 */
 
-	public int serAtacado(int daño) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
-			daño -= this.defensa;
-			if (daño > 0) {
-				if (salud <= daño) {
-					daño = salud;
+	public int serAtacado(int daÃ±o) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaÃ±o()) {
+			daÃ±o -= this.defensa;
+			if (daÃ±o > 0) {
+				if (salud <= daÃ±o) {
+					daÃ±o = salud;
 					salud = 0;
 				} else {
-					salud -= daño;
+					salud -= daÃ±o;
 				}
-				return daño;
+				return daÃ±o;
 			}
 			return 0;
 		}
@@ -305,30 +307,30 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 	
 	
 
-	public int serRobadoSalud(int daño) {
-		daño -= this.defensa;
-		if (daño <= 0)
+	public int serRobadoSalud(int daÃ±o) {
+		daÃ±o -= this.defensa;
+		if (daÃ±o <= 0)
 			return 0;
-		if ((salud - daño) >= 0)
-			salud -= daño;
+		if ((salud - daÃ±o) >= 0)
+			salud -= daÃ±o;
 		else {
-			daño = salud;
+			daÃ±o = salud;
 			salud = 0;
 		}
-		return daño;
+		return daÃ±o;
 	}
 
-	public int serDesernegizado(int daño) {
-		daño -= this.defensa;
-		if (daño <= 0)
+	public int serDesernegizado(int daÃ±o) {
+		daÃ±o -= this.defensa;
+		if (daÃ±o <= 0)
 			return 0;
-		if ((energia - daño) >= 0)
-			energia -= daño;
+		if ((energia - daÃ±o) >= 0)
+			energia -= daÃ±o;
 		else {
-			daño = energia;
+			daÃ±o = energia;
 			energia = 0;
 		}
-		return daño;
+		return daÃ±o;
 	}
 	
 	/**
@@ -358,7 +360,7 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 
 	public void crearAlianza(String nombre_alianza) {
 		this.clan = new Alianza(nombre_alianza);
-		this.clan.añadirPersonaje(this);
+		this.clan.aÃ±adirPersonaje(this);
 	}
 
 	public void salirDeAlianza() {
@@ -372,12 +374,12 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
 		if (this.clan == null) {
 			Alianza a = new Alianza("Alianza 1");
 			this.clan = a;
-			a.añadirPersonaje(this);
+			a.aÃ±adirPersonaje(this);
 		}
 
 		if (nuevo_aliado.clan == null) {
 			nuevo_aliado.clan = this.clan;
-			this.clan.añadirPersonaje(nuevo_aliado);
+			this.clan.aÃ±adirPersonaje(nuevo_aliado);
 			return true;
 		} else
 			return false;

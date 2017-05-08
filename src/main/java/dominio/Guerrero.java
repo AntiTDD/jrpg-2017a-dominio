@@ -7,16 +7,20 @@ package dominio;
   * Humano.
   */
   public class Guerrero extends Casta {
-
+	  
+	  private final int ENERGIA_MINIMA = 10; 
+	  private final int PLUS_ATAQUE = 2;
+	  private final int VIDA_NULA = 0;
+	  private final int DEFENSA_NULA = 0;
   /**
   * Constructor de objetos de profesion Guerrero.
   * @param prob_crit Double que indica la probabilidad de meter un critico que
   * tiene este objeto.
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * @param daño_crit Double que indica el daño critico que tiene este objeto.
+  * @param daï¿½o_crit Double que indica el daï¿½o critico que tiene este objeto.
   */
-  public Guerrero(double prob_crit, double evasion, double daño_crit) {
-    super(prob_crit, evasion, daño_crit);
+  public Guerrero(double prob_crit, double evasion, double daÃ±o_crit) {
+    super(prob_crit, evasion, daÃ±o_crit);
     this.nombreCasta = "Guerrero";
   }
 
@@ -36,20 +40,27 @@ package dominio;
   }
   
   /**
+   * Sobreescritura de la funcion abstracta para mejorar la fuerza del guerrero
+   */
+  
+  public void mejorarAtributoCasta(Personaje personaje){
+	  personaje.fuerza += personaje.casta.getBonusFuerza();
+  }
+
+  
+  /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Guerrero le mete, o no, un ataque doble a su oponente que es un objeto
   * Peleable.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado.<br>Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta un ataque doble.
   */
-  public boolean habilidad1(Personaje caster, Peleable atacado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) {
-      caster.setEnergia(caster.getEnergia() - diez);
-      final int dos = 2, cero = 0;
-      if (atacado.serAtacado(caster.ataque * dos) > cero) {
+  public boolean habilidad1(Personaje caster, Peleable atacado) {  
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
+      if (atacado.serAtacado(caster.ataque * PLUS_ATAQUE) > VIDA_NULA) {
         return true;
       }
     }
@@ -59,31 +70,22 @@ package dominio;
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede
   * aumentar la defensa del objeto Peleable que es el destinatario. Por ser
-  * el destinatario un objeto Peleable, éste puede ser cualquier objeto
-  * Personaje, como NPC o sí mismo.
+  * el destinatario un objeto Peleable, ï¿½ste puede ser cualquier objeto
+  * Personaje, como NPC o sï¿½ mismo.
   * @param caster Objeto Personaje el cual intenta subir la defensa.
   * @param atacado Objeto Peleable al cual se le intenta subir la defensa.<br>
-  * La defensa puede ser aumentada tanto a un Personaje, como un NPC o sí mismo,
-  * por ésto es un objeto Peleable.
+  * La defensa puede ser aumentada tanto a un Personaje, como un NPC o sï¿½ mismo,
+  * por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta el aumento de la defensa.
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) {
-      caster.setEnergia(caster.getEnergia() - diez);
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
       caster.setDefensa(caster.getDefensa() + caster.magia);
       return true;
     }
     return false;
   }
-  
-  /**
-   * Aumenta en 5 el atributo Fuerza ya que es la "especial" de la casta Guerrero
-   */
- public void mejorarAtributoCasta(Personaje personaje){
-	  personaje.setFuerza(personaje.getFuerza() + 5);
-  }
-
   
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
@@ -94,14 +96,12 @@ package dominio;
   * ignorando su defensa.
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
-    final int diez = 10;
-    if (caster.getEnergia() > diez) {
-      caster.setEnergia(caster.getEnergia() - diez);
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
      
     int defensa_original = ((Personaje) atacado).getDefensa();
-    final int cero = 0;
-    ((Personaje) atacado).setDefensa(cero); 
-        if (atacado.serAtacado(caster.ataque) > cero) {
+    ((Personaje) atacado).setDefensa(DEFENSA_NULA); 
+        if (atacado.serAtacado(caster.ataque) > DEFENSA_NULA) {
           ((Personaje) atacado).setDefensa(defensa_original);
           return true;
         }

@@ -8,11 +8,16 @@ import java.io.Serializable;
  */
   public abstract class Casta implements Serializable {
 
-  protected double probabilidadGolpeCritico;
-  protected double probabilidadEvitarDaño;
-  protected double dañoCritico;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+protected double probabilidadGolpeCritico;
+  protected double probabilidadEvitarDaÃ±o;
+  protected double daÃ±oCritico;
   protected String nombreCasta;
   protected String[] habilidadesCasta;
+  private final int BONUS = 5;
 
 
   /**
@@ -23,8 +28,8 @@ import java.io.Serializable;
     final float ceroPuntoDos = 0.2f;
     final float unoPuntoCinco = 1.5f;
     this.probabilidadGolpeCritico = ceroPuntoDos;
-    this.probabilidadEvitarDaño = ceroPuntoDos;
-    this.dañoCritico = unoPuntoCinco;
+    this.probabilidadEvitarDaÃ±o = ceroPuntoDos;
+    this.daÃ±oCritico = unoPuntoCinco;
   }
 
 
@@ -34,12 +39,12 @@ import java.io.Serializable;
   * @param prob_crit Double que indica la chance que tiene este objeto de meter
   * un golpe critico.
   * @param evasion Double que indica la evasion de este objeto.
-  * @param daño_crit Double que indica el daño critico de este objeto.
+  * @param daï¿½o_crit Double que indica el daï¿½o critico de este objeto.
   */
-  public Casta(double prob_crit, double evasion, double daño_crit) {
+  public Casta(double prob_crit, double evasion, double daÃ±o_crit) {
     this.probabilidadGolpeCritico = prob_crit;
-    this.probabilidadEvitarDaño = evasion;
-    this.dañoCritico = daño_crit;
+    this.probabilidadEvitarDaÃ±o = evasion;
+    this.daÃ±oCritico = daÃ±o_crit;
   }
 
   /**
@@ -49,7 +54,7 @@ import java.io.Serializable;
   * extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad1, o no.
   */
   public abstract boolean habilidad1(Personaje caster, Peleable atacado);
@@ -61,7 +66,7 @@ import java.io.Serializable;
   * extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad2(Personaje caster, Peleable atacado);
@@ -74,16 +79,28 @@ import java.io.Serializable;
   * distintas clases que extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad3(Personaje caster, Peleable atacado);
 
  /**
-  * mejorarAtributoCasta va a ser sobreescrita en las clases hijas
+  * mejorarAtributo dependiendo la casta del personaje
   * @param personaje
   */
- public abstract void mejorarAtributoCasta(Personaje personaje);
+  public abstract void mejorarAtributoCasta(Personaje personaje);
+  
+ public int getBonusDestreza(){
+	 return BONUS;
+ }
+ 
+ public int getBonusInteligencia(){
+	 return BONUS;
+ }
+ 
+ public int getBonusFuerza(){
+	 return BONUS;
+ }
 
   /**
   * Metodo el cual sirve para obtener el nombre de este objeto.<br>
@@ -107,9 +124,9 @@ import java.io.Serializable;
 
 
   /**
-  * Metodo el cual sirve para obtener la probabilidad de daño critico de este
+  * Metodo el cual sirve para obtener la probabilidad de daï¿½o critico de este
   * objeto.<br>Devuelve un double indicando la probabilidad.
-  * @return Double indicando la probabilidad de daño critico de este objeto.
+  * @return Double indicando la probabilidad de daï¿½o critico de este objeto.
   */
   public double getProbabilidadGolpeCritico() {
     return probabilidadGolpeCritico;
@@ -129,44 +146,44 @@ import java.io.Serializable;
 
   /**
   * Metodo el cual sirve para obtener la probabilidad de este objeto de evitar
-  * el daño.<br>Devuelve un double indicando la probabilidad de evitar el daño
+  * el daÃ±o.<br>Devuelve un double indicando la probabilidad de evitar el daï¿½o
   * critico.
   * @return Double indicando la probabilidad que tiene este objeto de evitar
-  * el daño critico.
+  * el daÃ±o critico.
   */
-  public double getProbabilidadEvitarDaño() {
-    return probabilidadEvitarDaño;
+  public double getProbabilidadEvitarDaÃ±o() {
+    return probabilidadEvitarDaÃ±o;
   }
 
 
   /**
   * Metodo el cual sirve para establecer la probabilidad de este objeto de
-  * evitar el daño.<br>Devuelve un void.
-  * @param probabilidadEvitarDaño Double que indica la probabilidad de evitar el
-  * daño a ser establecido en este objeto.
+  * evitar el daÃ±o.<br>Devuelve un void.
+  * @param probabilidadEvitarDaï¿½o Double que indica la probabilidad de evitar el
+  * daï¿½o a ser establecido en este objeto.
   */
-  public void setProbabilidadEvitarDaño(double probabilidadEvitarDaño) {
-    this.probabilidadEvitarDaño = probabilidadEvitarDaño;
+  public void setProbabilidadEvitarDaÃ±o(double probabilidadEvitarDaÃ±o) {
+    this.probabilidadEvitarDaÃ±o = probabilidadEvitarDaÃ±o;
   }
 
 
   /**
-  * Metodo el cual sirve para obtener el daño critico de este objeto.<br>
-  * Devuelve un double indicando la el daño critico.
-  * @return Double indicando el daño critico de este objeto.
+  * Metodo el cual sirve para obtener el daÃ±o critico de este objeto.<br>
+  * Devuelve un double indicando la el daÃ±o critico.
+  * @return Double indicando el daï¿½o critico de este objeto.
   */
-  public double getDañoCritico() {
-    return dañoCritico;
+  public double getDaÃ±oCritico() {
+    return daÃ±oCritico;
   }
 
 
   /**
-  * Metodo el cual sirve para establecer el daño critico de este objeto.<br>
+  * Metodo el cual sirve para establecer el daÃ±o critico de este objeto.<br>
   * Devuelve un void.
-  * @param dañoCritico Double que indica el daño critico a ser establecido en
+  * @param daÃ±oCritico Double que indica el daÃ±o critico a ser establecido en
   * este objeto.
   */
-  public void setDañoCritico(double dañoCritico) {
-    this.dañoCritico = dañoCritico;
+  public void setDaÃ±oCritico(double daÃ±oCritico) {
+    this.daÃ±oCritico = daÃ±oCritico;
   }
 }

@@ -2,13 +2,14 @@ package dominio;
 
 public class MyRandom {
 
+	static final float VALOR = 0.49f;
+	static final int ENTERO = 1;
   /**
   * Metodo que devuelve siempre el mismo double, el 0.49.
   * @return Double con valor 0.49.
   */
   public static double nextDouble() {
-    final float ceroPuntoCuarentaYNueve = 0.49f;
-    return ceroPuntoCuarentaYNueve;
+    return VALOR;
   }
 
 
@@ -18,8 +19,7 @@ public class MyRandom {
  * @return Entero con valor val menos 1.
  */
   public static int nextInt(int val) {
-    final int uno = 1;
-    return val - uno;
+    return val - ENTERO;
   }
 
 }

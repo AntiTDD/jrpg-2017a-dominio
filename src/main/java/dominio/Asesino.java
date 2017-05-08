@@ -7,23 +7,27 @@ package dominio;
   * Elfo y Humano.
   */
   public class Asesino extends Casta {
-
+	  
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final int ENERGIA_MINIMA = 10;
+	private final float PLUS_EVITAR_CRITICO =0.15f;
+	private final float PLUS_EVITAR_DAÃ‘O = 0.5f;
 
   /**
   * Constructor de objetos de profesion Asesino.
   * @param prob_crit Double que indica la probabilidad de meter un critico que
   * tiene este objeto.
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * @param daño_crit Double que indica el daño critico que tiene este objeto.
+  * @param daï¿½o_crit Double que indica el daï¿½o critico que tiene este objeto.
   */
-  public Asesino(double prob_crit, double evasion, double daño_crit) {
-    super(prob_crit, evasion, daño_crit);
+  public Asesino(double prob_crit, double evasion, double daÃ±o_crit) {
+    super(prob_crit, evasion, daÃ±o_crit);
     this.nombreCasta = "Asesino";
   }
   
-  public void mejorarAtributoCasta(Personaje personaje){
-	  
-  }
 
   /**
   * Constructor de objetos de profesion Asesino.
@@ -43,14 +47,13 @@ package dominio;
   * Asesino le mete, o no, un golpe critico al atacado.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por ésto es un objeto Peleable.
+  * tanto un Personaje como un NPC, por ï¿½sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta un golpe critico.
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
-    final int energiaMinimaIndispensable = 10;
-    if (caster.getEnergia() > energiaMinimaIndispensable) {  
-      caster.setEnergia(caster.getEnergia() - energiaMinimaIndispensable);
-      if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) {
+    if (caster.getEnergia() > ENERGIA_MINIMA) {  
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
+      if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDaÃ±oCritico())) > 0) {
         return true;
       }
     }
@@ -63,21 +66,18 @@ package dominio;
   * quien se le intenta subir la evasion.
   * @param caster Objeto Personaje el cual intenta subir la evasion.
   * @param atacado Objeto Peleable al cual se le intenta subir la evasion.
-  * Esta evasion puede llegar a sí mismo, a cualquier objeto Personaje como
+  * Esta evasion puede llegar a sï¿½ mismo, a cualquier objeto Personaje como
   * a un NPC.
   * @return Booleano que indica si este objeto pudo subir la evasion a su
   * objeto destinatario.
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
-    final int energiaMinimaIndispensable = 10;
-    if (caster.getEnergia() > energiaMinimaIndispensable) {
-      caster.setEnergia(caster.getEnergia() - energiaMinimaIndispensable);
-      final float ceroPuntoQuince = 0.15f;
-      final float ceroPuntoCinco = 0.5f;
-      if (this.getProbabilidadEvitarDaño() + ceroPuntoQuince < ceroPuntoCinco) {
-        this.probabilidadEvitarDaño += ceroPuntoQuince;
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
+      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
+      if (this.getProbabilidadEvitarDaÃ±o() + PLUS_EVITAR_CRITICO < PLUS_EVITAR_DAÃ‘O) {
+        this.probabilidadEvitarDaÃ±o += PLUS_EVITAR_CRITICO;
       } else {
-        this.probabilidadEvitarDaño = ceroPuntoCinco;
+        this.probabilidadEvitarDaÃ±o = PLUS_EVITAR_DAÃ‘O;
       }
       return true;
     }
@@ -93,5 +93,8 @@ package dominio;
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     return false;
+  }
+
+  public void mejorarAtributoCasta(Personaje personaje) {
   }
 }

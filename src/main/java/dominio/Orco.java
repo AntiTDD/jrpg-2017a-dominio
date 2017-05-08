@@ -8,6 +8,14 @@ public class Orco extends Personaje {
 
 
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int ENERGIA_MINIMA = 10;
+	private static final int VIDA_NULA = 0;
+	private static final int ATAQUE_NULO = 0;
+
+/**
   * Constructor de objetos de raza Orco.
   * @param nombre String que indica el nombre de este objeto.
   * @param casta Objeto de tipo Casta que indica la profesion a la que
@@ -53,11 +61,9 @@ public class Orco extends Personaje {
   * @return Booleano que indica si el golpe Defensa pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza1(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) {
-      this.setEnergia(this.getEnergia() - diez);
-      final int dos = 2, cero = 0;
-      if (atacado.serAtacado(this.getDefensa() * dos) > cero) {
+    if (this.getEnergia() > ENERGIA_MINIMA) {
+      this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
+      if (atacado.serAtacado(this.getDefensa() * 2) > VIDA_NULA) {
         return true;
       }
     }
@@ -70,19 +76,17 @@ public class Orco extends Personaje {
   * Peleable y por ende puede ser asestado tanto a objetos Personaje como a
   * NPC's.<br>
   * Cuando se logra efectuar Mordisco de Vida, el orco que lo asesta se cura a
-  * sÌ mismo lo mismo que lo que daÒo a su atacado.
+  * sÔøΩ mismo lo mismo que lo que daÔøΩo a su atacado.
   * @param atacado Objeto Peleable el cual es el destinatario del Mordisco de
   * Vida, o sea, el atacado.
   * @return Booleano que indica si Mordisco de Vida pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza2(Peleable atacado) {
-    final int diez = 10;
-    if (this.getEnergia() > diez) { 
-      this.setEnergia(this.getEnergia() - diez);
-      int daÒo_causado = atacado.serAtacado(this.getFuerza());
-      final int cero = 0;
-      if (daÒo_causado > cero) {
-        this.serCurado(daÒo_causado);
+    if (this.getEnergia() > ENERGIA_MINIMA) { 
+      this.setEnergia(this.getEnergia() - ENERGIA_MINIMA);
+      int da√±o_causado = atacado.serAtacado(this.getFuerza());
+      if (da√±o_causado > ATAQUE_NULO) {
+        this.serCurado(da√±o_causado);
         return true;
       }
     }

@@ -22,17 +22,17 @@ public class NonPlayableCharacter extends PersonajePadre implements Peleable {
 
 		switch (dificultad) {
 		case 0:
-			this.fuerza = 10 + (nivel - 1) * 3;// 30%
+			this.fuerza = 10 + (nivel - 1) * 3;
 			this.salud = 30 + (nivel - 1) * 15;
 			this.defensa = 2 + (nivel - 1) * 1;
 			break;
 		case 1:
-			this.fuerza = 20 + (nivel - 1) * 6;// 50%
+			this.fuerza = 20 + (nivel - 1) * 6;
 			this.salud = 40 + (nivel - 1) * 20;
 			this.defensa = 5 + (nivel - 1) * 2;
 			break;
 		case 2:
-			this.fuerza = 30 + (nivel - 1) * 10;// 50%
+			this.fuerza = 30 + (nivel - 1) * 10;
 			this.salud = 50 + (nivel - 1) * 25;
 			this.defensa = 4 + (nivel - 1) * 4;
 			break;
@@ -49,33 +49,33 @@ public class NonPlayableCharacter extends PersonajePadre implements Peleable {
 	 * 
 	 * <p> 
 	 * La probabilidad de golpe critico para todos los NPC sera del 15%, por lo que siempre que obtenga un valor
-	 * de daño menor, este se incrementara en un 50%.
+	 * de daï¿½o menor, este se incrementara en un 50%.
 	 * De lo contrario, el ataque estara basado en la fuerza del NPC.
 	 * </p>
 	 * 
 	 */
 	
 	public int atacar(Peleable atacado) {
-		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes criticos
+		if (MyRandom.nextDouble() <= 0.15) {
 			return atacado.serAtacado((int) (this.getAtaque() * 1.5));
 		} else
 			return atacado.serAtacado(this.getAtaque());
 	}
 	/**
 	 * 
-	 * <p> cuando ataquen al NPC, el daño se calcula en base a su defensa, pero esta sera la mitad que la de un personaje jugable.
-	 *	Si la defensa es mayor que su daño no recibira el golpe.
-	 * 	si el daño es mayor a la salud , su salud quedara en 0 sino se le restara el daño.
+	 * <p> cuando ataquen al NPC, el daï¿½o se calcula en base a su defensa, pero esta sera la mitad que la de un personaje jugable.
+	 *	Si la defensa es mayor que su daï¿½o no recibira el golpe.
+	 * 	si el daï¿½o es mayor a la salud , su salud quedara en 0 sino se le restara el daï¿½o.
 	 * </p>
 	 * 
 	 */
 
-	public int serAtacado(int daño) {
+	public int serAtacado(int daÃ±o) {
 		if (MyRandom.nextDouble() >= 0.15) {
-			daño -= this.getDefensa() / 2;
-			if (daño > 0) {
-				salud -= daño;
-				return daño;
+			daÃ±o -= this.getDefensa() / 2;
+			if (daÃ±o > 0) {
+				salud -= daÃ±o;
+				return daÃ±o;
 			}
 			return 0;
 		}
