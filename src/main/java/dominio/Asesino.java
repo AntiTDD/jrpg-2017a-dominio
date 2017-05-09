@@ -6,22 +6,19 @@ package dominio;
   * de casta Asesino, como Guerrero o Hechicero. Idem para los personajes
   * Elfo y Humano.
   */
-  public class Asesino extends Casta {
-	  
-	  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private final int ENERGIA_MINIMA = 10;
-	private final float PLUS_EVITAR_CRITICO =0.15f;
-	private final float PLUS_EVITAR_DAÑO = 0.5f;
+public class Asesino extends Casta {
+
+  private static final long serialVersionUID = 1L;
+  private final int energiaMinima = 10;
+  private final float plusEvitarCritico = 0.15f;
+  private final float plusEvitarDaño = 0.5f;
 
   /**
   * Constructor de objetos de profesion Asesino.
-  * @param prob_crit Double que indica la probabilidad de meter un critico que
-  * tiene este objeto.
+  * @param prob_crit Double que indica la probabilidad de meter un critico que tiene este objeto.
+  * 
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * @param da�o_crit Double que indica el da�o critico que tiene este objeto.
+  * @param daño_crit Double que indica el da�o critico que tiene este objeto.
   */
   public Asesino(double prob_crit, double evasion, double daño_crit) {
     super(prob_crit, evasion, daño_crit);
@@ -45,14 +42,14 @@ package dominio;
   /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Asesino le mete, o no, un golpe critico al atacado.
+  * Puede ser atacado tanto un Personaje como un NPC, por esto es un objeto Peleable.
   * @param caster Objeto Personaje el cual ataca.
-  * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por �sto es un objeto Peleable.
+  * @param atacado Objeto Peleable el cual es el atacado. 
   * @return Booleano que indica si se ejecuta un golpe critico.
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
-    if (caster.getEnergia() > ENERGIA_MINIMA) {  
-      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
+    if (caster.getEnergia() > energiaMinima) {  
+      caster.setEnergia(caster.getEnergia() - energiaMinima);
       if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) {
         return true;
       }
@@ -64,20 +61,20 @@ package dominio;
   * El presente metodo devuelve un booleano indicando si este objeto puede
   * incrementar, o no, la evasion del objeto Peleable que es el objeto a
   * quien se le intenta subir la evasion.
-  * @param caster Objeto Personaje el cual intenta subir la evasion.
-  * @param atacado Objeto Peleable al cual se le intenta subir la evasion.
   * Esta evasion puede llegar a s� mismo, a cualquier objeto Personaje como
   * a un NPC.
+  * @param caster Objeto Personaje el cual intenta subir la evasion.
+  * @param atacado Objeto Peleable al cual se le intenta subir la evasion.
   * @return Booleano que indica si este objeto pudo subir la evasion a su
-  * objeto destinatario.
+  * 
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
-    if (caster.getEnergia() > ENERGIA_MINIMA) {
-      caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
-      if (this.getProbabilidadEvitarDaño() + PLUS_EVITAR_CRITICO < PLUS_EVITAR_DAÑO) {
-        this.probabilidadEvitarDaño += PLUS_EVITAR_CRITICO;
+    if (caster.getEnergia() > energiaMinima) {
+      caster.setEnergia(caster.getEnergia() - energiaMinima);
+      if (this.getProbabilidadEvitarDaño() + plusEvitarCritico < plusEvitarDaño) {
+        this.probabilidadEvitarDaño += plusEvitarCritico;
       } else {
-        this.probabilidadEvitarDaño = PLUS_EVITAR_DAÑO;
+        this.probabilidadEvitarDaño = plusEvitarDaño;
       }
       return true;
     }

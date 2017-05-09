@@ -3,21 +3,19 @@ package dominio;
 import java.io.Serializable;
 
 /**
- * Clase abstracta que engloba la casta a la que pertenece cada personaje en el
- * juego.<br>
+ * Clase abstracta que engloba la casta a la que pertenece cada personaje en el juego.
+ * 
  */
-  public abstract class Casta implements Serializable {
+public abstract class Casta implements Serializable {
 
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-protected double probabilidadGolpeCritico;
+
+  private static final long serialVersionUID = 1L;
+  protected double probabilidadGolpeCritico;
   protected double probabilidadEvitarDaño;
   protected double dañoCritico;
   protected String nombreCasta;
   protected String[] habilidadesCasta;
-  private final int BONUS = 5;
+  private final int bonus = 5;
 
 
   /**
@@ -36,10 +34,10 @@ protected double probabilidadGolpeCritico;
   /**
   * Constructor de objetos Casta los cuales modelan todo lo concerniente a las
   * distintas profesiones de los personajes.
-  * @param prob_crit Double que indica la chance que tiene este objeto de meter
   * un golpe critico.
+  * @param prob_crit Double que indica la chance que tiene este objeto de meter 
   * @param evasion Double que indica la evasion de este objeto.
-  * @param da�o_crit Double que indica el da�o critico de este objeto.
+  * @param daño_crit Double que indica el da�o critico de este objeto.
   */
   public Casta(double prob_crit, double evasion, double daño_crit) {
     this.probabilidadGolpeCritico = prob_crit;
@@ -54,7 +52,6 @@ protected double probabilidadGolpeCritico;
   * extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por �sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad1, o no.
   */
   public abstract boolean habilidad1(Personaje caster, Peleable atacado);
@@ -66,7 +63,6 @@ protected double probabilidadGolpeCritico;
   * extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por �sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad2(Personaje caster, Peleable atacado);
@@ -79,28 +75,26 @@ protected double probabilidadGolpeCritico;
   * distintas clases que extiendan a esta clase.
   * @param caster Objeto Personaje el cual ataca.
   * @param atacado Objeto Peleable el cual es el atacado. Puede ser atacado
-  * tanto un Personaje como un NPC, por �sto es un objeto Peleable.
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad3(Personaje caster, Peleable atacado);
 
- /**
-  * mejorarAtributo dependiendo la casta del personaje
-  * @param personaje
-  */
+  /**
+   * mejorarAtributo dependiendo la casta del personaje.
+   */
   public abstract void mejorarAtributoCasta(Personaje personaje);
   
- public int getBonusDestreza(){
-	 return BONUS;
- }
+  public int getBonusDestreza() {
+    return bonus;
+  }
  
- public int getBonusInteligencia(){
-	 return BONUS;
- }
+  public int getBonusInteligencia() {
+    return bonus;
+  }
  
- public int getBonusFuerza(){
-	 return BONUS;
- }
+  public int getBonusFuerza() {
+    return bonus;
+  }
 
   /**
   * Metodo el cual sirve para obtener el nombre de este objeto.<br>
@@ -116,7 +110,6 @@ protected double probabilidadGolpeCritico;
   * Metodo el cual sirve para obtener todas las habilidades de profesion de
   * este objeto.<br>Devuelve un array de String indicando todas las habilidades.
   * @return Array de String indicando las habilidades de profesion de este
-  * objeto.
   */
   public String[] getHabilidadesCasta() {
     return habilidadesCasta;
@@ -137,8 +130,8 @@ protected double probabilidadGolpeCritico;
   * Metodo el cual sirve para establecer la probabilidad de golpe critico de
   * este objeto.<br>Devuelve un void.
   * @param probabilidadGolpeCritico Double que indica la probabilidad de golpe
-  * critico a ser establecido en este objeto.
   */
+  
   public void setProbabilidadGolpeCritico(double probabilidadGolpeCritico) {
     this.probabilidadGolpeCritico = probabilidadGolpeCritico;
   }
@@ -149,8 +142,8 @@ protected double probabilidadGolpeCritico;
   * el daño.<br>Devuelve un double indicando la probabilidad de evitar el da�o
   * critico.
   * @return Double indicando la probabilidad que tiene este objeto de evitar
-  * el daño critico.
   */
+  
   public double getProbabilidadEvitarDaño() {
     return probabilidadEvitarDaño;
   }
@@ -159,8 +152,7 @@ protected double probabilidadGolpeCritico;
   /**
   * Metodo el cual sirve para establecer la probabilidad de este objeto de
   * evitar el daño.<br>Devuelve un void.
-  * @param probabilidadEvitarDa�o Double que indica la probabilidad de evitar el
-  * da�o a ser establecido en este objeto.
+  * @param probabilidadEvitarDaño Double que indica la probabilidad de evitar el
   */
   public void setProbabilidadEvitarDaño(double probabilidadEvitarDaño) {
     this.probabilidadEvitarDaño = probabilidadEvitarDaño;
@@ -181,7 +173,6 @@ protected double probabilidadGolpeCritico;
   * Metodo el cual sirve para establecer el daño critico de este objeto.<br>
   * Devuelve un void.
   * @param dañoCritico Double que indica el daño critico a ser establecido en
-  * este objeto.
   */
   public void setDañoCritico(double dañoCritico) {
     this.dañoCritico = dañoCritico;

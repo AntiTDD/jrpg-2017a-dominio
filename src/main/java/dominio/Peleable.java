@@ -5,8 +5,8 @@ public interface Peleable {
   * Definicion de metodo el cual sirve a efectos de calcular el da�o recibido
   * por parte de un atacante.<br>
   * Devuelve un entero indicando el da�o sufrido.
-  * @param da�o Entero que indica el da�o con el que pega quien ataca.
-  * @return Un entero que indica el da�o que ha sufrido el objeto atacado.
+  * @param daño Entero que indica el daño con el que pega quien ataca.
+  * @return Un entero que indica el daño que ha sufrido el objeto atacado.
   */
   public int serAtacado(int daño);
 

@@ -7,20 +7,15 @@ package dominio;
 public class Humano extends Personaje {
 
 
+  private static final long serialVersionUID = 1L;
+  private static final int ENERGIA_MINIMA = 10;
+  private static final int VIDA_NULA = 0;
+  private static final int PLUS_HUMANO = 5;
+
   /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private static final int ENERGIA_MINIMA = 10;
-	private static final int VIDA_NULA = 0;
-	private static final int PLUS_HUMANO = 5;
-
-/**
   * Constructor de objetos de raza Humano.
   * @param nombre String que indica el nombre de este objeto.
-  * @param casta Objeto de tipo Casta que indica la profesion a la que
-  * pertenece este objeto.
+  * @param casta Objeto de tipo Casta que indica la profesion a la que 
   * @param id Entero que identifica univocamente a este objeto.
   */
   public Humano(String nombre, Casta casta, int id) {
@@ -41,7 +36,6 @@ public class Humano extends Personaje {
   * @param destreza Entero que indica la destreza de este objeto.
   * @param inteligencia Entero que indica la inteligencia de este objeto.
   * @param casta Objeto de tipo Casta que indica la profesion a la que
-  * pertenece este objeto.
   * @param experiencia Entero que indica la experiencia actual de este objeto.
   * @param nivel Entero que indica el nivel actual de este objeto.
   * @param idPersonaje Entero que identifica univocamente a este objeto.
@@ -60,7 +54,6 @@ public class Humano extends Personaje {
   * ataque normal adicionado a la magia de este objeto (el Humano que
   * incentiva).
   * @param atacado Objeto Peleable el cual es el destinatario del incentivo
-  * dado por this objeto.
   * @return Booleano que indica si el incentivo pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza1(Peleable atacado) {
@@ -75,10 +68,10 @@ public class Humano extends Personaje {
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Humano
   * puede, o no, asestar un golpe fatal a su atacado que es un objeto Peleable.
-  * @param atacado Objeto Peleable el cual es el destinatario del golpe fatal,
-  * o sea, el atacado.
+  * @param atacado Objeto Peleable el cual es el destinatario del golpe fatal.
   * @return Booleano que indica si el golpe fatal pudo llevarse a cabo o no.
   */
+  
   public boolean habilidadRaza2(Peleable atacado) {
     if (this.getEnergia() > ENERGIA_MINIMA) {
       if (atacado.serAtacado(atacado.getSalud() / 2) > VIDA_NULA) {
