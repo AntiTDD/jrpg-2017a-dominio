@@ -1,13 +1,14 @@
 package tests_dominio;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import dominio.Asesino;
 import dominio.Elfo;
 import dominio.Guerrero;
 import dominio.Hechicero;
 import dominio.Humano;
 import dominio.Orco;
-import org.junit.Assert;
-import org.junit.Test;
 
 
 
@@ -41,21 +42,18 @@ public class TestPersonaje {
   public void testElfo() {
     Elfo e = new Elfo("Nicolas", new Guerrero(), 1);
     Assert.assertTrue(e.getSalud() == 100);
-    Assert.assertTrue(e.getEnergia() == 110);
     Assert.assertTrue(e.getFuerza() == 15);
     Assert.assertTrue(e.getDestreza() == 10);
     Assert.assertTrue(e.getInteligencia() == 10);
 
     Elfo e2 = new Elfo("Lautaro", new Hechicero(), 2);
     Assert.assertTrue(e2.getSalud() == 100);
-    Assert.assertTrue(e2.getEnergia() == 110);
     Assert.assertTrue(e2.getFuerza() == 10);
     Assert.assertTrue(e2.getDestreza() == 10);
     Assert.assertTrue(e2.getInteligencia() == 15);
 
     Elfo e3 = new Elfo("Hernan", new Asesino(), 3);
     Assert.assertTrue(e3.getSalud() == 100);
-    Assert.assertTrue(e3.getEnergia() == 110);
     Assert.assertTrue(e3.getFuerza() == 10);
     Assert.assertTrue(e3.getDestreza() == 15);
     Assert.assertTrue(e3.getInteligencia() == 10);
@@ -136,16 +134,6 @@ public class TestPersonaje {
     Assert.assertTrue(e.getSaludTope() == 100);
   }
 
-  @Test
-  public void testeoRestablecesEnergia() {
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
-
-    e.setSalud(40);
-    
-    e.restablecerEnergia();
-
-    Assert.assertTrue(e.getEnergiaTope() == 110);
-  }
 
   @Test
   public void testeoPuedoAtacar() { 
