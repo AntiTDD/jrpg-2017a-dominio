@@ -1,6 +1,6 @@
 package dominio;
 
-public class PersonajePadre {
+public abstract class PersonajePadre implements Peleable{
 
   private String nombre;  
   protected int salud;
@@ -58,5 +58,7 @@ public class PersonajePadre {
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
+  
+  public abstract boolean esPersonaje();
 
 }

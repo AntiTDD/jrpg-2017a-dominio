@@ -71,8 +71,10 @@ public class Hechicero extends Casta {
   public boolean habilidad2(Personaje caster, Peleable aliado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
       caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
-      ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
-      return true;
+      if (((PersonajePadre)aliado).esPersonaje() == true) {
+        ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
+        return true;
+      }
     }
     return false;
   }
@@ -87,16 +89,16 @@ public class Hechicero extends Casta {
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
       caster.setEnergia(caster.getEnergia() - ENERGIA_MINIMA);
-      
-      int energia_robada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
-      int salud_robada = ((Personaje) atacado).serRobadoSalud(
-      
-          caster.calcularPuntosDeMagia() / 2);
-      caster.serEnergizado(energia_robada);
-      caster.serCurado(salud_robada);
-      return true;
-    }
-    
+      if (((PersonajePadre)atacado).esPersonaje() == true) {
+        int energiaRobada = ((Personaje) atacado).serDesernegizado(
+            caster.calcularPuntosDeMagia());
+        int saludRobada = ((Personaje) atacado).serRobadoSalud(
+            caster.calcularPuntosDeMagia() / 2);
+        caster.serEnergizado(energiaRobada);
+        caster.serCurado(saludRobada);
+        return true; 
+      }      
+    }    
     return false;
   }
 }

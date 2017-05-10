@@ -1,6 +1,6 @@
 package dominio;
 
-public class NonPlayableCharacter extends PersonajePadre implements Peleable {
+public class NonPlayableCharacter extends PersonajePadre {
 
   private static final int dificultadAleatoria = -1;
   /**<p>
@@ -93,5 +93,11 @@ public class NonPlayableCharacter extends PersonajePadre implements Peleable {
   
   public void setAtaque(int ataque) {
     this.fuerza = ataque;
+  }
+  
+  @Override
+  public boolean esPersonaje()
+  {
+	  return false;
   }
 }

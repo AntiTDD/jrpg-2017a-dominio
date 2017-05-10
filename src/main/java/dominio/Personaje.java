@@ -2,7 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 
-public abstract class Personaje extends PersonajePadre implements Peleable, Serializable {
+public abstract class Personaje extends PersonajePadre implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -70,6 +70,11 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
     fuerza = 10;
     inteligencia = 10;
     destreza = 10;
+    fuerza += casta.getBonusFuerza();
+    inteligencia += casta.getBonusInteligencia();
+    destreza += casta.getBonusDestreza();
+    
+    
     x = 0;
     y = 0;
     saludTope = 100;
@@ -501,4 +506,10 @@ public abstract class Personaje extends PersonajePadre implements Peleable, Seri
   public abstract boolean habilidadRaza1(Peleable atacado);
 
   public abstract boolean habilidadRaza2(Peleable atacado);
+  
+  @Override
+  public boolean esPersonaje()
+  {
+	  return true;
+  }
 }
