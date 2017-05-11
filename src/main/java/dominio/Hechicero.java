@@ -55,10 +55,6 @@ public class Hechicero extends Casta {
     }
     return false;
   }
-  
-  public void mejorarAtributoCasta(Personaje personaje) {
-    personaje.inteligencia += personaje.casta.getBonusInteligencia();
-  }
 
   
   /**

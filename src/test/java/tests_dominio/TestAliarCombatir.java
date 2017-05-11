@@ -25,11 +25,7 @@ public class TestAliarCombatir {
     Humano h = new Humano("Nicolas",new Guerrero(),1);
     Humano h2 = new Humano("Lautaro",new Asesino(),1);
 
-    Assert.assertTrue(h2.getSalud() == 105);
-    if(h.atacar(h2) != 0)
-      Assert.assertTrue(h2.getSalud() < 105);
-    else
-      Assert.assertTrue(h2.getSalud() == 105);
+    Assert.assertTrue(h.atacar(h2) > 0);
   }
 
   @Test
@@ -53,24 +49,20 @@ public class TestAliarCombatir {
     Elfo e = new Elfo("Legolas",new Asesino(), 1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
 
-    Alianza ali1 = new Alianza("La comunidad del anillo");
-    h.setClan(ali1);
+    h.crearAlianza("La comunidad del anillo");
     h.aliar(e);
     h.aliar(o);
     
-    LinkedList<Personaje> aliados1 = ali1.getAliados();
-    Assert.assertEquals("Gandalf",aliados1.get(0).getNombre());
-    Assert.assertEquals("Legolas",aliados1.get(1).getNombre());
-    Assert.assertEquals("Uruk-Hai",aliados1.get(2).getNombre());
-
-    aliados1.clear();
-
-    aliados1.add(h);
-    aliados1.add(e);
-
-    ali1.setAliados(aliados1);
-    Assert.assertEquals("Gandalf", ali1.getAliados().get(0).getNombre());
-    Assert.assertEquals("Legolas", ali1.getAliados().get(1).getNombre());
+    Assert.assertEquals("Gandalf",h.getClan().getAliados().get(0).getNombre());
+    Assert.assertEquals("Legolas",h.getClan().getAliados().get(1).getNombre());
+    Assert.assertEquals("Uruk-Hai",h.getClan().getAliados().get(2).getNombre());
+    
+    o.salirDeAlianza();
+    LinkedList<Personaje> aliados1 = h.getClan().getAliados();
+    h.getClan().setAliados(aliados1);
+    Assert.assertNotNull(h.getClan());
+    Assert.assertNotNull(e.getClan());
+    Assert.assertNull(o.getClan());
   }
 
   @Test

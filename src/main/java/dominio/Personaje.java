@@ -10,7 +10,6 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   protected int ataque;
   protected int magia;
   
-  protected String nombre;
   protected String nombreRaza;
   
   protected int saludTope;
@@ -122,14 +121,6 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   public void setNombreRaza(String nombreRaza) {
     this.nombreRaza = nombreRaza;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
   }
 
   public int getAtaque() {

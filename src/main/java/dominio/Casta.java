@@ -78,25 +78,7 @@ public abstract class Casta implements Serializable {
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad3(Personaje caster, Peleable atacado);
-
-  /**
-   * mejorarAtributo dependiendo la casta del personaje.
-   */
-  public abstract void mejorarAtributoCasta(Personaje personaje);
   
- /*
-  public int getBonusDestreza() {
-    return bonus;
-  }
- 
-  public int getBonusInteligencia() {
-    return bonus;
-  }
- 
-  public int getBonusFuerza() {
-    return bonus;
-  }
-  */
 
   /**
   * Metodo el cual sirve para obtener el nombre de este objeto.<br>

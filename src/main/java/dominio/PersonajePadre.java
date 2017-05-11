@@ -2,7 +2,7 @@ package dominio;
 
 public abstract class PersonajePadre implements Peleable{
 
-  private String nombre;  
+  protected String nombre;  
   protected int salud;
   protected int defensa;
   protected int fuerza;

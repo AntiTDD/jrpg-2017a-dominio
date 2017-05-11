@@ -38,14 +38,6 @@ public class Guerrero extends Casta {
     habilidadesCasta[1] = "Aumentar Defensa";
     habilidadesCasta[2] = "Ignorar Defensa";
   }
-  
-  /**
-  * Sobreescritura de la funcion abstracta para mejorar la fuerza del guerrero.
-  */
-  
-  public void mejorarAtributoCasta(Personaje personaje) {
-    personaje.fuerza += personaje.casta.getBonusFuerza();
-  }
 
   
   /**
