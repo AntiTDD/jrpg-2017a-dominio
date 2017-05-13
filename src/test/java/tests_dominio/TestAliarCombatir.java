@@ -43,29 +43,6 @@ public class TestAliarCombatir {
   }
 
   @Test
-  public void obtenerYEstablecerAliadosAUnClan() {
-
-    Humano h = new Humano("Gandalf",new Hechicero(),1);
-    Elfo e = new Elfo("Legolas",new Asesino(), 1);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-
-    h.crearAlianza("La comunidad del anillo");
-    h.aliar(e);
-    h.aliar(o);
-    
-    Assert.assertEquals("Gandalf",h.getClan().getAliados().get(0).getNombre());
-    Assert.assertEquals("Legolas",h.getClan().getAliados().get(1).getNombre());
-    Assert.assertEquals("Uruk-Hai",h.getClan().getAliados().get(2).getNombre());
-    
-    o.salirDeAlianza();
-    LinkedList<Personaje> aliados1 = h.getClan().getAliados();
-    h.getClan().setAliados(aliados1);
-    Assert.assertNotNull(h.getClan());
-    Assert.assertNotNull(e.getClan());
-    Assert.assertNull(o.getClan());
-  }
-
-  @Test
   public void obtenerElNombreCorrectoDeUnaAlianza() {
     Alianza ali1 = new Alianza("La comunidad del anillo");
     Assert.assertEquals("La comunidad del anillo", ali1.obtenerNombre());

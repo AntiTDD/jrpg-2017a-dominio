@@ -19,6 +19,7 @@ public class Alianza {
     this.aliados = new LinkedList<Personaje>();
   }
 
+  /*
   public LinkedList<Personaje> getAliados() { 
     return aliados;
   }
@@ -26,6 +27,7 @@ public class Alianza {
   public void setAliados(LinkedList<Personaje> aliados) {
     this.aliados = aliados;
   }
+  */
 
   /**Este metodo retorna el nombre de la Alianza.
    * 

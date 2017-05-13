@@ -7,9 +7,11 @@ public abstract class PersonajePadre implements Peleable{
   protected int defensa;
   protected int fuerza;
   protected int nivel;
+  protected MyRandom aleatorizador;
 
   public PersonajePadre(final String nom) {
-    this.nombre = nom;
+    nombre = nom;
+    aleatorizador = new MyRandom();
   }
 
 
@@ -60,5 +62,9 @@ public abstract class PersonajePadre implements Peleable{
   }
   
   public abstract boolean esPersonaje();
+  
+  public void setTipoDeRandom(MyRandomStub aleatorizadorParaTesteos) {
+    aleatorizador = aleatorizadorParaTesteos;
+  }
 
 }

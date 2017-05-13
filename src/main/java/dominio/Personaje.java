@@ -230,7 +230,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     if (salud == 0)
       return 0;
     if (atacado.getSalud() > 0) {
-      if (MyRandom.nextDouble() <= this.casta.getProbabilidadGolpeCritico() 
+      if (aleatorizador.obtenerDoubleAleatorio() <= this.casta.getProbabilidadGolpeCritico() 
           + this.destreza / 1000) {
         return atacado.serAtacado(this.golpe_critico());
       } else {
@@ -295,7 +295,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    */
 
   public int serAtacado(int daño) {
-    if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
+    if (aleatorizador.obtenerDoubleAleatorio() >= this.getCasta().getProbabilidadEvitarDaño()) {
       daño -= this.defensa;
       if (daño > 0) {
         if (salud <= daño) {

@@ -16,7 +16,7 @@ public class NonPlayableCharacter extends PersonajePadre {
     this.nivel = nivel;
     int dificultad;
     if (dificultadNPC == dificultadAleatoria)
-      dificultad = MyRandom.nextInt(3);
+      dificultad = aleatorizador.obtenerEnteroAleatorioMenorQue(3);
     else
       dificultad = dificultadNPC;
 
@@ -55,7 +55,7 @@ public class NonPlayableCharacter extends PersonajePadre {
    * 
    */
   public int atacar(Peleable atacado) {
-    if (MyRandom.nextDouble() <= 0.15) {
+    if (aleatorizador.obtenerDoubleAleatorio() <= 0.15) {
       return atacado.serAtacado((int) (this.getAtaque() * 1.5));
     } else
       return atacado.serAtacado(this.getAtaque());
@@ -70,7 +70,7 @@ public class NonPlayableCharacter extends PersonajePadre {
    */
 
   public int serAtacado(int daño) {
-    if (MyRandom.nextDouble() >= 0.15) {
+    if (aleatorizador.obtenerDoubleAleatorio() >= 0.15) {
       daño -= this.getDefensa() / 2;
       if (daño > 0) {
         salud -= daño;

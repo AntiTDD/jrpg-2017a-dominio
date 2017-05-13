@@ -1,26 +1,26 @@
 package dominio;
 
+import java.util.Random;
+
 public class MyRandom {
 
-  static final float VALOR = 0.49f;
-  static final int ENTERO = 1;
   /**
-  * Metodo que devuelve siempre el mismo double, el 0.49.
-  * @return Double con valor 0.49.
-  */
-  
-  public static double nextDouble() {
-    return VALOR;
-  }
+   * Metodo que devuelve un double al azar comprendido entre 0 y 1.
+   * @return Double que indica el numero obtenido al azar.
+   */
+  public double obtenerDoubleAleatorio() {
+	    return new Random().nextDouble();
+	  }
 
 
   /**
- * Metodo que devuelve el valor de lo pasado por parametro menos 1.
- * @param val Un numero entero.
- * @return Entero con valor val menos 1.
- */
-  public static int nextInt(int val) {
-    return val - ENTERO;
+   * Metodo que devuelve un entero al azar menor al pasado por parametro
+     * y mayor o igual a 0.
+   * @param maximo Entero que indica la cota superior del azar.
+   * @return Entero que indica el numero obtenido al azar.
+   */
+  public int obtenerEnteroAleatorioMenorQue(int maximo) {
+    return new Random().nextInt(maximo);
   }
 
 }

@@ -15,7 +15,6 @@ public abstract class Casta implements Serializable {
   protected double dañoCritico;
   protected String nombreCasta;
   protected String[] habilidadesCasta;
-  //private final int bonus = 5;
 
 
   /**
@@ -164,34 +163,28 @@ public abstract class Casta implements Serializable {
   
   
   
-  public int getBonusFuerza()
-  {	  
-	  if(nombreCasta.equals("Guerrero"))
-	  {
-		  return 5;
-	  }
-	  
-	  return 0;
+  public int getBonusFuerza() {
+    if (nombreCasta.equals("Guerrero")) {
+      return 5;
+    }
+
+    return 0;
   }
   
-  public int getBonusDestreza()
-  {
-	  if(nombreCasta.equals("Asesino"))
-	  {
-		  return 5;
-	  }
-	  
-	  return 0;
+  public int getBonusDestreza() {
+    if(nombreCasta.equals("Asesino")) {
+      return 5;
+    }
+
+    return 0;
   }
   
-  public int getBonusInteligencia()
-  {
-	  if(nombreCasta.equals("Hechicero"))
-	  {
-		  return 5;
-	  }
-	  
-	  return 0;
+  public int getBonusInteligencia() {
+    if (nombreCasta.equals("Hechicero")) {
+      return 5;
+    }
+  
+    return 0;
   }
   
 }
