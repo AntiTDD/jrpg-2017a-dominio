@@ -52,13 +52,7 @@ public class TestNPC {
     Assert.assertEquals(1000000,npc.getDefensa());
   }
 
-
-  @Test
-  public void setearSaludYObtenerSalud() {
-    NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",95,1);
-    npc.setSalud(1000000);
-    Assert.assertEquals(1000000,npc.getSalud());
-  }
+  // Aca estaba el metodo setearSaludYObtenerSalud. Como ya no hay setSalud, lo borre. //
 
   @Test
   public void queElNPCConAtaque584AtaqueAOrcoConDefensa10YSalud110() {

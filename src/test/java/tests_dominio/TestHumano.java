@@ -43,7 +43,7 @@ public class TestHumano {
   public void queUnHumanoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
     Humano e = new Humano("Aragorn",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.setEnergia(0);
+    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadRaza1(o));
   }
 
@@ -52,7 +52,7 @@ public class TestHumano {
   public void queUnHumanoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
     Humano e = new Humano("Aragorn",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.setEnergia(0);
+    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadRaza2(o));
   }
 }

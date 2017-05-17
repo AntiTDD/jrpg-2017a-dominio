@@ -19,10 +19,12 @@ public abstract class PersonajePadre implements Peleable{
   public int getSalud() {
     return salud;
   }
-
+  
+  /*
   public void setSalud(final int salud) {
     this.salud = salud;
   }
+  */
 
   public int getDefensa() {
     return defensa;

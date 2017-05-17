@@ -148,28 +148,34 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     clan.añadirPersonaje(this);
   }
 
-
+  /*
   public void setEnergia(int energia) {
     this.energia = energia;
   }
+  */
+  
+  public void descensoDeEnergiaPorInicioDeAtaqueDeCasta(int nuevaEnergia) { //Nuevo//
+    energia = nuevaEnergia;
+  }
+  
 
   public int getEnergia() {
     return energia;
   }
 
-
+/*
   public void setFuerza(int fuerza) {
     this.fuerza = fuerza;
   }
-
+*/
   public int getDestreza() {
     return destreza;
   }
-
+/*
   public void setDestreza(int destreza) {
     this.destreza = destreza;
   }
-
+*/
   public int getInteligencia() {
     return inteligencia;
   }

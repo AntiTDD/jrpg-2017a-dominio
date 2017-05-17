@@ -1,7 +1,5 @@
 package dominio;
 
-import java.util.Random;
-
 public class MyRandomStub extends MyRandom {
 
   private int numero;
@@ -10,12 +8,22 @@ public class MyRandomStub extends MyRandom {
     this.numero = numero;
   }
   
+  /**
+   * Metodo que devuelve el valor del parametro al haber creado este objeto.
+   * @return Devuelve un Double el cual es el double con que se instancio este objeto.
+   */
+  public double obtenerDoubleAleatorio() throws ArithmeticException {
+
+    return numero;
+  }
+  
   
   /**
    * Metodo que devuelve un double al azar comprendido entre 0 y el valor
      * del parametro.
    * @return Double que indica el numero obtenido al azar.
    */
+  /*
   public double obtenerDoubleAleatorio(double maximo) throws ArithmeticException {
     if (maximo > 1f || maximo < 0f) {
       throw new ArithmeticException("Esta clase solo se usa en testeos."
@@ -29,7 +37,7 @@ public class MyRandomStub extends MyRandom {
     
     return resultado;
   }
-  
+  */
   
   /**
    * Metodo que devuelve un entero el cual es el mismo con el que se

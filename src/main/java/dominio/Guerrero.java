@@ -50,7 +50,7 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {  
     if (caster.getEnergia() > energiaMinima) {
-      caster.setEnergia(caster.getEnergia() - energiaMinima);
+      caster.descensoDeEnergiaPorInicioDeAtaqueDeCasta(caster.getEnergia() - energiaMinima); //Cambie//
       if (atacado.serAtacado(caster.ataque * plusAtaque) > vidaNula) {
         return true;
       }
@@ -69,7 +69,7 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
-      caster.setEnergia(caster.getEnergia() - energiaMinima);
+      caster.descensoDeEnergiaPorInicioDeAtaqueDeCasta(caster.getEnergia() - energiaMinima); //Cambie//
       caster.setDefensa(caster.getDefensa() + caster.magia);
       return true;
     }
@@ -85,7 +85,7 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
-      caster.setEnergia(caster.getEnergia() - energiaMinima);
+      caster.descensoDeEnergiaPorInicioDeAtaqueDeCasta(caster.getEnergia() - energiaMinima); //Cambie//
       if (((PersonajePadre) atacado).esPersonaje() == true) {
     	  int defensa_original = ((Personaje) atacado).getDefensa(); //PREGUNTAR: El casteo deberia ser (PersonajePadre) y hacer que PersonajePadre sea abstracta y que implemente Peleable. En tanto, NPC como Personaje deberian extender solamente a PersonajePadre (sin imeplementar nada mas que Serializable).
           ((Personaje) atacado).setDefensa(defensaNula); 

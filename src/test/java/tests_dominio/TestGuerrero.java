@@ -49,7 +49,7 @@ public class TestGuerrero {
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.setEnergia(0);
+    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta1(o));
   }
 
@@ -58,7 +58,7 @@ public class TestGuerrero {
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad2PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.setEnergia(0);
+    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta2(o));
   }
 
@@ -67,7 +67,7 @@ public class TestGuerrero {
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad3PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.setEnergia(0);
+    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta3(o));
   }
 }
