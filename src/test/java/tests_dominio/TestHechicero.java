@@ -50,7 +50,7 @@ public class TestHechicero {
     //h.setSalud(50);
     e.atacar(h);
     e.atacar(h); // Al poner 2 ataques, la salud de "h" baja mas que lo que despues se va a curar. //
-    h.descensoDeEnergiaPorInicioDeAtaqueDeCasta(40); // Estaba e.setEnergia(50) //
+    h.bajarEnergia(60); // Estaba e.setEnergia(50) //
     
     Assert.assertEquals(40, h.getEnergia());
     Assert.assertEquals(66, h.getSalud());
@@ -65,7 +65,7 @@ public class TestHechicero {
   public void queUnHechiceroNoPuedaEjecutarSuHabilidad1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Hechicero(),1);
     Orco o = new Orco("Uruk-Hai",new Asesino(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta1(o));
   }
 
@@ -73,7 +73,7 @@ public class TestHechicero {
   public void queUnHechiceroNoPuedaEjecutarSuHabilidad2PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Hechicero(),1);
     Orco o = new Orco("Uruk-Hai",new Asesino(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta2(o));
   }
 
@@ -81,7 +81,7 @@ public class TestHechicero {
   public void queUnHechiceroNoPuedaEjecutarSuHabilidad3PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Hechicero(),1);
     Orco o = new Orco("Uruk-Hai",new Asesino(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta3(o));
   }
 }

@@ -26,7 +26,7 @@ public class TestNPC {
   @Test
   public void setearLaFuerzaEn80000() {
     NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",95,1);
-    npc.setFuerza(80000);
+    npc.subirFuerza(79416);
     Assert.assertEquals(80000, npc.getFuerza());
   }
 

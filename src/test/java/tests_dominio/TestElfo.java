@@ -41,7 +41,7 @@ public class TestElfo {
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Hechicero(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0); //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0); //
     Assert.assertFalse(e.habilidadRaza1(o));
   }
 
@@ -50,7 +50,7 @@ public class TestElfo {
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Hechicero(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0); //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0); //
     Assert.assertFalse(e.habilidadRaza2(o));
   }
 }

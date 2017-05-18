@@ -154,8 +154,16 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
   */
   
-  public void descensoDeEnergiaPorInicioDeAtaqueDeCasta(int nuevaEnergia) { //Nuevo//
-    energia = nuevaEnergia;
+  public void subirEnergia(int plus) { //Nuevo//
+    energia += plus;
+  }
+  
+  public void bajarEnergia(int reduccion) {
+    if (reduccion <= energia) {
+      energia -= reduccion;
+    } else {
+      energia = 0;
+    }
   }
   
 
@@ -176,6 +184,11 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     this.destreza = destreza;
   }
 */
+  
+  public void subirDestreza(int plus) {
+	  destreza += plus;
+  }
+  
   public int getInteligencia() {
     return inteligencia;
   }

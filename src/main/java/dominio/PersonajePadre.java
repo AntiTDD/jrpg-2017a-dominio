@@ -38,11 +38,16 @@ public abstract class PersonajePadre implements Peleable{
   public int getFuerza() {
     return fuerza;
   }
-
+  /*
   public void setFuerza(final int fuerza) {
     this.fuerza = fuerza;
   }
-
+  */
+  
+  public void subirFuerza(int plus) {
+    fuerza += plus;
+  }
+  
   public int getNivel() {
     return nivel;
   }

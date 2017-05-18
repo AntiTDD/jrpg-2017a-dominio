@@ -44,7 +44,7 @@ public class TestOrco {
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
     Humano e = new Humano("Aragorn",new Guerrero(),1);
-    o.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba o.setEnergia(0) //
+    o.bajarEnergia(100); // Estaba o.setEnergia(0) //
     Assert.assertFalse(o.habilidadRaza1(e));
   }
   
@@ -53,7 +53,7 @@ public class TestOrco {
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
     Humano e = new Humano("Aragorn",new Guerrero(),1);
-    o.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba o.setEnergia(0) //
+    o.bajarEnergia(100); // Estaba o.setEnergia(0) //
     Assert.assertFalse(o.habilidadRaza2(e));
   }
 }

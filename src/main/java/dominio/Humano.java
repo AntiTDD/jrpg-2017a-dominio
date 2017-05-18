@@ -58,7 +58,7 @@ public class Humano extends Personaje {
   */
   public boolean habilidadRaza1(Peleable atacado) {
     if (this.getEnergia() > ENERGIA_MINIMA) {  
-      this.descensoDeEnergiaPorInicioDeAtaqueDeCasta(this.getEnergia() - ENERGIA_MINIMA); //Cambie//
+      this.bajarEnergia(ENERGIA_MINIMA); //Cambie//
       atacado.setAtaque(atacado.getAtaque() + this.getMagia());
       return true;
     }
@@ -75,11 +75,11 @@ public class Humano extends Personaje {
   public boolean habilidadRaza2(Peleable atacado) {
     if (this.getEnergia() > ENERGIA_MINIMA) {
       if (atacado.serAtacado(atacado.getSalud() / 2) > VIDA_NULA) {
-        this.descensoDeEnergiaPorInicioDeAtaqueDeCasta(this.getEnergia() / 2); //Cambie//
+        this.bajarEnergia(this.getEnergia() / 2); //Cambie//
         return true;
       }
     }
-    this.descensoDeEnergiaPorInicioDeAtaqueDeCasta(this.getEnergia() - ENERGIA_MINIMA); //Cambie//
+    this.bajarEnergia(ENERGIA_MINIMA); //Cambie//
     return false;
   }
 }

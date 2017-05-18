@@ -83,7 +83,7 @@ public class TestPersonaje {
     Assert.assertTrue(o3.getDestreza() == 15);
     Assert.assertTrue(o3.getInteligencia() == 10);
   }
-  
+ 
   @Test
   public void testeoGetySet() {
     Elfo e = new Elfo("Secchik",new Asesino(),23);
@@ -92,8 +92,7 @@ public class TestPersonaje {
     e.setNombre("Lucas");
     e.setNombreRaza("Elfo Junior");
     e.setAtaque(40);
-    //e.setSalud(100);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(300); // Estaba e.setEnergia(300) //
+    e.subirEnergia(200); // Estaba e.setEnergia(300) //
     e.setCasta(h);
     e.setMagia(20);
     e.setNivel(99);
@@ -142,7 +141,7 @@ public class TestPersonaje {
   public void testeoPuedoAtacar() { 
     Elfo e = new Elfo("Secchik",new Asesino(),23);
 
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(11); // Estaba e.setEnergia(11) //
+    e.bajarEnergia(79); // Estaba e.setEnergia(11) //
 
     Assert.assertTrue(e.puedeAtacar() == true);
 
@@ -153,7 +152,7 @@ public class TestPersonaje {
   public void testeoNoPuedoAtacar() { 
     Elfo e = new Elfo("Secchik",new Asesino(),23);
 
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
 
     Assert.assertTrue(e.puedeAtacar() == false);
 
@@ -250,7 +249,7 @@ public class TestPersonaje {
   @Test
   public void testRoboDeEnergia() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(10); // Estaba e.setEnergia(10) //
+    e.bajarEnergia(90); // Estaba e.setEnergia(10) //
     e.setDefensa(10);
     Assert.assertTrue(e.serDesernegizado(100) == 10);
     Assert.assertTrue(e.getEnergia() == 0);
@@ -284,7 +283,7 @@ public class TestPersonaje {
   @Test
   public void queAUnPersonajeSeLeLleneLaBarritaDeEnergia() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
-    e1.descensoDeEnergiaPorInicioDeAtaqueDeCasta(e1.getEnergia() / 2); // Estaba e1.setEnergia(e1.getEnergia() / 2) //
+    e1.bajarEnergia(e1.getEnergia() / 2); // Estaba e1.setEnergia(e1.getEnergia() / 2) //
     Assert.assertNotEquals(e1.getEnergiaTope(), e1.getEnergia());
     e1.serEnergizado(100000000);
     Assert.assertEquals(e1.getEnergiaTope(), e1.getEnergia());

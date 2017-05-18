@@ -42,7 +42,7 @@ public class TestAsesino {
   public void queUnAsesinoNoPuedaEfectuarSuHabilidad1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Asesino(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta1(o));
   }
   
@@ -51,7 +51,7 @@ public class TestAsesino {
   public void queUnAsesinoNoPuedaEfectuarSuHabilidad2PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Asesino(),1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    e.descensoDeEnergiaPorInicioDeAtaqueDeCasta(0); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadCasta2(o));
   }
   
