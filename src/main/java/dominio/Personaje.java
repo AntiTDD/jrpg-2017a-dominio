@@ -206,9 +206,11 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return casta;
   }
 
+  /*
   public void setCasta(Casta casta) {
     this.casta = casta;
   }
+  */
 
   public int getExperiencia() {
     return experiencia;
@@ -220,7 +222,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
   */
   
-  public void subirExperiencia(int plus) {
+  public void subirExperiencia(int plus) { // Creo que este metodo debe llamar siempre a subirNivel para chequear si la experiencia nueva de este Personaje condice con un nivel superior al actual. //
     experiencia += plus;
   }
   
@@ -228,10 +230,11 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return idPersonaje;
   }
 
+  /*
   public void setIdPersonaje(int idPersonaje) {
     this.idPersonaje = idPersonaje;
   }
-
+  */
 
   public int getSaludTope() {
     return saludTope;
@@ -250,10 +253,16 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public int getEnergiaTope() {
     return energiaTope;
   }
-
+  /*
   public void setEnergiaTope(int energiaTope) {
     this.energiaTope = energiaTope;
   }
+  */
+  
+  public void subirEnergiaTope(int plus) {
+    energiaTope += plus;
+  }
+  
   /**<p>
    * Si la salud es mayor a 0, realizara el ataque en el cual se calculara si es golpe critico o no
    * dependiendo de la probabilidad de obtener el mismo y la destreza.

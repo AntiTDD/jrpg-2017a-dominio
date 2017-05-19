@@ -62,11 +62,11 @@ public abstract class PersonajePadre implements Peleable{
     return nivel;
   }
 
-  
+  /*
   public void setNivel(final int nivel) {
     this.nivel = nivel;
   }
-   
+   */
   
   public boolean estaVivo() {
     return salud > 0;

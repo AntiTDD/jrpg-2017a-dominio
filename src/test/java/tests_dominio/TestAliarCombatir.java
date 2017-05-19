@@ -24,6 +24,8 @@ public class TestAliarCombatir {
   public void testDañar() {
     Humano h = new Humano("Nicolas",new Guerrero(),1);
     Humano h2 = new Humano("Lautaro",new Asesino(),1);
+    h.setTipoDeRandom(new MyRandomStub(1));
+    h2.setTipoDeRandom(new MyRandomStub(1));
 
     Assert.assertTrue(h.atacar(h2) > 0);
   }

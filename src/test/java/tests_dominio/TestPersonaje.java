@@ -87,19 +87,19 @@ public class TestPersonaje {
   @Test
   public void testeoGetySet() {
     Elfo e = new Elfo("Secchik",new Asesino(),23);
-    Hechicero h = new Hechicero();
 
     e.setNombre("Lucas");
     e.setNombreRaza("Elfo Junior");
     e.setAtaque(40);
     e.subirEnergia(200); // Estaba e.setEnergia(300) //
-    e.setCasta(h);
+    //e.setCasta(h);
     e.setMagia(20);
-    e.setNivel(99);
+    //e.setNivel(99);
     e.subirExperiencia(110);// estaba e.setExperiencia(110);
-    e.setIdPersonaje(24);
+    //e.setIdPersonaje(24);
     e.subirSaludTope(20);//estaba e.setSaludTope(120);
-    e.setEnergiaTope(120);
+    //e.setEnergiaTope(120);
+    e.subirEnergiaTope(10);
     //e.setDestreza(42);
     e.subirInteligencia(490); //estaba e.setInteligencia(500);
 
@@ -108,16 +108,16 @@ public class TestPersonaje {
     Assert.assertTrue(e.getAtaque() == 40);
     Assert.assertTrue(e.getSalud() == 100);
     Assert.assertTrue(e.getEnergia() == 300);
-    Assert.assertTrue(e.getCasta() == h);
+    Assert.assertTrue(e.getCasta().getNombreCasta() == "Asesino");
     Assert.assertTrue(e.getMagia() == 20);
-    Assert.assertTrue(e.getNivel() == 99);
+    Assert.assertTrue(e.getNivel() == 1);
     Assert.assertTrue(e.getExperiencia() == 110);
-    Assert.assertTrue(e.getIdPersonaje() == 24);
+    Assert.assertTrue(e.getIdPersonaje() == 23);
     Assert.assertTrue(e.getSaludTope() == 120);
-    Assert.assertTrue(e.getEnergiaTope() == 120);
-    Assert.assertTrue(e.getHabilidadesCasta()[0] == "Bola de Fuego");
-    Assert.assertTrue(e.getHabilidadesCasta()[1] == "Curar Aliado");
-    Assert.assertTrue(e.getHabilidadesCasta()[2] == "Robar Energia y Salud");
+    Assert.assertTrue(e.getEnergiaTope() == 110);
+    Assert.assertTrue(e.getHabilidadesCasta()[0] == "Golpe Critico");
+    Assert.assertTrue(e.getHabilidadesCasta()[1] == "Aumentar Evasion");
+    Assert.assertTrue(e.getHabilidadesCasta()[2] == "Robar");
     Assert.assertTrue(e.getHabilidadesRaza()[0] == "Golpe Level");
     Assert.assertTrue(e.getHabilidadesRaza()[1] == "Ataque Bosque");
 
@@ -127,8 +127,9 @@ public class TestPersonaje {
   public void testeoRestablecesSalud() {
     Elfo e = new Elfo("Secchik",new Asesino(),23);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    e.setTipoDeRandom(new MyRandomStub(1));
+    o.setTipoDeRandom(new MyRandomStub(1));
 
-    //e.setSalud(40);
     o.atacar(e);
     Assert.assertTrue(e.getSalud() < e.getSaludTope());
     e.restablecerSalud();

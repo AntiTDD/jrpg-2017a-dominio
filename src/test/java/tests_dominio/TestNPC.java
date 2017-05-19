@@ -39,9 +39,9 @@ public class TestNPC {
   }
 
   @Test
-  public void setearNivelYObtenerNivel() {
-    NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",95,1);
-    npc.setNivel(100);
+  public void ObtenerNivel() {
+    NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",100,1);
+    //npc.setNivel(100);
     Assert.assertEquals(100, npc.getNivel());
   }
 
@@ -69,7 +69,10 @@ public class TestNPC {
   public void queUnNpcConSalud40YDefensa5seaAtacadoPorUnOrcoConGolpeCriticoDe33Ataque() {
     Orco o = new Orco("Uruk-Hai",new Guerrero(0.9,0.9,1.5),1);
     NonPlayableCharacter npc = new NonPlayableCharacter("Elrond recien nacido",1,1);
-    Assert.assertEquals(31, o.atacar(npc));
+    o.setTipoDeRandom(new MyRandomStub(1));
+    npc.setTipoDeRandom(new MyRandomStub(1));
+    
+    Assert.assertEquals(20, o.atacar(npc));
   }
 
 
