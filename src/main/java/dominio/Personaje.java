@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public abstract class Personaje extends PersonajePadre implements Serializable {
 
@@ -148,13 +149,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     clan.añadirPersonaje(this);
   }
 
-  /*
-  public void setEnergia(int energia) {
-    this.energia = energia;
-  }
-  */
-  
-  public void subirEnergia(int plus) { //Nuevo//
+  public void subirEnergia(int plus) {
     energia += plus;
   }
   
@@ -171,19 +166,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return energia;
   }
 
-  /*
-  public void setFuerza(int fuerza) {
-    this.fuerza = fuerza;
-  }
- */
   public int getDestreza() {
     return destreza;
   }
-  /*
-  public void setDestreza(int destreza) {
-    this.destreza = destreza;
-  }
-   */
   
   public void subirDestreza(int plus) {
     destreza += plus;
@@ -193,11 +178,6 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return inteligencia;
   }
 
-  /* public void setInteligencia(int inteligencia) {
-    this.inteligencia = inteligencia;
-  }
-  */
-  
   public void subirInteligencia(int plus) {
     inteligencia += plus;
   }
@@ -206,21 +186,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return casta;
   }
 
-  /*
-  public void setCasta(Casta casta) {
-    this.casta = casta;
-  }
-  */
-
   public int getExperiencia() {
     return experiencia;
   }
-
-  /*  
-   public void setExperiencia(int experiencia) {
-    this.experiencia = experiencia;
-  }
-  */
   
   public void subirExperiencia(int plus) { // Creo que este metodo debe llamar siempre a subirNivel para chequear si la experiencia nueva de este Personaje condice con un nivel superior al actual. //
     experiencia += plus;
@@ -229,12 +197,6 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public int getIdPersonaje() {
     return idPersonaje;
   }
-
-  /*
-  public void setIdPersonaje(int idPersonaje) {
-    this.idPersonaje = idPersonaje;
-  }
-  */
 
   public int getSaludTope() {
     return saludTope;
@@ -261,6 +223,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   
   public void subirEnergiaTope(int plus) {
     energiaTope += plus;
+  }
+  
+  public void actualizarAtributosPersonaje(HashMap<String, Integer> datosActualizados){
+	salud = datosActualizados.get("salud");
+	energia = datosActualizados.get("energia");
+	ataque = datosActualizados.get("ataque");
+	magia = datosActualizados.get("magia");
   }
   
   /**<p>
