@@ -96,12 +96,12 @@ public class TestPersonaje {
     e.setCasta(h);
     e.setMagia(20);
     e.setNivel(99);
-    e.setExperiencia(110);
+    e.subirExperiencia(110);// estaba e.setExperiencia(110);
     e.setIdPersonaje(24);
-    e.setSaludTope(120);
+    e.subirSaludTope(20);//estaba e.setSaludTope(120);
     e.setEnergiaTope(120);
     //e.setDestreza(42);
-    e.setInteligencia(500);
+    e.subirInteligencia(490); //estaba e.setInteligencia(500);
 
     Assert.assertTrue(e.getNombre() == "Lucas");
     Assert.assertTrue(e.getNombreRaza() == "Elfo Junior");
@@ -190,9 +190,8 @@ public class TestPersonaje {
 
   @Test
   public void testeoSerCuradoTope() {
-	 
     Elfo e = new Elfo("Secchik",new Asesino(),23);
-	Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
@@ -231,7 +230,7 @@ public class TestPersonaje {
   @Test
   public void testDefensa() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.setDefensa(100);
+    e.subirDefensa(90); //defensa depende de destreza (la cual inicia en 10?) //e.setDefensa(100);
     Assert.assertTrue(e.serAtacado(99) == 0);
     Assert.assertTrue(e.serRobadoSalud(99) == 0);
     Assert.assertTrue(e.serDesernegizado(99) == 0);
@@ -241,7 +240,7 @@ public class TestPersonaje {
   public void testRoboDeVida() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
     //e.setSalud(10);
-    e.setDefensa(10);
+    e.bajarDefensa(5);//e.setDefensa(10); //no estoy seguro si tengo que bajar la defensa primero
     Assert.assertTrue(e.serRobadoSalud(100) == 90);
     Assert.assertTrue(e.getSalud() == 10);
   }
@@ -250,7 +249,7 @@ public class TestPersonaje {
   public void testRoboDeEnergia() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
     e.bajarEnergia(90); // Estaba e.setEnergia(10) //
-    e.setDefensa(10);
+    //e.setDefensa(10);
     Assert.assertTrue(e.serDesernegizado(100) == 10);
     Assert.assertTrue(e.getEnergia() == 0);
   }

@@ -171,30 +171,35 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return energia;
   }
 
-/*
+  /*
   public void setFuerza(int fuerza) {
     this.fuerza = fuerza;
   }
-*/
+ */
   public int getDestreza() {
     return destreza;
   }
-/*
+  /*
   public void setDestreza(int destreza) {
     this.destreza = destreza;
   }
-*/
+   */
   
   public void subirDestreza(int plus) {
-	  destreza += plus;
+    destreza += plus;
   }
   
   public int getInteligencia() {
     return inteligencia;
   }
 
-  public void setInteligencia(int inteligencia) {
+  /* public void setInteligencia(int inteligencia) {
     this.inteligencia = inteligencia;
+  }
+  */
+  
+  public void subirInteligencia(int plus) {
+    inteligencia += plus;
   }
 
   public Casta getCasta() {
@@ -209,12 +214,16 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return experiencia;
   }
 
-  public void setExperiencia(int experiencia) {
+  /*  
+   public void setExperiencia(int experiencia) {
     this.experiencia = experiencia;
   }
-
-
-
+  */
+  
+  public void subirExperiencia(int plus) {
+    experiencia += plus;
+  }
+  
   public int getIdPersonaje() {
     return idPersonaje;
   }
@@ -228,10 +237,16 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return saludTope;
   }
 
+  /*
   public void setSaludTope(int saludTope) {
     this.saludTope = saludTope;
   }
-
+  */
+  
+  public void subirSaludTope(int plus) {
+    saludTope += plus;
+  }
+  
   public int getEnergiaTope() {
     return energiaTope;
   }

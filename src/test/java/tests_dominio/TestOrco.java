@@ -18,7 +18,7 @@ public class TestOrco {
 
     Assert.assertTrue(h.getSalud() == 105);
     if (o.habilidadRaza1(h))
-      Assert.assertTrue(h.getSalud() == 95);
+      Assert.assertTrue(h.getSalud() == 95); 
     else
       Assert.assertTrue(o.getSalud() == 105);
   }

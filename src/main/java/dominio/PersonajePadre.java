@@ -30,11 +30,21 @@ public abstract class PersonajePadre implements Peleable{
     return defensa;
   }
  
-
+  /*
   public void setDefensa(final int defensa) {
     this.defensa = defensa;
   } 
-
+  */
+  
+  public void subirDefensa(int plus) {
+	 defensa += plus;
+  }
+  
+  public void bajarDefensa(int reduccion) {
+	 defensa -= reduccion;
+  }
+  
+  
   public int getFuerza() {
     return fuerza;
   }
@@ -52,10 +62,12 @@ public abstract class PersonajePadre implements Peleable{
     return nivel;
   }
 
+  
   public void setNivel(final int nivel) {
     this.nivel = nivel;
   }
-
+   
+  
   public boolean estaVivo() {
     return salud > 0;
   }

@@ -1,6 +1,7 @@
 package tests_dominio;
 
 import dominio.Guerrero;
+import dominio.MyRandomStub;
 import dominio.NonPlayableCharacter;
 import dominio.Orco;
 import org.junit.Assert;
@@ -48,7 +49,7 @@ public class TestNPC {
   @Test
   public void setearDefensaYObtenerDefensa() {
     NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",95,1);
-    npc.setDefensa(1000000);
+    npc.subirDefensa(999807); // estaba habia un npc.setDefensa(100000);
     Assert.assertEquals(1000000,npc.getDefensa());
   }
 
@@ -58,6 +59,9 @@ public class TestNPC {
   public void queElNPCConAtaque584AtaqueAOrcoConDefensa10YSalud110() {
     NonPlayableCharacter npc = new NonPlayableCharacter("Elrond",95,1);
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    npc.setTipoDeRandom(new MyRandomStub(1));
+    o.setTipoDeRandom(new MyRandomStub(1));
+    
     Assert.assertEquals(110, npc.atacar(o));
   }
   
