@@ -1,3 +1,4 @@
+https://travis-ci.org/AntiTDD/jrpg-2017a-dominio.svg?branch=master
 # World Of Middle Earth (WOME) - dominio
 
 ## Sobre las personas
@@ -6,7 +7,8 @@
 
 ### Docentes del Taller
 
-* Leonardo Blautzik ([leoblautzik](https://github.com/leoblautzik))
+* Leonardo Blautzik ([leoblautzik]
+(https://github.com/leoblautzik))
 * Julio Crispino ([jmcrispino](https://github.com/jmcrispino))
 * Lucas Videla ([delucas](https://github.com/delucas))
 
