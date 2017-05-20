@@ -225,11 +225,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     energiaTope += plus;
   }
   
-  public void actualizarAtributosPersonaje(HashMap<String, Integer> datosActualizados){
+  public void actualizarAtributosPersonaje(HashMap<String,Integer> datosActualizados){
 	salud = datosActualizados.get("salud");
 	energia = datosActualizados.get("energia");
-	ataque = datosActualizados.get("ataque");
-	magia = datosActualizados.get("magia");
   }
   
   /**<p>
