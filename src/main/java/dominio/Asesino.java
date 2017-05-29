@@ -49,7 +49,7 @@ public class Asesino extends Casta {
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {  
-      caster.bajarEnergia(energiaMinima); //Cambie//
+      caster.bajarEnergia(energiaMinima);
       if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) {
         return true;
       }
@@ -70,7 +70,7 @@ public class Asesino extends Casta {
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
-      caster.bajarEnergia(energiaMinima); //Cambie//
+      caster.bajarEnergia(energiaMinima);
       if (this.getProbabilidadEvitarDaño() + plusEvitarCritico < plusEvitarDaño) {
         this.probabilidadEvitarDaño += plusEvitarCritico;
       } else {

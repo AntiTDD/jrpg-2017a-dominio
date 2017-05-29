@@ -91,17 +91,12 @@ public class TestPersonaje {
     e.setNombre("Lucas");
     e.setNombreRaza("Elfo Junior");
     e.setAtaque(40);
-    e.subirEnergia(200); // Estaba e.setEnergia(300) //
-    //e.setCasta(h);
+    e.subirEnergia(200);
     e.setMagia(20);
-    //e.setNivel(99);
-    e.subirExperiencia(110);// estaba e.setExperiencia(110);
-    //e.setIdPersonaje(24);
-    e.subirSaludTope(20);//estaba e.setSaludTope(120);
-    //e.setEnergiaTope(120);
+    e.subirExperiencia(110);
+    e.subirSaludTope(20);
     e.subirEnergiaTope(10);
-    //e.setDestreza(42);
-    e.subirInteligencia(490); //estaba e.setInteligencia(500);
+    e.subirInteligencia(490);
 
     Assert.assertTrue(e.getNombre() == "Lucas");
     Assert.assertTrue(e.getNombreRaza() == "Elfo Junior");
@@ -142,7 +137,7 @@ public class TestPersonaje {
   public void testeoPuedoAtacar() { 
     Elfo e = new Elfo("Secchik",new Asesino(),23);
 
-    e.bajarEnergia(79); // Estaba e.setEnergia(11) //
+    e.bajarEnergia(79);
 
     Assert.assertTrue(e.puedeAtacar() == true);
 
@@ -153,7 +148,7 @@ public class TestPersonaje {
   public void testeoNoPuedoAtacar() { 
     Elfo e = new Elfo("Secchik",new Asesino(),23);
 
-    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100);
 
     Assert.assertTrue(e.puedeAtacar() == false);
 
@@ -180,7 +175,6 @@ public class TestPersonaje {
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
-    //e.setSalud(20);
     o.atacar(e);
     Assert.assertEquals(93, e.getSalud());
     
@@ -231,7 +225,7 @@ public class TestPersonaje {
   @Test
   public void testDefensa() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.subirDefensa(90); //defensa depende de destreza (la cual inicia en 10?) //e.setDefensa(100);
+    e.subirDefensa(90);
     Assert.assertTrue(e.serAtacado(99) == 0);
     Assert.assertTrue(e.serRobadoSalud(99) == 0);
     Assert.assertTrue(e.serDesernegizado(99) == 0);
@@ -240,8 +234,7 @@ public class TestPersonaje {
   @Test
   public void testRoboDeVida() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    //e.setSalud(10);
-    e.bajarDefensa(5);//e.setDefensa(10); //no estoy seguro si tengo que bajar la defensa primero
+    e.bajarDefensa(5);
     Assert.assertTrue(e.serRobadoSalud(100) == 90);
     Assert.assertTrue(e.getSalud() == 10);
   }
@@ -249,8 +242,7 @@ public class TestPersonaje {
   @Test
   public void testRoboDeEnergia() {
     Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.bajarEnergia(90); // Estaba e.setEnergia(10) //
-    //e.setDefensa(10);
+    e.bajarEnergia(90);
     Assert.assertTrue(e.serDesernegizado(100) == 10);
     Assert.assertTrue(e.getEnergia() == 0);
   }
@@ -283,7 +275,7 @@ public class TestPersonaje {
   @Test
   public void queAUnPersonajeSeLeLleneLaBarritaDeEnergia() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
-    e1.bajarEnergia(e1.getEnergia() / 2); // Estaba e1.setEnergia(e1.getEnergia() / 2) //
+    e1.bajarEnergia(e1.getEnergia() / 2);
     Assert.assertNotEquals(e1.getEnergiaTope(), e1.getEnergia());
     e1.serEnergizado(100000000);
     Assert.assertEquals(e1.getEnergiaTope(), e1.getEnergia());

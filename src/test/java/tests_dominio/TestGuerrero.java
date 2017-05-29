@@ -18,10 +18,11 @@ public class TestGuerrero {
     Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
 
     Assert.assertTrue(e.getSalud() == 100);
-    if (h.habilidadCasta1(e))
-        Assert.assertTrue(e.getSalud() < 100);
-    else
-        Assert.assertTrue(e.getSalud() == 100);
+    if (h.habilidadCasta1(e)) {
+      Assert.assertTrue(e.getSalud() < 100);
+    } else {
+      Assert.assertTrue(e.getSalud() == 100);
+    }
   }
 
   @Test
@@ -39,17 +40,18 @@ public class TestGuerrero {
     Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
 
     Assert.assertTrue(e.getSalud() == 100);
-    if (h.habilidadCasta3(e))
+    if (h.habilidadCasta3(e)) {
       Assert.assertTrue(e.getSalud() < 100);
-    else
+    } else {
       Assert.assertTrue(e.getSalud() == 100);
+    }
   }
 
   @Test
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100);
     Assert.assertFalse(e.habilidadCasta1(o));
   }
 
@@ -58,7 +60,7 @@ public class TestGuerrero {
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad2PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100);
     Assert.assertFalse(e.habilidadCasta2(o));
   }
 
@@ -67,7 +69,7 @@ public class TestGuerrero {
   public void queUnGuerreroNoPuedaEjecutarSuHabilidad3PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas",new Guerrero(),1);
     Orco o = new Orco("Uruk-Hai",new Hechicero(),1);
-    e.bajarEnergia(100); // Estaba e.setEnergia(0) //
+    e.bajarEnergia(100);
     Assert.assertFalse(e.habilidadCasta3(o));
   }
 }

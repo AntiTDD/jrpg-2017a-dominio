@@ -18,8 +18,8 @@ public class Hechicero extends Casta {
   * @param daño_crit Double que indica el daño critico que tiene este objeto.
   */
   
-  public Hechicero(double prob_crit, double evasion, double daño_crit) {
-    super(prob_crit, evasion, daño_crit);
+  public Hechicero(double probCrit, double evasion, double dañoCrit) {
+    super(probCrit, evasion, dañoCrit);
     this.nombreCasta = "Hechicero";
   }
 
@@ -47,7 +47,7 @@ public class Hechicero extends Casta {
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) { 
-      caster.bajarEnergia(ENERGIA_MINIMA); //Cambie//
+      caster.bajarEnergia(ENERGIA_MINIMA);
       if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia()
           * PLUS_MAGIA)) > ATAQUE_NULO) {
         return true;
@@ -66,7 +66,7 @@ public class Hechicero extends Casta {
   */
   public boolean habilidad2(Personaje caster, Peleable aliado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
-      caster.bajarEnergia(ENERGIA_MINIMA); //Cambie//
+      caster.bajarEnergia(ENERGIA_MINIMA);
       if (((PersonajePadre)aliado).esPersonaje() == true) {
         ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
         return true;
@@ -84,7 +84,7 @@ public class Hechicero extends Casta {
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
-      caster.bajarEnergia(ENERGIA_MINIMA); //Cambie//
+      caster.bajarEnergia(ENERGIA_MINIMA);
       if (((PersonajePadre)atacado).esPersonaje() == true) {
         int energiaRobada = ((Personaje) atacado).serDesernegizado(
             caster.calcularPuntosDeMagia());

@@ -1,6 +1,6 @@
 package dominio;
 
-public abstract class PersonajePadre implements Peleable{
+public abstract class PersonajePadre implements Peleable {
 
   protected String nombre;  
   protected int salud;
@@ -19,40 +19,23 @@ public abstract class PersonajePadre implements Peleable{
   public int getSalud() {
     return salud;
   }
-  
-  /*
-  public void setSalud(final int salud) {
-    this.salud = salud;
-  }
-  */
 
   public int getDefensa() {
     return defensa;
   }
- 
-  /*
-  public void setDefensa(final int defensa) {
-    this.defensa = defensa;
-  } 
-  */
   
   public void subirDefensa(int plus) {
-	 defensa += plus;
+    defensa += plus;
   }
   
   public void bajarDefensa(int reduccion) {
-	 defensa -= reduccion;
+    defensa -= reduccion;
   }
   
   
   public int getFuerza() {
     return fuerza;
   }
-  /*
-  public void setFuerza(final int fuerza) {
-    this.fuerza = fuerza;
-  }
-  */
   
   public void subirFuerza(int plus) {
     fuerza += plus;
@@ -61,12 +44,6 @@ public abstract class PersonajePadre implements Peleable{
   public int getNivel() {
     return nivel;
   }
-
-  /*
-  public void setNivel(final int nivel) {
-    this.nivel = nivel;
-  }
-   */
   
   public boolean estaVivo() {
     return salud > 0;

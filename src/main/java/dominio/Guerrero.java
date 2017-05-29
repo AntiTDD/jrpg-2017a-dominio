@@ -8,7 +8,11 @@ package dominio;
  */
 public class Guerrero extends Casta {
 
-  private final int energiaMinima = 10; 
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private final int energiaMinima = 10; 
   private final int plusAtaque = 2;
   private final int vidaNula = 0;
   private final int defensaNula = 0;
@@ -19,8 +23,8 @@ public class Guerrero extends Casta {
   * 
   * @param daño_crit Double que indica el da�o critico que tiene este objeto.
   */
-  public Guerrero(double prob_crit, double evasion, double daño_crit) {
-    super(prob_crit, evasion, daño_crit);
+  public Guerrero(double probCrit, double evasion, double dañoCrit) {
+    super(probCrit, evasion, dañoCrit);
     this.nombreCasta = "Guerrero";
   }
 
@@ -50,7 +54,7 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {  
     if (caster.getEnergia() > energiaMinima) {
-      caster.bajarEnergia(energiaMinima); //Cambie//
+      caster.bajarEnergia(energiaMinima);
       if (atacado.serAtacado(caster.ataque * plusAtaque) > vidaNula) {
         return true;
       }
@@ -69,8 +73,8 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
-      caster.bajarEnergia(energiaMinima); //Cambie//
-      caster.subirDefensa(caster.getMagia()); //cambie
+      caster.bajarEnergia(energiaMinima);
+      caster.subirDefensa(caster.getMagia());
       return true;
     }
     return false;
@@ -85,12 +89,12 @@ public class Guerrero extends Casta {
   */
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
-      caster.bajarEnergia(energiaMinima); //Cambie//
+      caster.bajarEnergia(energiaMinima);
       if (((PersonajePadre) atacado).esPersonaje() == true) {
-    	int defensa_original = ((Personaje) atacado).getDefensa(); //PREGUNTAR: El casteo deberia ser (PersonajePadre) y hacer que PersonajePadre sea abstracta y que implemente Peleable. En tanto, NPC como Personaje deberian extender solamente a PersonajePadre (sin imeplementar nada mas que Serializable).
-        ((Personaje) atacado).bajarDefensa(((Personaje) atacado).getDefensa()); //se cambio
+        int defensaOriginal = ((Personaje) atacado).getDefensa();
+        ((Personaje) atacado).bajarDefensa(((Personaje) atacado).getDefensa());
         if (atacado.serAtacado(caster.ataque) > defensaNula) {
-          ((Personaje) atacado).subirDefensa(defensa_original); //se cambio
+          ((Personaje) atacado).subirDefensa(defensaOriginal);
           return true;
         }
       }      

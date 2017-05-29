@@ -9,8 +9,8 @@ public class MyRandom {
    * @return Double que indica el numero obtenido al azar.
    */
   public double obtenerDoubleAleatorio() {
-	    return new Random().nextDouble();
-	  }
+    return new Random().nextDouble();
+  }
 
 
   /**

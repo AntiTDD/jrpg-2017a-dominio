@@ -15,10 +15,11 @@ public class NonPlayableCharacter extends PersonajePadre {
     super(nombre);
     this.nivel = nivel;
     int dificultad;
-    if (dificultadNPC == dificultadAleatoria)
+    if (dificultadNPC == dificultadAleatoria) {
       dificultad = aleatorizador.obtenerEnteroAleatorioMenorQue(3);
-    else
+    } else {
       dificultad = dificultadNPC;
+    }
 
     switch (dificultad) {
       case 0:
@@ -57,8 +58,9 @@ public class NonPlayableCharacter extends PersonajePadre {
   public int atacar(Peleable atacado) {
     if (aleatorizador.obtenerDoubleAleatorio() <= 0.15) {
       return atacado.serAtacado((int) (this.getAtaque() * 1.5));
-    } else
+    } else {
       return atacado.serAtacado(this.getAtaque());
+    }
   }
   /**
    * 
@@ -96,8 +98,7 @@ public class NonPlayableCharacter extends PersonajePadre {
   }
   
   @Override
-  public boolean esPersonaje()
-  {
-	  return false;
+  public boolean esPersonaje() {
+    return false;
   }
 }

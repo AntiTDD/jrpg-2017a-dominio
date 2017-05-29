@@ -20,10 +20,11 @@ public class TestOrco {
     o.setTipoDeRandom(new MyRandomStub(1));
 
     Assert.assertTrue(h.getSalud() == 105);
-    if (o.habilidadRaza1(h))
+    if (o.habilidadRaza1(h)) {
       Assert.assertTrue(h.getSalud() == 95); 
-    else
+    } else {
       Assert.assertTrue(o.getSalud() == 105);
+    }
   }
 
   @Test
@@ -32,7 +33,6 @@ public class TestOrco {
     Orco o = new Orco("Nico", 100, 100, 80, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
 
     Assert.assertTrue(h.getSalud() == 100);
-    //o.setSalud(100); // Este metodo demas ya que la salud con que cree al orco ya es 100. //
     if (o.habilidadRaza2(h)) {
       Assert.assertEquals(40, h.getSalud());
       Assert.assertTrue(o.getSalud() == 100);
@@ -47,7 +47,7 @@ public class TestOrco {
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
     Humano e = new Humano("Aragorn",new Guerrero(),1);
-    o.bajarEnergia(100); // Estaba o.setEnergia(0) //
+    o.bajarEnergia(100);
     Assert.assertFalse(o.habilidadRaza1(e));
   }
   
@@ -56,7 +56,7 @@ public class TestOrco {
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
     Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
     Humano e = new Humano("Aragorn",new Guerrero(),1);
-    o.bajarEnergia(100); // Estaba o.setEnergia(0) //
+    o.bajarEnergia(100);
     Assert.assertFalse(o.habilidadRaza2(e));
   }
 }

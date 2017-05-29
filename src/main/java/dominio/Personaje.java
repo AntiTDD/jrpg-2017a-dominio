@@ -51,8 +51,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     Personaje.tablaDeNiveles = new int[101];
     Personaje.tablaDeNiveles[0] = 0;
     Personaje.tablaDeNiveles[1] = 0;
-    for (int i = 2; i < 101; i++)
+    for (int i = 2; i < 101; i++) {
       Personaje.tablaDeNiveles[i] = Personaje.tablaDeNiveles[i - 1] + 50;
+    }
   }
 
   /**.
@@ -153,6 +154,10 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     energia += plus;
   }
   
+  /**<p>
+   * Se reduce la energia en relacion al costo de la habilidad utilizada
+   * </p>
+   */
   public void bajarEnergia(int reduccion) {
     if (reduccion <= energia) {
       energia -= reduccion;
@@ -190,7 +195,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return experiencia;
   }
   
-  public void subirExperiencia(int plus) { // Creo que este metodo debe llamar siempre a subirNivel para chequear si la experiencia nueva de este Personaje condice con un nivel superior al actual. //
+  public void subirExperiencia(int plus) { 
     experiencia += plus;
   }
   
@@ -202,11 +207,10 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return saludTope;
   }
 
-  /*
   public void setSaludTope(int saludTope) {
     this.saludTope = saludTope;
   }
-  */
+  
   
   public void subirSaludTope(int plus) {
     saludTope += plus;
@@ -215,19 +219,19 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public int getEnergiaTope() {
     return energiaTope;
   }
-  /*
+  
   public void setEnergiaTope(int energiaTope) {
     this.energiaTope = energiaTope;
   }
-  */
+  
   
   public void subirEnergiaTope(int plus) {
     energiaTope += plus;
   }
   
-  public void actualizarAtributosPersonaje(HashMap<String,Integer> datosActualizados){
-	salud = datosActualizados.get("salud");
-	energia = datosActualizados.get("energia");
+  public void actualizarAtributosPersonaje(HashMap<String,Integer> datosActualizados) {
+    salud = datosActualizados.get("salud");
+    energia = datosActualizados.get("energia");
   }
   
   /**<p>
@@ -237,8 +241,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    */
   
   public int atacar(Peleable atacado) {
-    if (salud == 0)
+    if (salud == 0) {
       return 0;
+    }
     if (atacado.getSalud() > 0) {
       if (aleatorizador.obtenerDoubleAleatorio() <= this.casta.getProbabilidadGolpeCritico() 
           + this.destreza / 1000) {
@@ -325,11 +330,12 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   public int serRobadoSalud(int daño) {
     daño -= this.defensa;
-    if (daño <= 0)
+    if (daño <= 0) {
       return 0;
-    if ((salud - daño) >= 0)
+    }
+    if ((salud - daño) >= 0) {
       salud -= daño;
-    else {
+    } else {
       daño = salud;
       salud = 0;
     }
@@ -338,11 +344,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   public int serDesernegizado(int daño) {
     daño -= this.defensa;
-      if (daño <= 0)
-        return 0;
-      if ((energia - daño) >= 0)
-        energia -= daño;
-    else {
+    if (daño <= 0) {
+      return 0;
+    }
+    
+    if ((energia - daño) >= 0) {
+      energia -= daño;
+    } else {
       daño = energia;
       energia = 0;
     }
@@ -355,10 +363,11 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * 
    */
   public void serCurado(int salud) {
-    if ((this.salud + salud) <= this.saludTope)
+    if ((this.salud + salud) <= this.saludTope) {
       this.salud += salud;
-    else
+    } else {
       this.salud = this.saludTope;
+    }
   }
 
   /**
@@ -368,14 +377,15 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    */
 
   public void serEnergizado(int energia) {
-    if ((this.energia + energia) <= this.energiaTope)
+    if ((this.energia + energia) <= this.energiaTope) {
       this.energia += energia;
-    else
+    } else {
       this.energia = this.energiaTope;
+    }
   }
 
-  public void crearAlianza(String nombre_alianza) {
-    this.clan = new Alianza(nombre_alianza);
+  public void crearAlianza(String nombreAlianza) {
+    this.clan = new Alianza(nombreAlianza);
     this.clan.añadirPersonaje(this);
   }
 
@@ -398,18 +408,19 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * 
    */
 
-  public boolean aliar(Personaje nuevo_aliado) {
+  public boolean aliar(Personaje nuevoAliado) {
     if (this.clan == null) {
       Alianza a = new Alianza("Alianza 1");
       this.clan = a;
       a.añadirPersonaje(this);
     }  
-    if (nuevo_aliado.clan == null) {
-      nuevo_aliado.clan = this.clan;
-      this.clan.añadirPersonaje(nuevo_aliado);
+    if (nuevoAliado.clan == null) {
+      nuevoAliado.clan = this.clan;
+      this.clan.añadirPersonaje(nuevoAliado);
       return true;
-    } else
+    } else {
       return false;
+    }
   }
 
   /**
@@ -419,12 +430,15 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    */
   
   public void AsignarPuntosSkills(int fuerza, int destreza, int inteligencia) {
-    if (this.fuerza + fuerza <= 200)
+    if (this.fuerza + fuerza <= 200) {
       this.fuerza += fuerza;
-    if (this.destreza + destreza <= 200)
+    }
+    if (this.destreza + destreza <= 200) {
       this.destreza += destreza;
-    if (this.inteligencia + inteligencia <= 200)
+    }
+    if (this.inteligencia + inteligencia <= 200) {
       this.inteligencia += inteligencia;
+    }
     this.modificarAtributos();
   }
 
@@ -509,8 +523,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public abstract boolean habilidadRaza2(Peleable atacado);
   
   @Override
-  public boolean esPersonaje()
-  {
-	  return true;
+  public boolean esPersonaje() {
+    return true;
   }
 }

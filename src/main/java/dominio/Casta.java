@@ -34,14 +34,14 @@ public abstract class Casta implements Serializable {
   * Constructor de objetos Casta los cuales modelan todo lo concerniente a las
   * distintas profesiones de los personajes.
   * un golpe critico.
-  * @param prob_crit Double que indica la chance que tiene este objeto de meter 
+  * @param probCrit Double que indica la chance que tiene este objeto de meter 
   * @param evasion Double que indica la evasion de este objeto.
-  * @param daño_crit Double que indica el da�o critico de este objeto.
+  * @param dañoCrit Double que indica el da�o critico de este objeto.
   */
-  public Casta(double prob_crit, double evasion, double daño_crit) {
-    this.probabilidadGolpeCritico = prob_crit;
+  public Casta(double probCrit, double evasion, double dañoCrit) {
+    this.probabilidadGolpeCritico = probCrit;
     this.probabilidadEvitarDaño = evasion;
-    this.dañoCritico = daño_crit;
+    this.dañoCritico = dañoCrit;
   }
 
   /**
@@ -172,7 +172,7 @@ public abstract class Casta implements Serializable {
   }
   
   public int getBonusDestreza() {
-    if(nombreCasta.equals("Asesino")) {
+    if (nombreCasta.equals("Asesino")) {
       return 5;
     }
 
