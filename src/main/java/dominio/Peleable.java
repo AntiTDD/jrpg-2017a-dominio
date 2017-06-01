@@ -77,4 +77,30 @@ public interface Peleable {
   * @return Un String que representa el nombre de este objeto.
   */
   public String getNombre();
+  
+  /**
+   * Definicion de metodo el cual sirve para agregar un item a este objeto.
+  */
+  public boolean agregarItem(Item i);  
+  
+  /**
+   * Definicion de metodo el cual sirve para actualizar los atributos luego de agregar un 
+     * item a este objeto.
+   * @param i Item el cual tiene los bonus a ser incrementados en los atributos de este objeto.
+   */
+  public void actualizarALaSubaAtributosPorItem(Item i);
+  
+  /**
+   * Definicion de metodo el cual sirve para actualizar los atributos luego de borrarle un 
+     * item a este objeto.
+   * @param i Item el cual tiene los bonus a ser decrementados en los atributos de este objeto.
+   */
+  public void actualizarALaBajaAtributosPorItem(Item i);
+  
+  /**
+   * Definicion de metodo el cual sirve para que este objeto suelte, por decision propia, un item
+     * de su inventario.
+   * @param id Integer el cual identifica el item a eliminar de su inventario.
+   */
+  public void soltarItem(Integer id);
 }

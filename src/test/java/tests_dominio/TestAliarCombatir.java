@@ -1,7 +1,6 @@
 package tests_dominio;
 
 import dominio.*;
-import java.util.LinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 

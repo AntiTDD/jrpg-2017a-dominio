@@ -1,5 +1,9 @@
 package dominio;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class NonPlayableCharacter extends PersonajePadre {
 
   private static final int dificultadAleatoria = -1;
@@ -45,6 +49,16 @@ public class NonPlayableCharacter extends PersonajePadre {
   public int otorgarExp() {
     return this.nivel * 30;
   }
+  
+  
+  public void bajarFuerza(int plus) {
+    if (plus <= fuerza) {
+      fuerza -= plus;
+    } else {
+      fuerza = 0;
+    }
+  }
+  
 
   /**
    * 
@@ -100,5 +114,51 @@ public class NonPlayableCharacter extends PersonajePadre {
   @Override
   public boolean esPersonaje() {
     return false;
+  }
+  
+  /**
+   * Este metodo actualiza los atributos de este objeto en base al item pasado por parametro.
+   * @param i Item el cual modificara los valores de los atributos de este objeto.
+   */
+  @Override
+  public void actualizarALaSubaAtributosPorItem(Item i) {
+    HashMap<String,Integer> bonuses = i.getBonuses();
+    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    while (entradas.hasNext()) {
+      Map.Entry<String, Integer> entradaActual = entradas.next();
+      switch (entradaActual.getKey()) {
+        case "defensa":
+          subirDefensa(entradaActual.getValue());
+          break;
+        case "ataque":
+          subirFuerza(entradaActual.getValue());
+          break;
+        default:
+      }
+    }
+  }
+  
+  
+  
+  /**
+   * Este metodo actualiza los atributos de este objeto en base al item pasado por parametro.
+   * @param i Item el cual modificara los valores de los atributos de este objeto.
+   */
+  @Override
+  public void actualizarALaBajaAtributosPorItem(Item i) {
+    HashMap<String,Integer> bonuses = i.getBonuses();
+    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    while (entradas.hasNext()) {
+      Map.Entry<String, Integer> entradaActual = entradas.next();
+      switch (entradaActual.getKey()) {
+        case "defensa":
+          bajarDefensa(entradaActual.getValue());
+          break;
+        case "ataque":
+          bajarFuerza(entradaActual.getValue());
+          break;
+        default:
+      }
+    }
   }
 }

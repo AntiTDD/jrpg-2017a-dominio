@@ -2,6 +2,8 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public abstract class Personaje extends PersonajePadre implements Serializable {
 
@@ -128,9 +130,36 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public int getAtaque() {
     return ataque;
   }
+  
+  
+  public void subirAtaque(int plus) {
+    ataque += plus;
+  }
+  
+  
+  public void bajarAtaque(int plus) {
+    if (plus <= ataque) {
+      ataque -= plus;
+    } else {
+      ataque = 0;
+    }
+  }
+  
 
   public void setAtaque(int ataque) {
     this.ataque = ataque;
+  }
+  
+  public void subirMagia(int plus) {
+    magia += plus;
+  }
+  
+  public void bajarMagia(int plus) {
+    if (plus <= magia) {
+      magia -= plus;
+    } else {
+      magia = 0;
+    }
   }
 
   public int getMagia() {
@@ -216,6 +245,14 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     saludTope += plus;
   }
   
+  public void bajarSaludTope(int plus) {
+    if (plus <= saludTope) {
+      saludTope -= plus;
+    } else {
+      saludTope = 0;
+    }
+  }
+  
   public int getEnergiaTope() {
     return energiaTope;
   }
@@ -227,6 +264,14 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   
   public void subirEnergiaTope(int plus) {
     energiaTope += plus;
+  }
+  
+  public void bajarEnergiaTope(int plus) {
+    if (plus <= energiaTope) {
+      energiaTope -= plus;
+    } else {
+      energiaTope = 0;
+    }
   }
   
   public void actualizarAtributosPersonaje(HashMap<String,Integer> datosActualizados) {
@@ -526,4 +571,62 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   public boolean esPersonaje() {
     return true;
   }
+  
+  
+  
+  
+  @Override
+  public void actualizarALaSubaAtributosPorItem(Item i) {
+    HashMap<String,Integer> bonuses = i.getBonuses();
+    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    while (entradas.hasNext()) {
+      Map.Entry<String, Integer> entradaActual = entradas.next();
+      switch (entradaActual.getKey()) {
+        case "defensa":
+          subirDefensa(entradaActual.getValue());
+          break;
+        case "ataque":
+          subirAtaque(entradaActual.getValue());
+          break;
+        case "magia":
+          subirMagia(entradaActual.getValue());
+          break;
+        case "saludTope":
+          subirSaludTope(entradaActual.getValue());
+          break;
+        case "energiaTope":
+          subirEnergiaTope(entradaActual.getValue());
+          break;          
+        default:
+      }
+    }
+  }
+  
+  
+  @Override
+  public void actualizarALaBajaAtributosPorItem(Item i) {
+    HashMap<String,Integer> bonuses = i.getBonuses();
+    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    while (entradas.hasNext()) {
+      Map.Entry<String, Integer> entradaActual = entradas.next();
+      switch (entradaActual.getKey()) {
+        case "defensa":
+          bajarDefensa(entradaActual.getValue());
+          break;
+        case "ataque":
+          bajarAtaque(entradaActual.getValue());
+          break;
+        case "magia":
+          bajarMagia(entradaActual.getValue());
+          break;
+        case "saludTope":
+          bajarSaludTope(entradaActual.getValue());
+          break;
+        case "energiaTope":
+          bajarEnergiaTope(entradaActual.getValue());
+          break;          
+        default:
+      }
+    }
+  }  
 }
