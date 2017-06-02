@@ -3,8 +3,9 @@ package dominio;
 import java.io.Serializable;
 
 /**
- * Clase abstracta que engloba la casta a la que pertenece cada personaje en el juego.
- * 
+ * Clase abstracta que engloba la casta a la que pertenece cada personaje
+   * en el juego.
+ *
  */
 public abstract class Casta implements Serializable {
 
@@ -34,7 +35,7 @@ public abstract class Casta implements Serializable {
   * Constructor de objetos Casta los cuales modelan todo lo concerniente a las
   * distintas profesiones de los personajes.
   * un golpe critico.
-  * @param probCrit Double que indica la chance que tiene este objeto de meter 
+  * @param probCrit Double que indica la chance que tiene este objeto de meter
   * @param evasion Double que indica la evasion de este objeto.
   * @param dañoCrit Double que indica el da�o critico de este objeto.
   */
@@ -77,7 +78,7 @@ public abstract class Casta implements Serializable {
   * @return Booleano que indica si se ejecuta la habilidad2, o no.
   */
   public abstract boolean habilidad3(Personaje caster, Peleable atacado);
-  
+
 
   /**
   * Metodo el cual sirve para obtener el nombre de este objeto.<br>
@@ -114,7 +115,7 @@ public abstract class Casta implements Serializable {
   * este objeto.<br>Devuelve un void.
   * @param probabilidadGolpeCritico Double que indica la probabilidad de golpe
   */
-  
+
   public void setProbabilidadGolpeCritico(double probabilidadGolpeCritico) {
     this.probabilidadGolpeCritico = probabilidadGolpeCritico;
   }
@@ -126,7 +127,7 @@ public abstract class Casta implements Serializable {
   * critico.
   * @return Double indicando la probabilidad que tiene este objeto de evitar
   */
-  
+
   public double getProbabilidadEvitarDaño() {
     return probabilidadEvitarDaño;
   }
@@ -160,9 +161,9 @@ public abstract class Casta implements Serializable {
   public void setDañoCritico(double dañoCritico) {
     this.dañoCritico = dañoCritico;
   }
-  
-  
-  
+
+
+
   public int getBonusFuerza() {
     if (nombreCasta.equals("Guerrero")) {
       return 5;
@@ -170,7 +171,7 @@ public abstract class Casta implements Serializable {
 
     return 0;
   }
-  
+
   public int getBonusDestreza() {
     if (nombreCasta.equals("Asesino")) {
       return 5;
@@ -178,13 +179,12 @@ public abstract class Casta implements Serializable {
 
     return 0;
   }
-  
+
   public int getBonusInteligencia() {
     if (nombreCasta.equals("Hechicero")) {
       return 5;
     }
-  
+
     return 0;
   }
-  
 }

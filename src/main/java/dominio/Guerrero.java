@@ -8,11 +8,8 @@ package dominio;
  */
 public class Guerrero extends Casta {
 
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-private final int energiaMinima = 10; 
+  private static final long serialVersionUID = 1L;
+  private final int energiaMinima = 10;
   private final int plusAtaque = 2;
   private final int vidaNula = 0;
   private final int defensaNula = 0;
@@ -20,7 +17,7 @@ private final int energiaMinima = 10;
   * Constructor de objetos de profesion Guerrero.
   * @param prob_crit Double que indica la probabilidad de meter un critico que
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * 
+  *
   * @param daño_crit Double que indica el da�o critico que tiene este objeto.
   */
   public Guerrero(double probCrit, double evasion, double dañoCrit) {
@@ -43,7 +40,7 @@ private final int energiaMinima = 10;
     habilidadesCasta[2] = "Ignorar Defensa";
   }
 
-  
+
   /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Guerrero le mete, o no, un ataque doble a su oponente que es un objeto
@@ -52,7 +49,7 @@ private final int energiaMinima = 10;
   * @param atacado Objeto Peleable el cual es el atacado.<br>Puede ser atacado
   * @return Booleano que indica si se ejecuta un ataque doble.
   */
-  public boolean habilidad1(Personaje caster, Peleable atacado) {  
+  public boolean habilidad1(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {
       caster.bajarEnergia(energiaMinima);
       if (atacado.serAtacado(caster.ataque * plusAtaque) > vidaNula) {
@@ -61,7 +58,7 @@ private final int energiaMinima = 10;
     }
     return false;
   }
-  
+
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede
   * aumentar la defensa del objeto Peleable que es el destinatario. Por ser
@@ -79,7 +76,7 @@ private final int energiaMinima = 10;
     }
     return false;
   }
-  
+
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, atacar ignorando la defensa del objeto atacado.
@@ -97,7 +94,7 @@ private final int energiaMinima = 10;
           ((Personaje) atacado).subirDefensa(defensaOriginal);
           return true;
         }
-      }      
+      }
 
     }
     return false;

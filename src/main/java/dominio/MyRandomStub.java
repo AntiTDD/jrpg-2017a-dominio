@@ -7,7 +7,7 @@ public class MyRandomStub extends MyRandom {
   public MyRandomStub(int numero) {
     this.numero = numero;
   }
-  
+
   /**
    * Metodo que devuelve el valor del parametro al haber creado este objeto.
    * @return Devuelve un Double el cual es el double con que se instancio este objeto.
@@ -16,8 +16,8 @@ public class MyRandomStub extends MyRandom {
 
     return numero;
   }
-  
-  
+
+
   /**
    * Metodo que devuelve un double al azar comprendido entre 0 y el valor
      * del parametro.
@@ -29,12 +29,12 @@ public class MyRandomStub extends MyRandom {
       throw new ArithmeticException("Esta clase solo se usa en testeos."
         + " Ingresar parametro entre 0 y 1, ambos inclusive.");
     }
-    
+
     int real = (int) (100 * maximo);
     MyRandom al = new MyRandom();
     real = al.obtenerEnteroAleatorioMenorQue(real);
     double resultado = (double) (real / 100);
-    
+
     return resultado;
   }
   */
@@ -44,10 +44,11 @@ public class MyRandomStub extends MyRandom {
      * construyo el metodo.
    * @param maximo Entero que aca no sirve para nada mas que para sobreescribir
      * este metodo por el de MyRandom.
-   * @return Entero que indica el valor de parametro cuando se construyo este objeto.
+   * @return Entero que indica el valor de parametro cuando se construyo este
+     * objeto.
    */
   public int obtenerEnteroAleatorioMenorQue(int maximo) {
-    
+
     return numero; // Asi como devuelvo numero, podria devolver cualquier otro. //
   }
 }

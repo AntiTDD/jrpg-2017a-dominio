@@ -15,9 +15,11 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
    * Constructor de objetos Item
    * @param id Integer que identifica a este objeto.
    * @param nombre String con el nombre del Item.
-   * @param bonuses HashMap<String,Integer> cuya clave es un String que refiere a un atributo.
-     * y un Integer que es el valor del incremento (o decremento) de ese atributo.
-   * @param ubicacion Integer que refiere a la posicion de este objeto en el cuerpo del Personaje.
+   * @param bonuses HashMap<String,Integer> cuya clave es un String que refiere
+     * a un atributo y un Integer que es el valor del incremento (o decremento)
+       * de ese atributo.
+   * @param ubicacion Integer que refiere a la posicion de este objeto en el
+     * cuerpo del Personaje.
    */
   public Item(Integer id, String nombre, HashMap<String,Integer> bonuses, Integer uniocEnElCuerpo) {
     this.id = id;
@@ -25,14 +27,15 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
     this.bonuses = bonuses;
     this.ubicEnElCuerpo = ubicEnElCuerpo;
   }
-  
-  
+
+
   /**
-   * Constructor de objetos Item
-   * @param id Integer que identifica a este objeto.
-   * @param nombre String con el nombre del Item.
-   * @param ubicacion Integer que refiere a la posicion de este objeto en el cuerpo del Personaje.
-   */
+  * Constructor de objetos Item
+  * @param id Integer que identifica a este objeto.
+  * @param nombre String con el nombre del Item.
+  * @param ubicacion Integer que refiere a la posicion de este objeto en el cuerpo
+  * del Personaje.
+  */
   public Item(Integer id, String nombre, Integer ubicEnElCuerpo) {
     this.id = id;
     this.nombre = nombre;
@@ -50,12 +53,12 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
   public Integer getUbicEnElCuerpo() {
     return ubicEnElCuerpo;
   }
-  
+
   public HashMap<String, Integer> getBonuses() {
     return bonuses;
   }
-  
-  
+
+
   /**
    * Metodo que sirve para agregar un solo atributo a este objeto.
    * @param atributo String que refiere al atributo a ser seteado.
@@ -68,17 +71,17 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
 
   /**
   * Metodo que sirve para agregar más de un atributo a este objeto.
-  * @param hashDeBonuses HashMap<String,Integer> cuya clave contiene el atributo a ser
-    * seteado e Integer que contiene el valor que tendra dicho atributo.
+  * @param hashDeBonuses HashMap<String,Integer> cuya clave contiene el atributo
+    * a ser seteado e Integer que contiene el valor que tendra dicho atributo.
   */
   public void agregarBonus(HashMap<String,Integer> hashDeBonuses) {
     Iterator<Map.Entry<String,Integer>> entradas = hashDeBonuses.entrySet().iterator();
     while (entradas.hasNext()) {
-      Map.Entry<String,Integer> entradaActual = entradas.next();
+      Map.Entry<String, Integer> entradaActual = entradas.next();
       bonuses.put(entradaActual.getKey(), entradaActual.getValue()); // En caso de que alguna clave de "hashDeBonuses" estuviese tambien en "bonuses", al hacer este put no estaria ingresandose esa entrada porque HashMap no permite claves repetidas. //
-    }    
+    }
   }
-  
+
   /*// NO BORRAR. La dejo comentada porque no estoy seguro que se pueda modificar el bonus de los atributos. //
   public void modificarBonus(String atributo, Integer cant) {
     bonuses.replace(atributo, cant);

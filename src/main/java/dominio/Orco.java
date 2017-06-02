@@ -17,7 +17,7 @@ public class Orco extends Personaje {
   * @param casta Objeto de tipo Casta que indica la profesion a la que
   * @param id Entero que identifica univocamente a este objeto.
   */
-  
+
   public Orco(String nombre, Casta casta, int id) {
     super(nombre, casta, id ,"Orco","Golpe Defensa","Mordisco de Vida");
     final int diez = 10;
@@ -74,10 +74,10 @@ public class Orco extends Personaje {
   * @param atacado Objeto Peleable el cual es el destinatario del Mordisco de
   * @return Booleano que indica si Mordisco de Vida pudo llevarse a cabo o no.
   */
-  
+
   public boolean habilidadRaza2(Peleable atacado) {
     if (this.getEnergia() > ENERGIA_MINIMA) { 
-      this.bajarEnergia(ENERGIA_MINIMA); //Cambie//
+      this.bajarEnergia(ENERGIA_MINIMA);
       int dañoCausado = atacado.serAtacado(this.getFuerza());
       if (dañoCausado > ATAQUE_NULO) {
         this.serCurado(dañoCausado);

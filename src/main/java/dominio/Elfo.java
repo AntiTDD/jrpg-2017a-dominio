@@ -12,15 +12,16 @@ public class Elfo extends Personaje {
   /**
    * Constructor de objetos de raza Elfo.
    * @param nombre String que indica el nombre de este objeto.
-   * @param casta Objeto de tipo Casta que indica la profesion a la que pertenece
+   * @param casta Objeto de tipo Casta que indica la profesion a la que
+     * pertenece
    * @param id Entero que identifica univocamente a este objeto.
    */
   public Elfo(String nombre, Casta casta, int id) {
-   
+
     super(nombre,casta,id,"Elfo","Golpe Level","Ataque Bosque"); 
     salud = saludTope;
     energia = energiaTope;
-   
+
   }
 
 
@@ -42,7 +43,7 @@ public class Elfo extends Personaje {
         super(nombre, salud, energia, fuerza, destreza, inteligencia, casta,
           experiencia, nivel, idPersonaje,"Elfo","Golpe Level","Ataque Bosque");
   }
-  
+
   /**
   * El presente metodo devuelve un booleano que indica si este objeto Elfo
   * puede,o no, asestar un golpe que sea acorde a su nivel en el juego. Como el
@@ -52,7 +53,7 @@ public class Elfo extends Personaje {
   * @return Booleano que indica si el golpe por nivel pudo llevarse a cabo o no.
   */
   public boolean habilidadRaza1(Peleable atacado) {
-    if (this.getEnergia() > energiaMinima) {  
+    if (this.getEnergia() > energiaMinima) {
       this.bajarEnergia(energiaMinima); //Cambie//
       if (atacado.serAtacado(this.getFuerza() + this.getNivel() * energiaMinima) > 0) {
         return true;

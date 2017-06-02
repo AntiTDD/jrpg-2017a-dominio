@@ -6,7 +6,7 @@ package dominio;
   * de casta Asesino, como Guerrero o Hechicero. Idem para los personajes Elfo y
   * Humano.
   */
-public class Hechicero extends Casta {  
+public class Hechicero extends Casta {
   private static final long serialVersionUID = 1L;
   private static final int ENERGIA_MINIMA = 10; 
   private static final float PLUS_MAGIA = 1.5f;
@@ -46,7 +46,7 @@ public class Hechicero extends Casta {
   * @return Booleano que indica si se ejecuta un ataque con bola de fuego.
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
-    if (caster.getEnergia() > ENERGIA_MINIMA) { 
+    if (caster.getEnergia() > ENERGIA_MINIMA) {
       caster.bajarEnergia(ENERGIA_MINIMA);
       if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia()
           * PLUS_MAGIA)) > ATAQUE_NULO) {
@@ -56,7 +56,7 @@ public class Hechicero extends Casta {
     return false;
   }
 
-  
+
   /**
   * El presente metodo devuelve un booleano indicando si este objeto puede,
   * o no, curar a un aliado o a si mismo.
@@ -93,8 +93,8 @@ public class Hechicero extends Casta {
         caster.serEnergizado(energiaRobada);
         caster.serCurado(saludRobada);
         return true; 
-      }      
-    }    
+      }
+    }
     return false;
   }
 }

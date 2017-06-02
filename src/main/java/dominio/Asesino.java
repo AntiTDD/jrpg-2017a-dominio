@@ -24,7 +24,7 @@ public class Asesino extends Casta {
     super(prob_crit, evasion, daño_crit);
     this.nombreCasta = "Asesino";
   }
-  
+ 
 
   /**
   * Constructor de objetos de profesion Asesino.
@@ -42,13 +42,14 @@ public class Asesino extends Casta {
   /**
   * El presente metodo devuelve un booleano indicando si este objeto de casta
   * Asesino le mete, o no, un golpe critico al atacado.
-  * Puede ser atacado tanto un Personaje como un NPC, por esto es un objeto Peleable.
+  * Puede ser atacado tanto un Personaje como un NPC, por esto es un objeto
+    * Peleable.
   * @param caster Objeto Personaje el cual ataca.
-  * @param atacado Objeto Peleable el cual es el atacado. 
+  * @param atacado Objeto Peleable el cual es el atacado.
   * @return Booleano que indica si se ejecuta un golpe critico.
   */
   public boolean habilidad1(Personaje caster, Peleable atacado) {
-    if (caster.getEnergia() > energiaMinima) {  
+    if (caster.getEnergia() > energiaMinima) {
       caster.bajarEnergia(energiaMinima);
       if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0) {
         return true;
@@ -66,7 +67,7 @@ public class Asesino extends Casta {
   * @param caster Objeto Personaje el cual intenta subir la evasion.
   * @param atacado Objeto Peleable al cual se le intenta subir la evasion.
   * @return Booleano que indica si este objeto pudo subir la evasion a su
-  * 
+  *
   */
   public boolean habilidad2(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > energiaMinima) {

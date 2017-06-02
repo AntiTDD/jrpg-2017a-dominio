@@ -9,12 +9,13 @@ public class NonPlayableCharacter extends PersonajePadre {
   private static final int dificultadAleatoria = -1;
   /**<p>
   *  Construye al NPC a partir de una dificultad Aleatoria estatica dada,
-  *  si la dificultad aleatoria del parametro es igual a la aleatoria, le asignara
-  *  un valor random entre 1 y 3 para setear los valores de fuerza, defensa y salud que seran
-  *  distintos dependiendo del valor obtenido.
+  *  si la dificultad aleatoria del parametro es igual a la aleatoria,
+    *  le asignara un valor random entre 1 y 3 para setear los valores de
+      *  fuerza, defensa y salud que seran distintos dependiendo del valor
+        *  obtenido.
    </p>
   */
-  
+
   public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
     super(nombre);
     this.nivel = nivel;
@@ -49,8 +50,8 @@ public class NonPlayableCharacter extends PersonajePadre {
   public int otorgarExp() {
     return this.nivel * 30;
   }
-  
-  
+
+
   public void bajarFuerza(int plus) {
     if (plus <= fuerza) {
       fuerza -= plus;
@@ -58,16 +59,12 @@ public class NonPlayableCharacter extends PersonajePadre {
       fuerza = 0;
     }
   }
-  
+
 
   /**
-   * 
-   * <p> 
    * La probabilidad de golpe critico para todos los NPC sera del 15%.
    * de da�o menor, este se incrementara en un 50%.
    * De lo contrario, el ataque estara basado en la fuerza del NPC.
-   * </p>
-   * 
    */
   public int atacar(Peleable atacado) {
     if (aleatorizador.obtenerDoubleAleatorio() <= 0.15) {
@@ -77,12 +74,11 @@ public class NonPlayableCharacter extends PersonajePadre {
     }
   }
   /**
-   * 
-   * <p> cuando ataquen al NPC, el da�o se calcula en base a su defensa.
+   *
+   * Cuando ataquen al NPC, el da�o se calcula en base a su defensa.
    * Si la defensa es mayor que su da�o no recibira el golpe.
-   * si el daño es mayor a la salud , su salud quedara en 0 sino se le restara el daño.
-   * </p>
-   * 
+   * Si el daño es mayor a la salud , su salud quedara en 0 sino se le restara
+     * el daño.
    */
 
   public int serAtacado(int daño) {
@@ -102,20 +98,21 @@ public class NonPlayableCharacter extends PersonajePadre {
   public void ganarExperiencia(int exp) {
 
   }
-  
+
   public int getAtaque() {
     return fuerza;
-  }                        
-  
+  }
+
   public void setAtaque(int ataque) {
     this.fuerza = ataque;
   }
-  
+
   @Override
   public boolean esPersonaje() {
     return false;
   }
-  
+
+
   /**
    * Este metodo actualiza los atributos de este objeto en base al item pasado por parametro.
    * @param i Item el cual modificara los valores de los atributos de este objeto.
@@ -137,12 +134,13 @@ public class NonPlayableCharacter extends PersonajePadre {
       }
     }
   }
-  
-  
-  
+
+
   /**
-   * Este metodo actualiza los atributos de este objeto en base al item pasado por parametro.
-   * @param i Item el cual modificara los valores de los atributos de este objeto.
+   * Este metodo actualiza los atributos de este objeto en base al item pasado
+     * por parametro.
+   * @param i Item el cual modificara los valores de los atributos de este
+     * objeto.
    */
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
