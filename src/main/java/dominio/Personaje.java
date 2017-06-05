@@ -203,7 +203,6 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
-
   public int getEnergia() {
     return energia;
   }
@@ -562,8 +561,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   @Override
   public void actualizarALaSubaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonuses = i.getBonuses();
-    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    HashMap<String,Integer> bonus = i.getbonus();
+    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {
@@ -590,8 +589,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonuses = i.getBonuses();
-    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    HashMap<String,Integer> bonus = i.getbonus();
+    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {

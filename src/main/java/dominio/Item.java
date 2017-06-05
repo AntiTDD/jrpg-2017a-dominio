@@ -8,23 +8,23 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
 	
   private Integer id;
   private String nombre;
-  private HashMap<String,Integer> bonuses;
+  private HashMap<String,Integer> bonus;
   private Integer ubicEnElCuerpo;
 
   /**
    * Constructor de objetos Item
    * @param id Integer que identifica a este objeto.
    * @param nombre String con el nombre del Item.
-   * @param bonuses HashMap<String,Integer> cuya clave es un String que refiere
+   * @param bonus HashMap<String,Integer> cuya clave es un String que refiere
      * a un atributo y un Integer que es el valor del incremento (o decremento)
        * de ese atributo.
    * @param ubicacion Integer que refiere a la posicion de este objeto en el
      * cuerpo del Personaje.
    */
-  public Item(Integer id, String nombre, HashMap<String,Integer> bonuses, Integer uniocEnElCuerpo) {
+  public Item(Integer id, String nombre, HashMap<String,Integer> bonus, Integer ubicEnElCuerpo) {
     this.id = id;
     this.nombre = nombre;
-    this.bonuses = bonuses;
+    this.bonus = bonus;
     this.ubicEnElCuerpo = ubicEnElCuerpo;
   }
 
@@ -54,8 +54,8 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
     return ubicEnElCuerpo;
   }
 
-  public HashMap<String, Integer> getBonuses() {
-    return bonuses;
+  public HashMap<String, Integer> getbonus() {
+    return bonus;
   }
 
 
@@ -65,26 +65,26 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
    * @param cant Integer que contiene el valor con el cual el atributo sera iniciado.
    */
   public void agregarBonus(String atributo, Integer cant) {
-    bonuses.put(atributo, cant); // Por HashMap no permitir claves duplicadas, en caso de que se quisiese ingresar un atributo (clave) que ya existe en "bonuses", simplemente no se agrega sin tirar error ni nada. //
+    bonus.put(atributo, cant); // Por HashMap no permitir claves duplicadas, en caso de que se quisiese ingresar un atributo (clave) que ya existe en "bonus", simplemente no se agrega sin tirar error ni nada. //
   }
 
 
   /**
   * Metodo que sirve para agregar más de un atributo a este objeto.
-  * @param hashDeBonuses HashMap<String,Integer> cuya clave contiene el atributo
+  * @param hashDebonus HashMap<String,Integer> cuya clave contiene el atributo
     * a ser seteado e Integer que contiene el valor que tendra dicho atributo.
   */
-  public void agregarBonus(HashMap<String,Integer> hashDeBonuses) {
-    Iterator<Map.Entry<String,Integer>> entradas = hashDeBonuses.entrySet().iterator();
+  public void agregarBonus(HashMap<String,Integer> hashDebonus) {
+    Iterator<Map.Entry<String,Integer>> entradas = hashDebonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
-      bonuses.put(entradaActual.getKey(), entradaActual.getValue()); // En caso de que alguna clave de "hashDeBonuses" estuviese tambien en "bonuses", al hacer este put no estaria ingresandose esa entrada porque HashMap no permite claves repetidas. //
+      bonus.put(entradaActual.getKey(), entradaActual.getValue()); // En caso de que alguna clave de "hashDebonus" estuviese tambien en "bonus", al hacer este put no estaria ingresandose esa entrada porque HashMap no permite claves repetidas. //
     }
   }
 
   /*// NO BORRAR. La dejo comentada porque no estoy seguro que se pueda modificar el bonus de los atributos. //
   public void modificarBonus(String atributo, Integer cant) {
-    bonuses.replace(atributo, cant);
+    bonus.replace(atributo, cant);
   }
   */
   
@@ -94,7 +94,7 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
    * @return Boolean indicando si el atributo existe o no.
    */
   public boolean existeAtributo(String atributo) {
-    return bonuses.containsKey(atributo);
+    return bonus.containsKey(atributo);
   }
 
 }
