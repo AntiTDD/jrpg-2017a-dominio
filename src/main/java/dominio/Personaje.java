@@ -561,7 +561,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   @Override
   public void actualizarALaSubaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getbonus();
+    HashMap<String,Integer> bonus = i.getBonus();
     Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
@@ -589,7 +589,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getbonus();
+    HashMap<String,Integer> bonus = i.getBonus();
     Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();

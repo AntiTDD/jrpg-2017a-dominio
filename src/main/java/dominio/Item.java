@@ -6,8 +6,7 @@ import java.util.Map;
 
 public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "ataque". Y en caso de que un NPC tenga equipado un item con modificacion de "ataque", le subo la fuerza ya que en éstos la fuerza es proporcional al "ataque". 
 	
-  private Integer id;
-  private String nombre;
+  private int id;
   private HashMap<String,Integer> bonus;
   private Integer ubicEnElCuerpo;
 
@@ -21,9 +20,8 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
    * @param ubicacion Integer que refiere a la posicion de este objeto en el
      * cuerpo del Personaje.
    */
-  public Item(Integer id, String nombre, HashMap<String,Integer> bonus, Integer ubicEnElCuerpo) {
+  public Item(Integer id, HashMap<String,Integer> bonus, Integer ubicEnElCuerpo) {
     this.id = id;
-    this.nombre = nombre;
     this.bonus = bonus;
     this.ubicEnElCuerpo = ubicEnElCuerpo;
   }
@@ -36,25 +34,20 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
   * @param ubicacion Integer que refiere a la posicion de este objeto en el cuerpo
   * del Personaje.
   */
-  public Item(Integer id, String nombre, Integer ubicEnElCuerpo) {
+  public Item(Integer id, Integer ubicEnElCuerpo) {
     this.id = id;
-    this.nombre = nombre;
     this.ubicEnElCuerpo = ubicEnElCuerpo;
   }
 
-  public Integer getId() {
+  public int getId() {
     return id;
-  }
-
-  public String getNombre() {
-    return nombre;
   }
 
   public Integer getUbicEnElCuerpo() {
     return ubicEnElCuerpo;
   }
 
-  public HashMap<String, Integer> getbonus() {
+  public HashMap<String, Integer> getBonus() {
     return bonus;
   }
 
@@ -76,6 +69,7 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
   */
   public void agregarBonus(HashMap<String,Integer> hashDebonus) {
     Iterator<Map.Entry<String,Integer>> entradas = hashDebonus.entrySet().iterator();
+    
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       bonus.put(entradaActual.getKey(), entradaActual.getValue()); // En caso de que alguna clave de "hashDebonus" estuviese tambien en "bonus", al hacer este put no estaria ingresandose esa entrada porque HashMap no permite claves repetidas. //

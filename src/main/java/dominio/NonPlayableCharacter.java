@@ -119,8 +119,8 @@ public class NonPlayableCharacter extends PersonajePadre {
    */
   @Override
   public void actualizarALaSubaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonuses = i.getbonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    HashMap<String,Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {
@@ -144,8 +144,8 @@ public class NonPlayableCharacter extends PersonajePadre {
    */
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonuses = i.getbonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonuses.entrySet().iterator();
+    HashMap<String,Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {
