@@ -10,6 +10,10 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
   private HashMap<String,Integer> bonus;
   private Integer ubicEnElCuerpo;
 
+  public Item() {
+	  id = 0;
+	  ubicEnElCuerpo = 0;
+  }
   /**
    * Constructor de objetos Item
    * @param id Integer que identifica a este objeto.
@@ -42,9 +46,17 @@ public class Item { // PREGUNTAR: Asumo que un item no modifica "fuerza", sino "
   public int getId() {
     return id;
   }
+  
+  public void setId(int id) {
+	  this.id = id;
+  }
 
   public Integer getUbicEnElCuerpo() {
     return ubicEnElCuerpo;
+  }
+  
+  public void setBonus(HashMap<String, Integer> bonus) {
+	  this.bonus = bonus;
   }
 
   public HashMap<String, Integer> getBonus() {
