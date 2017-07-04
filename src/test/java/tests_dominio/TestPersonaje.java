@@ -86,7 +86,7 @@ public class TestPersonaje {
  
   @Test
   public void testeoGetySet() {
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
 
     e.setNombre("Lucas");
     e.setNombreRaza("Elfo Junior");
@@ -120,8 +120,8 @@ public class TestPersonaje {
 
   @Test
   public void testeoRestablecesSalud() {
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
@@ -135,7 +135,7 @@ public class TestPersonaje {
 
   @Test
   public void testeoPuedoAtacar() { 
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
 
     e.bajarEnergia(79);
 
@@ -146,7 +146,7 @@ public class TestPersonaje {
 
   @Test
   public void testeoNoPuedoAtacar() { 
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
 
     e.bajarEnergia(100);
 
@@ -155,29 +155,30 @@ public class TestPersonaje {
   }
 
   @Test
-  public void testeoEstaVivo() { 
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
-    Orco o = new Orco("Uruk-Hai",10000,10000,10000,10000,10000,new Guerrero(),10000,10000,1);
+  public void testeoEstaVivo() {
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Orco o = new Orco("Uruk-Hai", 10000, 10000,
+                      10000, 10000, 10000, new Guerrero(), 10000, 10000, 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
-    
+
     Assert.assertTrue(e.estaVivo());
-    
+
     o.atacar(e);
-    
+
     Assert.assertFalse(e.estaVivo());
   }
-  
+
   @Test
   public void testeoSerCurado() {
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
     o.atacar(e);
     Assert.assertEquals(93, e.getSalud());
-    
+
     e.serCurado(4);
 
     Assert.assertTrue(e.getSalud() == 97);
@@ -185,8 +186,8 @@ public class TestPersonaje {
 
   @Test
   public void testeoSerCuradoTope() {
-    Elfo e = new Elfo("Secchik",new Asesino(),23);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
@@ -200,8 +201,8 @@ public class TestPersonaje {
 
   @Test
   public void testeoDistancias() { 
-    Elfo e1 = new Elfo("Secchik",new Asesino(),23);
-    Elfo e2 = new Elfo("ElfoRand",new Asesino(),23);
+    Elfo e1 = new Elfo("Secchik", new Asesino(), 23);
+    Elfo e2 = new Elfo("ElfoRand", new Asesino(), 23);
 
     Assert.assertTrue(e1.distanciaCon(e2) == 0);
 
@@ -209,7 +210,7 @@ public class TestPersonaje {
 
   @Test
   public void testeoAlianza() { 
-    Elfo e1 = new Elfo("Secchik",new Asesino(),23);
+    Elfo e1 = new Elfo("Secchik", new Asesino(), 23);
 
     e1.crearAlianza("AntiTDD");
 
@@ -267,7 +268,7 @@ public class TestPersonaje {
   @Test
   public void queUnPersonajeConAltaProbabilidadDeEvitarElDañoNoPuedaSerAtacado() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
-    Elfo e2 = new Elfo("La mole Moli",new Guerrero(1000,10000000,1000),1);
+    Elfo e2 = new Elfo("La mole Moli", new Guerrero(1000, 10000000, 1000), 1);
     Assert.assertEquals(0, e1.atacar(e2));
   }
 

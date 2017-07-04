@@ -29,8 +29,10 @@ public class TestOrco {
 
   @Test
   public void testMordiscoDeVida() {
-    Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
-    Orco o = new Orco("Nico", 100, 100, 80, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
+    Humano h = new Humano("Nico", 100, 100,
+                          55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
+    Orco o = new Orco("Nico", 100, 100,
+                          80, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
 
     Assert.assertTrue(h.getSalud() == 100);
     if (o.habilidadRaza2(h)) {
@@ -45,8 +47,8 @@ public class TestOrco {
 
   @Test
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    Humano e = new Humano("Aragorn",new Guerrero(),1);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
+    Humano e = new Humano("Aragorn", new Guerrero(), 1);
     o.bajarEnergia(100);
     Assert.assertFalse(o.habilidadRaza1(e));
   }
@@ -54,8 +56,8 @@ public class TestOrco {
 
   @Test
   public void queUnOrcoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
-    Humano e = new Humano("Aragorn",new Guerrero(),1);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
+    Humano e = new Humano("Aragorn", new Guerrero(), 1);
     o.bajarEnergia(100);
     Assert.assertFalse(o.habilidadRaza2(e));
   }

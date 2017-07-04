@@ -5,42 +5,81 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * The Class Personaje.
+ */
 public abstract class Personaje extends PersonajePadre implements Serializable {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The energia. */
   protected int energia;
+
+  /** The ataque. */
   protected int ataque;
+
+  /** The magia. */
   protected int magia;
-  
+
+  /** The nombre raza. */
   protected String nombreRaza;
-  
+
+  /** The salud tope. */
   protected int saludTope;
+
+  /** The energia tope. */
   protected int energiaTope;
 
 
+  /** The destreza. */
   protected int destreza;
+
+  /** The inteligencia. */
   protected int inteligencia;
+
+  /** The casta. */
   protected Casta casta;
 
+  /** The x. */
   protected int x;
+
+  /** The y. */
   protected int y;
 
+  /** The experiencia. */
   protected int experiencia;
 
 
+  /** The id personaje. */
   protected int idPersonaje;
+
+  /** The Constant HABILIDADES. */
   protected static final int HABILIDADES = 2;
 
+  /** The clan. */
   protected Alianza clan = null;
-  public static int tablaDeNiveles[];
 
+  /** The tabla de niveles. */
+  public static int tablaDeNiveles [];
+
+  /** The habilidades raza. */
   protected String[] habilidadesRaza;
 
+  /**
+   * Gets the habilidades raza.
+   *
+   * @return the habilidades raza
+   */
   public String[] getHabilidadesRaza() {
     return habilidadesRaza;
   }
 
+  /**
+   * Gets the habilidades casta.
+   *
+   * @return the habilidades casta
+   */
   public String[] getHabilidadesCasta() {
     return casta.getHabilidadesCasta();
   }
@@ -71,7 +110,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @param hab2 String que indica la segunda de las dos habilidades de
      * este objeto.
    */
-  public Personaje(String nombre, Casta casta, int id , String raza, String hab1,String hab2) {
+  public Personaje(String nombre, Casta casta,
+		  int id, String raza, String hab1, String hab2) {
     super(nombre);
     this.casta = casta;
     this.idPersonaje = id;
@@ -97,13 +137,29 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     magia = this.calcularPuntosDeMagia();
   }
 
-  /**.
+  /**
+   * .
    *
+   * @param nombre the nombre
+   * @param salud the salud
+   * @param energia the energia
+   * @param fuerza the fuerza
+   * @param destreza the destreza
+   * @param inteligencia the inteligencia
+   * @param casta the casta
+   * @param experiencia the experiencia
+   * @param nivel the nivel
+   * @param idPersonaje the id personaje
+   * @param raza the raza
+   * @param hab1 the hab 1
+   * @param hab2 the hab 2
    */
-  
-  public Personaje(String nombre, int salud, int energia, int fuerza, int destreza,
+ 
+  public Personaje(String nombre, int salud,
+		  int energia, int fuerza, int destreza,
                    int inteligencia, Casta casta, int experiencia,
-                   int nivel, int idPersonaje , String raza , String hab1, String hab2) {
+                   int nivel, int idPersonaje, String raza,
+                   String hab1, String hab2) {
 
     super(nombre);
     this.salud = salud;
@@ -128,24 +184,47 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     this.asignarHabilidades(hab1, hab2);
   }
 
+  /**
+   * Gets the nombre raza.
+   *
+   * @return the nombre raza
+   */
   public String getNombreRaza() {
     return nombreRaza;
   }
 
+  /**
+   * Sets the nombre raza.
+   *
+   * @param nombreRaza the new nombre raza
+   */
   public void setNombreRaza(String nombreRaza) {
     this.nombreRaza = nombreRaza;
   }
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#getAtaque()
+   */
   public int getAtaque() {
     return ataque;
   }
 
 
+  /**
+   * Subir ataque.
+   *
+   * @param plus the plus
+   */
   public void subirAtaque(int plus) {
     ataque += plus;
   }
 
 
+  /**
+   * Bajar ataque.
+   *
+   * @param plus the plus
+   */
   public void bajarAtaque(int plus) {
     if (plus <= ataque) {
       ataque -= plus;
@@ -155,14 +234,27 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
 
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#setAtaque(int)
+   */
   public void setAtaque(int ataque) {
     this.ataque = ataque;
   }
 
+  /**
+   * Subir magia.
+   *
+   * @param plus the plus
+   */
   public void subirMagia(int plus) {
     magia += plus;
   }
 
+  /**
+   * Bajar magia.
+   *
+   * @param plus the plus
+   */
   public void bajarMagia(int plus) {
     if (plus <= magia) {
       magia -= plus;
@@ -171,29 +263,56 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
+  /**
+   * Gets the magia.
+   *
+   * @return the magia
+   */
   public int getMagia() {
     return magia;
   }
 
+  /**
+   * Sets the magia.
+   *
+   * @param magia the new magia
+   */
   public void setMagia(int magia) {
     this.magia = magia;
   }
 
+  /**
+   * Gets the clan.
+   *
+   * @return the clan
+   */
   public Alianza getClan() {
     return clan;
   }
 
+  /**
+   * Sets the clan.
+   *
+   * @param clan the new clan
+   */
   public void setClan(Alianza clan) {
     this.clan = clan;
     clan.añadirPersonaje(this);
   }
 
+  /**
+   * Subir energia.
+   *
+   * @param plus the plus
+   */
   public void subirEnergia(int plus) {
     energia += plus;
   }
 
   /**
    * Se reduce la energia en relacion al costo de la habilidad utilizada.
+   *
+   * @param reduccion the reduccion
    */
   public void bajarEnergia(int reduccion) {
     if (reduccion <= energia) {
@@ -203,55 +322,120 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
+  /**
+   * Gets the energia.
+   *
+   * @return the energia
+   */
   public int getEnergia() {
     return energia;
   }
 
+  /**
+   * Gets the destreza.
+   *
+   * @return the destreza
+   */
   public int getDestreza() {
     return destreza;
   }
 
+  /**
+   * Subir destreza.
+   *
+   * @param plus the plus
+   */
   public void subirDestreza(int plus) {
     destreza += plus;
   }
 
+  /**
+   * Gets the inteligencia.
+   *
+   * @return the inteligencia
+   */
   public int getInteligencia() {
     return inteligencia;
   }
 
+  /**
+   * Subir inteligencia.
+   *
+   * @param plus the plus
+   */
   public void subirInteligencia(int plus) {
     inteligencia += plus;
   }
 
+  /**
+   * Gets the casta.
+   *
+   * @return the casta
+   */
   public Casta getCasta() {
     return casta;
   }
 
+  /**
+   * Gets the experiencia.
+   *
+   * @return the experiencia
+   */
   public int getExperiencia() {
     return experiencia;
   }
 
+  /**
+   * Subir experiencia.
+   *
+   * @param plus the plus
+   */
   public void subirExperiencia(int plus) { 
     experiencia += plus;
   }
   
+  /**
+   * Gets the id personaje.
+   *
+   * @return the id personaje
+   */
   public int getIdPersonaje() {
     return idPersonaje;
   }
 
+  /**
+   * Gets the salud tope.
+   *
+   * @return the salud tope
+   */
   public int getSaludTope() {
     return saludTope;
   }
 
+  /**
+   * Sets the salud tope.
+   *
+   * @param saludTope the new salud tope
+   */
   public void setSaludTope(int saludTope) {
     this.saludTope = saludTope;
   }
 
 
+  /**
+   * Subir salud tope.
+   *
+   * @param plus the plus
+   */
   public void subirSaludTope(int plus) {
     saludTope += plus;
   }
 
+  /**
+   * Bajar salud tope.
+   *
+   * @param plus the plus
+   */
   public void bajarSaludTope(int plus) {
     if (plus <= saludTope) {
       saludTope -= plus;
@@ -260,19 +444,39 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
+  /**
+   * Gets the energia tope.
+   *
+   * @return the energia tope
+   */
   public int getEnergiaTope() {
     return energiaTope;
   }
 
+  /**
+   * Sets the energia tope.
+   *
+   * @param energiaTope the new energia tope
+   */
   public void setEnergiaTope(int energiaTope) {
     this.energiaTope = energiaTope;
   }
 
 
+  /**
+   * Subir energia tope.
+   *
+   * @param plus the plus
+   */
   public void subirEnergiaTope(int plus) {
     energiaTope += plus;
   }
 
+  /**
+   * Bajar energia tope.
+   *
+   * @param plus the plus
+   */
   public void bajarEnergiaTope(int plus) {
     if (plus <= energiaTope) {
       energiaTope -= plus;
@@ -281,16 +485,26 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
-  public void actualizarAtributosPersonaje(HashMap<String,Integer> datosActualizados) {
+  /**
+   * Actualizar atributos personaje.
+   *
+   * @param datosActualizados the datos actualizados
+   */
+  public void actualizarAtributosPersonaje(
+		  HashMap<String, Integer> datosActualizados) {
     salud = datosActualizados.get("salud");
     energia = datosActualizados.get("energia");
   }
 
-  /**<p>
+  /**
+   * <p>
    * Si la salud es mayor a 0, realizara el ataque en el cual se calculara
-     * si es golpe critico o no dependiendo de la probabilidad de obtener
-       * el mismo y la destreza.
+   * si es golpe critico o no dependiendo de la probabilidad de obtener
+   * el mismo y la destreza.
    * </p>
+   *
+   * @param atacado the atacado
+   * @return the int
    */
 
   public int atacar(Peleable atacado) {
@@ -298,7 +512,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
       return 0;
     }
     if (atacado.getSalud() > 0) {
-      if (aleatorizador.obtenerDoubleAleatorio() <= this.casta.getProbabilidadGolpeCritico() 
+      if (aleatorizador.obtenerDoubleAleatorio()
+    		  <= this.casta.getProbabilidadGolpeCritico()
           + this.destreza / 1000) {
         return atacado.serAtacado(this.golpe_critico());
       } else {
@@ -309,34 +524,68 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
 
 
+  /**
+   * Golpe critico.
+   *
+   * @return the int
+   */
   public int golpe_critico() {
     return (int) (this.ataque * this.getCasta().getDañoCritico());
   }
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#despuesDeTurno()
+   */
   public void despuesDeTurno() {
 
   }
 
+  /**
+   * Puede atacar.
+   *
+   * @return true, if successful
+   */
   public boolean puedeAtacar() {
     return energia > 10;
   }
 
+  /**
+   * Calcular puntos de ataque.
+   *
+   * @return the int
+   */
   public int calcularPuntosDeAtaque() {
     return (int) (this.getFuerza() * 1.5);
   }
 
+  /**
+   * Calcular puntos de defensa.
+   *
+   * @return the int
+   */
   public int calcularPuntosDeDefensa() {
     return (int) (this.getDestreza());
   }
 
+  /**
+   * Calcular puntos de magia.
+   *
+   * @return the int
+   */
   public int calcularPuntosDeMagia() {
     return (int) (this.getInteligencia() * 1.5);
   }
 
+  /**
+   * Restablecer salud.
+   */
   public void restablecerSalud() {
     this.salud = this.saludTope;
   }
 
+  /**
+   * Restablecer energia.
+   */
   public void restablecerEnergia() {
     this.energia = this.energiaTope;
   }
@@ -355,13 +604,17 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   /**
    * <p> cuando ataquen al personaje, el da�o se calcula en base a su defensa.
-   *Si la defensa es mayor que su daño no recibira el golpe.
-   *si el daño es mayor a la salud , su salud quedara en 0 sino se le restara
-     * el daño.
+   * Si la defensa es mayor que su daño no recibira el golpe.
+   * si el daño es mayor a la salud , su salud quedara en 0 sino se le restara
+   * el daño.
    * </p>
+   *
+   * @param daño the daño
+   * @return the int
    */
   public int serAtacado(int daño) {
-    if (aleatorizador.obtenerDoubleAleatorio() >= this.getCasta().getProbabilidadEvitarDaño()) {
+    if (aleatorizador.obtenerDoubleAleatorio()
+    		>= this.getCasta().getProbabilidadEvitarDaño()) {
       daño -= this.defensa;
       if (daño > 0) {
         if (salud <= daño) {
@@ -379,6 +632,12 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
 
 
+  /**
+   * Ser robado salud.
+   *
+   * @param daño the daño
+   * @return the int
+   */
   public int serRobadoSalud(int daño) {
     daño -= this.defensa;
     if (daño <= 0) {
@@ -393,6 +652,12 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return daño;
   }
 
+  /**
+   * Ser desernegizado.
+   *
+   * @param daño the daño
+   * @return the int
+   */
   public int serDesernegizado(int daño) {
     daño -= this.defensa;
     if (daño <= 0) {
@@ -410,6 +675,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   /**
    * <p> cura al personaje sin exceder su salud tope.</p>
+   *
+   * @param salud the salud
    */
   public void serCurado(int salud) {
     if ((this.salud + salud) <= this.saludTope) {
@@ -420,9 +687,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
 
   /**
-   *
    * <p> le otorga energia al personaje sin exceder su energia tope.</p>
    *
+   * @param energia the energia
    */
 
   public void serEnergizado(int energia) {
@@ -433,6 +700,11 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     }
   }
 
+  /**
+   * Crear alianza.
+   *
+   * @param nombreAlianza the nombre alianza
+   */
   public void crearAlianza(String nombreAlianza) {
     this.clan = new Alianza(nombreAlianza);
     this.clan.añadirPersonaje(this);
@@ -452,9 +724,10 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   /**
    * Metodo el cual sirve para que este objeto alíe a otro Personaje
-     * a su actual alianza.
+   * a su actual alianza.
+   *
    * @param nuevoAliado Personaje el cual va a ser ingresado a la alianza
-   * @return
+   * @return true, if successful
    */
   public boolean aliar(Personaje nuevoAliado) {
     if (this.clan == null) {
@@ -473,6 +746,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
 
 
+  /**
+   * Asignar puntos skills.
+   *
+   * @param fuerza the fuerza
+   * @param destreza the destreza
+   * @param inteligencia the inteligencia
+   */
   public void AsignarPuntosSkills(int fuerza, int destreza, int inteligencia) {
     if (this.fuerza + fuerza <= 200) {
       this.fuerza += fuerza;
@@ -497,7 +777,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
       return;
     }
     while (this.nivel != 100
-      && (this.experiencia >= Personaje.tablaDeNiveles[this.nivel + 1] + acumuladorExperiencia)) {
+      && (this.experiencia
+    		  >= Personaje.tablaDeNiveles[this.nivel + 1]
+    		  + acumuladorExperiencia)) {
       acumuladorExperiencia += Personaje.tablaDeNiveles[this.nivel + 1];
       this.nivel++;
       this.modificarAtributos();
@@ -508,6 +790,12 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
 
 
+  /**
+   * Ganar experiencia.
+   *
+   * @param exp the exp
+   * @return true, if successful
+   */
   public boolean ganarExperiencia(int exp) {
     this.experiencia += exp;
     if (experiencia >= Personaje.tablaDeNiveles[this.nivel + 1]) {
@@ -517,41 +805,92 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#otorgarExp()
+   */
   public int otorgarExp() {
     return this.nivel * 40;
   }
 
+  /* (non-Javadoc)
+   * @see java.lang.Object#clone()
+   */
   protected Object clone() throws CloneNotSupportedException {
     return super.clone();
   }
 
+  /**
+   * Distancia con.
+   *
+   * @param p the p
+   * @return the double
+   */
   public double distanciaCon(Personaje p) {
     return Math.sqrt(Math.pow(this.x - p.x, 2) + Math.pow(this.y - p.y, 2));
   }
 
 
+  /**
+   * Habilidad casta 1.
+   *
+   * @param atacado the atacado
+   * @return true, if successful
+   */
   public boolean habilidadCasta1(Peleable atacado) {
     return this.getCasta().habilidad1(this, atacado);
   }
 
+  /**
+   * Habilidad casta 2.
+   *
+   * @param atacado the atacado
+   * @return true, if successful
+   */
   public boolean habilidadCasta2(Peleable atacado) {
     return this.getCasta().habilidad2(this, atacado);
   }
 
+  /**
+   * Habilidad casta 3.
+   *
+   * @param atacado the atacado
+   * @return true, if successful
+   */
   public boolean habilidadCasta3(Peleable atacado) {
     return this.getCasta().habilidad3(this, atacado);
   }
 
-  public void asignarHabilidades(String habilidad1,String habilidad2) {
-    habilidadesRaza = new String [HABILIDADES];
+  /**
+   * Asignar habilidades.
+   *
+   * @param habilidad1 the habilidad 1
+   * @param habilidad2 the habilidad 2
+   */
+  public void asignarHabilidades(String habilidad1, String habilidad2) {
+    habilidadesRaza = new String[HABILIDADES];
     habilidadesRaza[0] = habilidad1;
     habilidadesRaza[1] = habilidad2;
   }
 
+  /**
+   * Habilidad raza 1.
+   *
+   * @param atacado the atacado
+   * @return true, if successful
+   */
   public abstract boolean habilidadRaza1(Peleable atacado);
 
+  /**
+   * Habilidad raza 2.
+   *
+   * @param atacado the atacado
+   * @return true, if successful
+   */
   public abstract boolean habilidadRaza2(Peleable atacado);
 
+  /* (non-Javadoc)
+   * @see dominio.PersonajePadre#esPersonaje()
+   */
   @Override
   public boolean esPersonaje() {
     return true;
@@ -559,10 +898,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
 
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#actualizarALaSubaAtributosPorItem(dominio.Item)
+   */
   @Override
   public void actualizarALaSubaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getBonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
+    HashMap<String, Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String, Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {
@@ -587,10 +929,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
   }
 
 
+  /* (non-Javadoc)
+   * @see dominio.Peleable#actualizarALaBajaAtributosPorItem(dominio.Item)
+   */
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getBonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
+    HashMap<String, Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String, Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {

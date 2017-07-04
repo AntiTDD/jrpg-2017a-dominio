@@ -10,12 +10,23 @@ import dominio.Hechicero;
 import dominio.Humano;
 import dominio.Orco;
 
+/**
+ * The Class TestElfo.
+ * se utiliza para testear las distintas
+ * ataques, defensas y habilidades
+ * del elfo
+ */
 public class TestElfo {
 
+  /**
+   * Test golpe level.
+   */
   @Test
   public void testGolpeLevel() {
-    Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-    Humano h = new Humano("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", 100,
+                      100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
+    Humano h = new Humano("Nico", 100, 100,
+               25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
 
     Assert.assertTrue(h.getSalud() == 100);
     if (e.habilidadRaza1(h)) {
@@ -25,10 +36,15 @@ public class TestElfo {
     }
   }
 
+  /**
+   * Test ataque bosque.
+   */
   @Test
   public void testAtaqueBosque() {
-    Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-    Humano h = new Humano("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", 100, 100, 25, 20,
+                      30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
+    Humano h = new Humano("Nico", 100, 100,
+                          25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
 
     Assert.assertTrue(h.getSalud() == 100);
     if (e.habilidadRaza2(h)) {
@@ -39,10 +55,13 @@ public class TestElfo {
   }
 
 
+  /**
+   * Que un elfo no pueda efectuar su habilidad raza 1 por no tener energia.
+   */
   @Test
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
-    Elfo e = new Elfo("Legolas",new Hechicero(),1);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Elfo e = new Elfo("Legolas", new Hechicero(), 1);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.bajarEnergia(100);
     Assert.assertFalse(e.habilidadRaza1(o));
   }
@@ -50,8 +69,8 @@ public class TestElfo {
 
   @Test
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
-    Elfo e = new Elfo("Legolas",new Hechicero(),1);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+		Elfo e = new Elfo("Legolas", new Hechicero(), 1);
+		Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.bajarEnergia(100);
     Assert.assertFalse(e.habilidadRaza2(o));
   }

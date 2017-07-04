@@ -14,8 +14,10 @@ public class TestHumano {
   
   @Test
   public void testIncentivar() {
-    Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
-    Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
+    Humano h = new Humano("Nico", 100, 100, 55,
+               20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", 100, 100, 25, 20,
+               30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
 
 
     Assert.assertTrue(e.getAtaque() == 37);
@@ -25,8 +27,10 @@ public class TestHumano {
 
   @Test
   public void testGolpeFatal() {
-    Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
-    Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
+    Humano h = new Humano("Nico", 100, 100, 55, 20,
+               30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", 100, 100, 25, 20,
+               30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
 
     Assert.assertTrue(h.getEnergia() == 100);
     Assert.assertTrue(e.getSalud() == 100);
@@ -41,8 +45,8 @@ public class TestHumano {
 
   @Test
   public void queUnHumanoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
-    Humano e = new Humano("Aragorn",new Guerrero(),1);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Humano e = new Humano("Aragorn", new Guerrero(), 1);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadRaza1(o));
   }
@@ -50,8 +54,8 @@ public class TestHumano {
 
   @Test
   public void queUnHumanoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
-    Humano e = new Humano("Aragorn",new Guerrero(),1);
-    Orco o = new Orco("Uruk-Hai",new Guerrero(),1);
+    Humano e = new Humano("Aragorn", new Guerrero(), 1);
+    Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.bajarEnergia(100); // Estaba e.setEnergia(0) //
     Assert.assertFalse(e.habilidadRaza2(o));
   }

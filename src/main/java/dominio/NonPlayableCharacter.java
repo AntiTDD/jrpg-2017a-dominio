@@ -14,6 +14,10 @@ public class NonPlayableCharacter extends PersonajePadre {
       *  fuerza, defensa y salud que seran distintos dependiendo del valor
         *  obtenido.
    </p>
+   @param nombre para darle un nombre al NPC
+   @param nivel para darle un nivel al NPC
+   @param dificultadNPC la dificultad que va a tener
+
   */
 
   public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
@@ -65,6 +69,9 @@ public class NonPlayableCharacter extends PersonajePadre {
    * La probabilidad de golpe critico para todos los NPC sera del 15%.
    * de da�o menor, este se incrementara en un 50%.
    * De lo contrario, el ataque estara basado en la fuerza del NPC.
+   * @param atacado se indica el personaje al cual se ataca
+   * @return el ataque del personaje llamador (ataca)
+   * al personaje atacad (recibido por param)
    */
   public int atacar(Peleable atacado) {
     if (aleatorizador.obtenerDoubleAleatorio() <= 0.15) {
@@ -79,6 +86,8 @@ public class NonPlayableCharacter extends PersonajePadre {
    * Si la defensa es mayor que su da�o no recibira el golpe.
    * Si el daño es mayor a la salud , su salud quedara en 0 sino se le restara
      * el daño.
+     * @param daño es el daño que se recibe al ser atacado
+     * @return devuelve el valor del daño
    */
 
   public int serAtacado(int daño) {
@@ -114,13 +123,15 @@ public class NonPlayableCharacter extends PersonajePadre {
 
 
   /**
-   * Este metodo actualiza los atributos de este objeto en base al item pasado por parametro.
-   * @param i Item el cual modificara los valores de los atributos de este objeto.
+   * Este metodo actualiza los atributos
+   *  de este objeto en base al item pasado por parametro.
+   * @param i Item el cual modificara
+   *  los valores de los atributos de este objeto.
    */
   @Override
   public void actualizarALaSubaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getBonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
+    HashMap<String, Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String, Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {
@@ -144,8 +155,8 @@ public class NonPlayableCharacter extends PersonajePadre {
    */
   @Override
   public void actualizarALaBajaAtributosPorItem(Item i) {
-    HashMap<String,Integer> bonus = i.getBonus();
-    Iterator<Map.Entry<String,Integer>> entradas = bonus.entrySet().iterator();
+    HashMap<String, Integer> bonus = i.getBonus();
+    Iterator<Map.Entry<String, Integer>> entradas = bonus.entrySet().iterator();
     while (entradas.hasNext()) {
       Map.Entry<String, Integer> entradaActual = entradas.next();
       switch (entradaActual.getKey()) {

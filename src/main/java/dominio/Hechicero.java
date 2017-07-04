@@ -8,16 +8,16 @@ package dominio;
   */
 public class Hechicero extends Casta {
   private static final long serialVersionUID = 1L;
-  private static final int ENERGIA_MINIMA = 10; 
+  private static final int ENERGIA_MINIMA = 10;
   private static final float PLUS_MAGIA = 1.5f;
   private static final int ATAQUE_NULO = 0;
   /**
   * Constructor de objetos de profesion Guerrero.
-  * @param prob_crit Double que indica la probabilidad de meter un critico que
+  * @param probCrit Double que indica la probabilidad de meter un critico que
   * @param evasion Double que indica la evasion que tiene este objeto.
-  * @param daño_crit Double que indica el daño critico que tiene este objeto.
+  * @param dañoCrit Double que indica el daño critico que tiene este objeto.
   */
-  
+
   public Hechicero(double probCrit, double evasion, double dañoCrit) {
     super(probCrit, evasion, dañoCrit);
     this.nombreCasta = "Hechicero";
@@ -67,7 +67,7 @@ public class Hechicero extends Casta {
   public boolean habilidad2(Personaje caster, Peleable aliado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
       caster.bajarEnergia(ENERGIA_MINIMA);
-      if (((PersonajePadre)aliado).esPersonaje() == true) {
+      if (((PersonajePadre) aliado).esPersonaje() == true) {
         ((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
         return true;
       }
@@ -85,7 +85,7 @@ public class Hechicero extends Casta {
   public boolean habilidad3(Personaje caster, Peleable atacado) {
     if (caster.getEnergia() > ENERGIA_MINIMA) {
       caster.bajarEnergia(ENERGIA_MINIMA);
-      if (((PersonajePadre)atacado).esPersonaje() == true) {
+      if (((PersonajePadre) atacado).esPersonaje() == true) {
         int energiaRobada = ((Personaje) atacado).serDesernegizado(
             caster.calcularPuntosDeMagia());
         int saludRobada = ((Personaje) atacado).serRobadoSalud(

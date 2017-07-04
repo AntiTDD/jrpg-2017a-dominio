@@ -10,7 +10,9 @@ public class MyRandomStub extends MyRandom {
 
   /**
    * Metodo que devuelve el valor del parametro al haber creado este objeto.
-   * @return Devuelve un Double el cual es el double con que se instancio este objeto.
+   * @return Devuelve un Double el cual
+   *  es el double con que se instancio este objeto.
+   * @throws ArithmeticException para tratar una excepcion
    */
   public double obtenerDoubleAleatorio() throws ArithmeticException {
 
@@ -24,7 +26,8 @@ public class MyRandomStub extends MyRandom {
    * @return Double que indica el numero obtenido al azar.
    */
   /*
-  public double obtenerDoubleAleatorio(double maximo) throws ArithmeticException {
+  public double obtenerDoubleAleatorio
+  (double maximo) throws ArithmeticException {
     if (maximo > 1f || maximo < 0f) {
       throw new ArithmeticException("Esta clase solo se usa en testeos."
         + " Ingresar parametro entre 0 y 1, ambos inclusive.");
@@ -49,6 +52,7 @@ public class MyRandomStub extends MyRandom {
    */
   public int obtenerEnteroAleatorioMenorQue(int maximo) {
 
-    return numero; // Asi como devuelvo numero, podria devolver cualquier otro. //
+    return numero; // Asi como devuelvo
+    //numero, podria devolver cualquier otro. //
   }
 }

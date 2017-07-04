@@ -10,10 +10,15 @@ import org.junit.Test;
 
 public class TestDaño {
 
+  /**
+   * Test ataque comun Y la salud no baje de 0.
+   */
   @Test
   public void testAtaqueComunYLaSaludNoBajeDe0() {
-    Humano h = new Humano("Nico", 100, 100, 100, 20, 30, new Guerrero(0.2, 0.3, 1.5), 0, 1, 1);
-    Orco o = new Orco("Nico", 100, 100, 15, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
+    Humano h = new Humano("Nico", 100, 100, 100, 20, 30,
+                          new Guerrero(0.2, 0.3, 1.5), 0, 1, 1);
+    Orco o = new Orco("Nico", 100, 100, 15,
+                      0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
 
     Assert.assertTrue(o.getSalud() == 100);
     if (h.atacar(o) != 0) {
@@ -27,10 +32,15 @@ public class TestDaño {
     }
   }
 
+  /**
+   * Test los muertos no atacan.
+   */
   @Test
   public void testLosMuertosNoAtacan() {
-    Humano h = new Humano("Nico", 100, 100, 25, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
-    Orco o = new Orco("Nico", 100, 100, 15, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
+    Humano h = new Humano("Nico", 100, 100,
+                           25, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
+    Orco o = new Orco("Nico", 100, 100, 15,
+                      0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
 
     h.atacar(o);
     h.atacar(o);

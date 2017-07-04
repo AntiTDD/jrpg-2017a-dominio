@@ -8,8 +8,12 @@ public class Humano extends Personaje {
 
 
   private static final long serialVersionUID = 1L;
+  /** The Constant ENERGIA_MINIMA se usa para setear.
+   *  un valor default de la energia minima */
   private static final int ENERGIA_MINIMA = 10;
+  /** The Constant VIDA_NULA. setea valor default */
   private static final int VIDA_NULA = 0;
+  /** The Constant PLUS_HUMANO. setea un valor default */
   private static final int PLUS_HUMANO = 5;
 
   /**
@@ -19,7 +23,7 @@ public class Humano extends Personaje {
   * @param id Entero que identifica univocamente a este objeto.
   */
   public Humano(String nombre, Casta casta, int id) {
-    super(nombre, casta, id , "Humano" , "Incentivar" ,"Golpe Fatal");
+    super(nombre, casta, id, "Humano", "Incentivar", "Golpe Fatal");
     saludTope += PLUS_HUMANO;
     energiaTope += PLUS_HUMANO;
     salud = saludTope;
@@ -41,9 +45,11 @@ public class Humano extends Personaje {
   * @param idPersonaje Entero que identifica univocamente a este objeto.
   */
   public Humano(String nombre, int salud, int energia, int fuerza, int destreza,
-      int inteligencia, Casta casta, int experiencia, int nivel, int idPersonaje) {
+      int inteligencia, Casta casta, int experiencia,
+      int nivel, int idPersonaje) {
     super(nombre, salud, energia, fuerza, destreza, inteligencia, casta,
-        experiencia, nivel, idPersonaje,"Humano" , "Incentivar" ,"Golpe Fatal");
+        experiencia, nivel, idPersonaje, "Humano",
+        "Incentivar", "Golpe Fatal");
   }
 
   /**

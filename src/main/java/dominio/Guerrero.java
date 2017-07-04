@@ -15,10 +15,10 @@ public class Guerrero extends Casta {
   private final int defensaNula = 0;
   /**
   * Constructor de objetos de profesion Guerrero.
-  * @param prob_crit Double que indica la probabilidad de meter un critico que
+  * @param probCrit Double que indica la probabilidad de meter un critico que
   * @param evasion Double que indica la evasion que tiene este objeto.
   *
-  * @param daño_crit Double que indica el da�o critico que tiene este objeto.
+  * @param dañoCrit Double que indica el da�o critico que tiene este objeto.
   */
   public Guerrero(double probCrit, double evasion, double dañoCrit) {
     super(probCrit, evasion, dañoCrit);

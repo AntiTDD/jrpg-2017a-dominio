@@ -24,8 +24,12 @@ public abstract class PersonajePadre implements Peleable {
   public int getSalud() {
     return salud;
   }
-  
-  /* NO BORRAR. Lo dejo comentado porque tengo duda de si una instancia NPC no deberia de tener tambien su propia saludTope para que, en el caso de que a este NPC se lo equipe con un item que sube la saludTope, éste pueda recibir esa suba ya que "salud" es la salud actual y no la tope. //
+
+  /* NO BORRAR. Lo dejo comentado porque tengo duda de
+   *  si una instancia NPC no deberia de tener tambien su propia saludTope
+   *   para que, en el caso de que a este NPC se lo equipe con un item
+   *    que sube la saludTope, éste pueda recibir esa suba ya que "salud"
+   *     es la salud actual y no la tope. //
   public void subirSaludTope(int plus) {
     saludTope += plus;
   }
