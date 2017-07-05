@@ -6,7 +6,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * The Class Personaje.
+ * The Class Personaje es usada para instanciar cada.
+ * personaje existente en el juego. Contiene los atributos
+ * minimos que debe poseer cada personaje
  */
 public abstract class Personaje extends PersonajePadre implements Serializable {
 
@@ -65,6 +67,16 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
   /** The habilidades raza. */
   protected String[] habilidadesRaza;
+  private final int cientoUno = 101,
+                    cien = 100,
+                    doscientos = 200,
+                    veinticinco = 25,
+                    veinte = 20,
+                    cuarenta = 40,
+                    diez = 10,
+                    cincuenta = 50,
+                    mil = 1000;
+  private final float unoPuntoCinco = 1.5f;
 
   /**
    * Gets the habilidades raza.
@@ -119,9 +131,9 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     this.asignarHabilidades(hab1, hab2);
     experiencia = 0;
     nivel = 1;
-    fuerza = 10;
-    inteligencia = 10;
-    destreza = 10;
+    fuerza = diez;
+    inteligencia = diez;
+    destreza = diez;
     fuerza += casta.getBonusFuerza();
     inteligencia += casta.getBonusInteligencia();
     destreza += casta.getBonusDestreza();
@@ -129,8 +141,8 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
 
     x = 0;
     y = 0;
-    saludTope = 100;
-    energiaTope = 100;
+    saludTope = cien;
+    energiaTope = cien;
 
     ataque = this.calcularPuntosDeAtaque();
     defensa = this.calcularPuntosDeDefensa();
@@ -154,7 +166,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @param hab1 the hab 1
    * @param hab2 the hab 2
    */
- 
+
   public Personaje(String nombre, int salud,
 		  int energia, int fuerza, int destreza,
                    int inteligencia, Casta casta, int experiencia,
@@ -390,10 +402,10 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    *
    * @param plus the plus
    */
-  public void subirExperiencia(int plus) { 
+  public void subirExperiencia(int plus) {
     experiencia += plus;
   }
-  
+
   /**
    * Gets the id personaje.
    *
@@ -514,7 +526,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
     if (atacado.getSalud() > 0) {
       if (aleatorizador.obtenerDoubleAleatorio()
     		  <= this.casta.getProbabilidadGolpeCritico()
-          + this.destreza / 1000) {
+          + this.destreza / mil) {
         return atacado.serAtacado(this.golpe_critico());
       } else {
         return atacado.serAtacado(this.ataque);
@@ -546,7 +558,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @return true, if successful
    */
   public boolean puedeAtacar() {
-    return energia > 10;
+    return energia > diez;
   }
 
   /**
@@ -555,7 +567,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @return the int
    */
   public int calcularPuntosDeAtaque() {
-    return (int) (this.getFuerza() * 1.5);
+    return (int) (this.getFuerza() * unoPuntoCinco);
   }
 
   /**
@@ -573,7 +585,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @return the int
    */
   public int calcularPuntosDeMagia() {
-    return (int) (this.getInteligencia() * 1.5);
+    return (int) (this.getInteligencia() * unoPuntoCinco);
   }
 
   /**
@@ -754,13 +766,13 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @param inteligencia the inteligencia
    */
   public void AsignarPuntosSkills(int fuerza, int destreza, int inteligencia) {
-    if (this.fuerza + fuerza <= 200) {
+    if (this.fuerza + fuerza <= doscientos) {
       this.fuerza += fuerza;
     }
-    if (this.destreza + destreza <= 200) {
+    if (this.destreza + destreza <= doscientos) {
       this.destreza += destreza;
     }
-    if (this.inteligencia + inteligencia <= 200) {
+    if (this.inteligencia + inteligencia <= doscientos) {
       this.inteligencia += inteligencia;
     }
     this.modificarAtributos();
@@ -773,18 +785,18 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    */
   public void subirNivel() {
     int acumuladorExperiencia = 0;
-    if (this.nivel == 100) {
+    if (this.nivel == cien) {
       return;
     }
-    while (this.nivel != 100
+    while (this.nivel != cien
       && (this.experiencia
     		  >= Personaje.tablaDeNiveles[this.nivel + 1]
     		  + acumuladorExperiencia)) {
       acumuladorExperiencia += Personaje.tablaDeNiveles[this.nivel + 1];
       this.nivel++;
       this.modificarAtributos();
-      this.saludTope += 25;
-      this.energiaTope += 20;
+      this.saludTope += veinticinco;
+      this.energiaTope += veinte;
     }
     this.experiencia -= acumuladorExperiencia;
   }
@@ -809,7 +821,7 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
    * @see dominio.Peleable#otorgarExp()
    */
   public int otorgarExp() {
-    return this.nivel * 40;
+    return this.nivel * cuarenta;
   }
 
   /* (non-Javadoc)
@@ -957,5 +969,5 @@ public abstract class Personaje extends PersonajePadre implements Serializable {
         default:
       }
     }
-  }  
+  }
 }

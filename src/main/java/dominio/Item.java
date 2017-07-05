@@ -147,7 +147,7 @@ public class Item { /* PREGUNTAR: Asumo que un
     bonus.replace(atributo, cant);
   }
   */
- 
+
   /**
    * Metodo que sirve para saber si este objeto ya contiene cierto atributo.
    * @param atributo String que refiere

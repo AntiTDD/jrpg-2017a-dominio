@@ -33,7 +33,7 @@ public class Orco extends Personaje {
 
 	/**
 	 * Constructor de objetos de raza Orco.
-	 * 
+	 *
 	 * @param nombre
 	 *            String que indica el nombre de este objeto.
 	 * @param salud

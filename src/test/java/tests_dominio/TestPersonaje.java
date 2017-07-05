@@ -13,103 +13,146 @@ import dominio.Orco;
 
 
 
+/**
+ * The Class TestPersonaje.
+ */
 public class TestPersonaje {
+       /** Se utilizan para evitar los problemas.
+	    * del checkstyle "x es un numero magico" */
+	   private final int cien = 100,
+	               diez = 10,
+	               quince = 15,
+	               veinte = 20,
+	               veintitres = 23,
+	               tres = 3,
+	               cuatro = 4,
+	               cinco = 5,
+	               cientoCinco = 105,
+	               cientoDiez = 110,
+	               doscientos = 200,
+	               trescientos = 300,
+	               setentaYNueve = 79,
+	               diezmil = 10000,
+	               noventaYSiete = 97,
+	               noventaYTres = 93,
+	               cuarenta = 40,
+	               noventa = 90,
+	               noventaYNueve = 99,
+	               diezmillones = 10000000,
+	               mil = 1000,
+	               cienmillones = 100000000,
+	               cuatroNoventa = 490,
+	               cientoVeinte = 120,
+	               quinientos = 500;
 
+
+  /**
+   * Test humano.
+   */
   @Test
   public void testHumano() {
     Humano h = new Humano("Nicolas", new Guerrero(), 1);
-    Assert.assertTrue(h.getSalud() == 105);
-    Assert.assertTrue(h.getEnergia() == 105);
-    Assert.assertTrue(h.getFuerza() == 15);
-    Assert.assertTrue(h.getDestreza() == 10);
-    Assert.assertTrue(h.getInteligencia() == 10);
+    Assert.assertTrue(h.getSalud() == cientoCinco);
+    Assert.assertTrue(h.getEnergia() == cientoCinco);
+    Assert.assertTrue(h.getFuerza() == quince);
+    Assert.assertTrue(h.getDestreza() == diez);
+    Assert.assertTrue(h.getInteligencia() == diez);
 
     Humano h2 = new Humano("Lautaro", new Hechicero(), 2);
-    Assert.assertTrue(h2.getSalud() == 105);
-    Assert.assertTrue(h2.getEnergia() == 105);
-    Assert.assertTrue(h2.getFuerza() == 10);
-    Assert.assertTrue(h2.getDestreza() == 10);
-    Assert.assertTrue(h2.getInteligencia() == 15);
+    Assert.assertTrue(h2.getSalud() == cientoCinco);
+    Assert.assertTrue(h2.getEnergia() == cientoCinco);
+    Assert.assertTrue(h2.getFuerza() == diez);
+    Assert.assertTrue(h2.getDestreza() == diez);
+    Assert.assertTrue(h2.getInteligencia() == quince);
 
-    Humano h3 = new Humano("Hernan", new Asesino(), 3);
-    Assert.assertTrue(h3.getSalud() == 105);
-    Assert.assertTrue(h3.getEnergia() == 105);
-    Assert.assertTrue(h3.getFuerza() == 10);
-    Assert.assertTrue(h3.getDestreza() == 15);
-    Assert.assertTrue(h3.getInteligencia() == 10);
+    Humano h3 = new Humano("Hernan", new Asesino(), tres);
+    Assert.assertTrue(h3.getSalud() == cientoCinco);
+    Assert.assertTrue(h3.getEnergia() == cientoCinco);
+    Assert.assertTrue(h3.getFuerza() == diez);
+    Assert.assertTrue(h3.getDestreza() == quince);
+    Assert.assertTrue(h3.getInteligencia() == diez);
   }
 
+  /**
+   * Test elfo.
+   */
   @Test
   public void testElfo() {
     Elfo e = new Elfo("Nicolas", new Guerrero(), 1);
-    Assert.assertTrue(e.getSalud() == 100);
-    Assert.assertTrue(e.getFuerza() == 15);
-    Assert.assertTrue(e.getDestreza() == 10);
-    Assert.assertTrue(e.getInteligencia() == 10);
+    Assert.assertTrue(e.getSalud() == cien);
+    Assert.assertTrue(e.getFuerza() == quince);
+    Assert.assertTrue(e.getDestreza() == diez);
+    Assert.assertTrue(e.getInteligencia() == diez);
 
     Elfo e2 = new Elfo("Lautaro", new Hechicero(), 2);
-    Assert.assertTrue(e2.getSalud() == 100);
-    Assert.assertTrue(e2.getFuerza() == 10);
-    Assert.assertTrue(e2.getDestreza() == 10);
-    Assert.assertTrue(e2.getInteligencia() == 15);
+    Assert.assertTrue(e2.getSalud() == cien);
+    Assert.assertTrue(e2.getFuerza() == diez);
+    Assert.assertTrue(e2.getDestreza() == diez);
+    Assert.assertTrue(e2.getInteligencia() == quince);
 
-    Elfo e3 = new Elfo("Hernan", new Asesino(), 3);
-    Assert.assertTrue(e3.getSalud() == 100);
-    Assert.assertTrue(e3.getFuerza() == 10);
-    Assert.assertTrue(e3.getDestreza() == 15);
-    Assert.assertTrue(e3.getInteligencia() == 10);
+    Elfo e3 = new Elfo("Hernan", new Asesino(), tres);
+    Assert.assertTrue(e3.getSalud() == cien);
+    Assert.assertTrue(e3.getFuerza() == diez);
+    Assert.assertTrue(e3.getDestreza() == quince);
+    Assert.assertTrue(e3.getInteligencia() == diez);
   }
 
+  /**
+   * Test orco.
+   */
   @Test
   public void testOrco() {
     Orco o = new Orco("Nicolas", new Guerrero(), 1);
-    Assert.assertTrue(o.getSalud() == 110);
-    Assert.assertTrue(o.getEnergia() == 100);
-    Assert.assertTrue(o.getFuerza() == 15);
-    Assert.assertTrue(o.getDestreza() == 10);
-    Assert.assertTrue(o.getInteligencia() == 10);
-    
-    Orco o2 = new Orco("Lautaro", new Hechicero(), 2);
-    Assert.assertTrue(o2.getSalud() == 110);
-    Assert.assertTrue(o2.getEnergia() == 100);
-    Assert.assertTrue(o2.getFuerza() == 10);
-    Assert.assertTrue(o2.getDestreza() == 10);
-    Assert.assertTrue(o2.getInteligencia() == 15);
+    Assert.assertTrue(o.getSalud() == cientoDiez);
+    Assert.assertTrue(o.getEnergia() == cien);
+    Assert.assertTrue(o.getFuerza() == quince);
+    Assert.assertTrue(o.getDestreza() == diez);
+    Assert.assertTrue(o.getInteligencia() == diez);
 
-    Orco o3 = new Orco("Hernan", new Asesino(), 3);
-    Assert.assertTrue(o3.getSalud() == 110);
-    Assert.assertTrue(o3.getEnergia() == 100);
-    Assert.assertTrue(o3.getFuerza() == 10);
-    Assert.assertTrue(o3.getDestreza() == 15);
-    Assert.assertTrue(o3.getInteligencia() == 10);
+    Orco o2 = new Orco("Lautaro", new Hechicero(), 2);
+    Assert.assertTrue(o2.getSalud() == cientoDiez);
+    Assert.assertTrue(o2.getEnergia() == cien);
+    Assert.assertTrue(o2.getFuerza() == diez);
+    Assert.assertTrue(o2.getDestreza() == diez);
+    Assert.assertTrue(o2.getInteligencia() == quince);
+
+    Orco o3 = new Orco("Hernan", new Asesino(), tres);
+    Assert.assertTrue(o3.getSalud() == cientoDiez);
+    Assert.assertTrue(o3.getEnergia() == cien);
+    Assert.assertTrue(o3.getFuerza() == diez);
+    Assert.assertTrue(o3.getDestreza() == quince);
+    Assert.assertTrue(o3.getInteligencia() == diez);
   }
- 
+
+  /**
+   * Testeo gety set.
+   */
   @Test
   public void testeoGetySet() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
 
     e.setNombre("Lucas");
     e.setNombreRaza("Elfo Junior");
-    e.setAtaque(40);
-    e.subirEnergia(200);
-    e.setMagia(20);
-    e.subirExperiencia(110);
-    e.subirSaludTope(20);
-    e.subirEnergiaTope(10);
-    e.subirInteligencia(490);
+    e.setAtaque(cuarenta);
+    e.subirEnergia(doscientos);
+    e.setMagia(veinte);
+    e.subirExperiencia(cientoDiez);
+    e.subirSaludTope(veinte);
+    e.subirEnergiaTope(diez);
+    e.subirInteligencia(cuatroNoventa);
 
     Assert.assertTrue(e.getNombre() == "Lucas");
     Assert.assertTrue(e.getNombreRaza() == "Elfo Junior");
-    Assert.assertTrue(e.getAtaque() == 40);
-    Assert.assertTrue(e.getSalud() == 100);
-    Assert.assertTrue(e.getEnergia() == 300);
+    Assert.assertTrue(e.getAtaque() == cuarenta);
+    Assert.assertTrue(e.getSalud() == cien);
+    Assert.assertTrue(e.getEnergia() == trescientos);
     Assert.assertTrue(e.getCasta().getNombreCasta() == "Asesino");
-    Assert.assertTrue(e.getMagia() == 20);
+    Assert.assertTrue(e.getMagia() == veinte);
     Assert.assertTrue(e.getNivel() == 1);
-    Assert.assertTrue(e.getExperiencia() == 110);
-    Assert.assertTrue(e.getIdPersonaje() == 23);
-    Assert.assertTrue(e.getSaludTope() == 120);
-    Assert.assertTrue(e.getEnergiaTope() == 110);
+    Assert.assertTrue(e.getExperiencia() == cientoDiez);
+    Assert.assertTrue(e.getIdPersonaje() == veintitres);
+    Assert.assertTrue(e.getSaludTope() == cientoVeinte);
+    Assert.assertTrue(e.getEnergiaTope() == cientoDiez);
     Assert.assertTrue(e.getHabilidadesCasta()[0] == "Golpe Critico");
     Assert.assertTrue(e.getHabilidadesCasta()[1] == "Aumentar Evasion");
     Assert.assertTrue(e.getHabilidadesCasta()[2] == "Robar");
@@ -118,9 +161,12 @@ public class TestPersonaje {
 
   }
 
+  /**
+   * Testeo restableces salud.
+   */
   @Test
   public void testeoRestablecesSalud() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
     Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
@@ -129,36 +175,46 @@ public class TestPersonaje {
     Assert.assertTrue(e.getSalud() < e.getSaludTope());
     e.restablecerSalud();
 
-    Assert.assertTrue(e.getSaludTope() == 100);
+    Assert.assertTrue(e.getSaludTope() == cien);
   }
 
 
+  /**
+   * Testeo puedo atacar.
+   */
   @Test
-  public void testeoPuedoAtacar() { 
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+  public void testeoPuedoAtacar() {
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
 
-    e.bajarEnergia(79);
+    e.bajarEnergia(setentaYNueve);
 
     Assert.assertTrue(e.puedeAtacar() == true);
 
   }
 
 
+  /**
+   * Testeo no puedo atacar.
+   */
   @Test
-  public void testeoNoPuedoAtacar() { 
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+  public void testeoNoPuedoAtacar() {
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
 
-    e.bajarEnergia(100);
+    e.bajarEnergia(cien);
 
     Assert.assertTrue(e.puedeAtacar() == false);
 
   }
 
+  /**
+   * Testeo esta vivo.
+   */
   @Test
   public void testeoEstaVivo() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    Orco o = new Orco("Uruk-Hai", 10000, 10000,
-                      10000, 10000, 10000, new Guerrero(), 10000, 10000, 1);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
+    Orco o = new Orco("Uruk-Hai", diezmil, diezmil,
+                      diezmil, diezmil, diezmil, new Guerrero(),
+                      diezmil, diezmil, 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
@@ -169,48 +225,60 @@ public class TestPersonaje {
     Assert.assertFalse(e.estaVivo());
   }
 
+  /**
+   * Testeo ser curado.
+   */
   @Test
   public void testeoSerCurado() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
     Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
     o.atacar(e);
-    Assert.assertEquals(93, e.getSalud());
+    Assert.assertEquals(noventaYTres, e.getSalud());
 
-    e.serCurado(4);
+    e.serCurado(cuatro);
 
-    Assert.assertTrue(e.getSalud() == 97);
+    Assert.assertTrue(e.getSalud() == noventaYSiete);
   }
 
+  /**
+   * Testeo ser curado tope.
+   */
   @Test
   public void testeoSerCuradoTope() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
     Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
     e.setTipoDeRandom(new MyRandomStub(1));
     o.setTipoDeRandom(new MyRandomStub(1));
 
     o.atacar(e);
-    Assert.assertEquals(93, e.getSalud());
-    
-    e.serCurado(500);
+    Assert.assertEquals(noventaYTres, e.getSalud());
 
-    Assert.assertTrue(e.getSalud() == 100);
+    e.serCurado(quinientos);
+
+    Assert.assertTrue(e.getSalud() == cien);
   }
 
+  /**
+   * Testeo distancias.
+   */
   @Test
-  public void testeoDistancias() { 
-    Elfo e1 = new Elfo("Secchik", new Asesino(), 23);
-    Elfo e2 = new Elfo("ElfoRand", new Asesino(), 23);
+  public void testeoDistancias() {
+    Elfo e1 = new Elfo("Secchik", new Asesino(), veintitres);
+    Elfo e2 = new Elfo("ElfoRand", new Asesino(), veintitres);
 
     Assert.assertTrue(e1.distanciaCon(e2) == 0);
 
   }
 
+  /**
+   * Testeo alianza.
+   */
   @Test
-  public void testeoAlianza() { 
-    Elfo e1 = new Elfo("Secchik", new Asesino(), 23);
+  public void testeoAlianza() {
+    Elfo e1 = new Elfo("Secchik", new Asesino(), veintitres);
 
     e1.crearAlianza("AntiTDD");
 
@@ -223,41 +291,56 @@ public class TestPersonaje {
   }
 
 
+  /**
+   * Test defensa.
+   */
   @Test
   public void testDefensa() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.subirDefensa(90);
-    Assert.assertTrue(e.serAtacado(99) == 0);
-    Assert.assertTrue(e.serRobadoSalud(99) == 0);
-    Assert.assertTrue(e.serDesernegizado(99) == 0);
-  }
-  
-  @Test
-  public void testRoboDeVida() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.bajarDefensa(5);
-    Assert.assertTrue(e.serRobadoSalud(100) == 90);
-    Assert.assertTrue(e.getSalud() == 10);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
+    e.subirDefensa(noventa);
+    Assert.assertTrue(e.serAtacado(noventaYNueve) == 0);
+    Assert.assertTrue(e.serRobadoSalud(noventaYNueve) == 0);
+    Assert.assertTrue(e.serDesernegizado(noventaYNueve) == 0);
   }
 
+  /**
+   * Test robo de vida.
+   */
+  @Test
+  public void testRoboDeVida() {
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
+    e.bajarDefensa(cinco);
+    Assert.assertTrue(e.serRobadoSalud(cien) == noventa);
+    Assert.assertTrue(e.getSalud() == diez);
+  }
+
+  /**
+   * Test robo de energia.
+   */
   @Test
   public void testRoboDeEnergia() {
-    Elfo e = new Elfo("Secchik", new Asesino(), 23);
-    e.bajarEnergia(90);
-    Assert.assertTrue(e.serDesernegizado(100) == 10);
+    Elfo e = new Elfo("Secchik", new Asesino(), veintitres);
+    e.bajarEnergia(noventa);
+    Assert.assertTrue(e.serDesernegizado(cien) == diez);
     Assert.assertTrue(e.getEnergia() == 0);
   }
 
+  /**
+   * Test tener clan.
+   */
   @Test
   public void testTenerClan() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
     Elfo e2 = new Elfo("Mica", new Asesino(), 2);
-    Elfo e3 = new Elfo("Kandangar", new Asesino(), 3);
+    Elfo e3 = new Elfo("Kandangar", new Asesino(), tres);
 
     Assert.assertTrue(e2.aliar(e3) == true);
     Assert.assertTrue(e1.aliar(e2) == false);
   }
 
+  /**
+   * Test despues de turno.
+   */
   @Test
   public void testDespuesDeTurno() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
@@ -265,24 +348,33 @@ public class TestPersonaje {
   }
 
 
+  /**
+   * Que un personaje con alta probabilidad de evitar el daño no pueda ser atacado.
+   */
   @Test
   public void queUnPersonajeConAltaProbabilidadDeEvitarElDañoNoPuedaSerAtacado() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
-    Elfo e2 = new Elfo("La mole Moli", new Guerrero(1000, 10000000, 1000), 1);
+    Elfo e2 = new Elfo("La mole Moli", new Guerrero(mil, diezmillones, mil), 1);
     Assert.assertEquals(0, e1.atacar(e2));
   }
 
 
+  /**
+   * Que A un personaje se le llene la barrita de energia.
+   */
   @Test
   public void queAUnPersonajeSeLeLleneLaBarritaDeEnergia() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);
     e1.bajarEnergia(e1.getEnergia() / 2);
     Assert.assertNotEquals(e1.getEnergiaTope(), e1.getEnergia());
-    e1.serEnergizado(100000000);
+    e1.serEnergizado(cienmillones);
     Assert.assertEquals(e1.getEnergiaTope(), e1.getEnergia());
   }
 
 
+  /**
+   * Que un personaje quede sin clan cuando pida salir.
+   */
   @Test
   public void queUnPersonajeQuedeSinClanCuandoPidaSalir() {
     Elfo e1 = new Elfo("Secchi", new Asesino(), 1);

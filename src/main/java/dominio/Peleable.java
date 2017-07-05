@@ -82,7 +82,7 @@ public interface Peleable {
    * Definicion de metodo el cual sirve para agregar un item a este objeto.
    * @param i item el cual se va a agregar
   */
-  public boolean agregarItem(Item i);  
+  public boolean agregarItem(Item i);
 
   /**
    * Definicion de metodo el cual sirve

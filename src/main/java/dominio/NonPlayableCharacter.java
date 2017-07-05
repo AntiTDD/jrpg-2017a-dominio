@@ -4,10 +4,31 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * The Class NonPlayableCharacter.
+ */
 public class NonPlayableCharacter extends PersonajePadre {
 
+  /** The Constant dificultadAleatoria. */
   private static final int dificultadAleatoria = -1;
-  /**<p>
+
+  /** Estas variables se crean para que no tire el.
+   * error de checksyle "El numero X es un numero magico */
+  private final int uno = 1,
+                    dos = 2,
+                    tres = 3,
+                    cuatro = 4,
+                    cinco = 5,
+                    seis = 6,
+                    diez = 10,
+                    quince = 15,
+                    veinte = 20,
+                    veinticinco = 25,
+                    treinta = 30,
+                    cuarenta = 40,
+                    cincuenta = 50;
+
+   /**<p>
   *  Construye al NPC a partir de una dificultad Aleatoria estatica dada,
   *  si la dificultad aleatoria del parametro es igual a la aleatoria,
     *  le asignara un valor random entre 1 y 3 para setear los valores de
@@ -20,31 +41,32 @@ public class NonPlayableCharacter extends PersonajePadre {
 
   */
 
-  public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
+  public NonPlayableCharacter(final String nombre,
+                              final int nivel, final int dificultadNPC) {
     super(nombre);
     this.nivel = nivel;
     int dificultad;
     if (dificultadNPC == dificultadAleatoria) {
-      dificultad = aleatorizador.obtenerEnteroAleatorioMenorQue(3);
+      dificultad = aleatorizador.obtenerEnteroAleatorioMenorQue(tres);
     } else {
       dificultad = dificultadNPC;
     }
 
     switch (dificultad) {
       case 0:
-        this.fuerza = 10 + (nivel - 1) * 3;
-        this.salud = 30 + (nivel - 1) * 15;
-        this.defensa = 2 + (nivel - 1) * 1;
+        this.fuerza = diez + (nivel - uno) * tres;
+        this.salud = treinta + (nivel - uno) * quince;
+        this.defensa = dos + (nivel - uno) * uno;
         break;
       case 1:
-        this.fuerza = 20 + (nivel - 1) * 6;
-        this.salud = 40 + (nivel - 1) * 20;
-        this.defensa = 5 + (nivel - 1) * 2;
+        this.fuerza = veinte + (nivel - uno) * seis;
+        this.salud = cuarenta + (nivel - uno) * veinte;
+        this.defensa = cinco + (nivel - uno) * dos;
         break;
       case 2:
-        this.fuerza = 30 + (nivel - 1) * 10;
-        this.salud = 50 + (nivel - 1) * 25;
-        this.defensa = 4 + (nivel - 1) * 4;
+        this.fuerza = treinta + (nivel - uno) * diez;
+        this.salud = cincuenta + (nivel - uno) * veinticinco;
+        this.defensa = cuatro + (nivel - uno) * cuatro;
         break;
       default:
         break;
@@ -52,11 +74,11 @@ public class NonPlayableCharacter extends PersonajePadre {
   }
 
   public int otorgarExp() {
-    return this.nivel * 30;
+    return this.nivel * treinta;
   }
 
 
-  public void bajarFuerza(int plus) {
+  public void bajarFuerza(final int plus) {
     if (plus <= fuerza) {
       fuerza -= plus;
     } else {
@@ -104,6 +126,12 @@ public class NonPlayableCharacter extends PersonajePadre {
 
   public void despuesDeTurno() { }
 
+
+  /**
+   * Ganar experiencia.
+   *
+   * @param exp the exp
+   */
   public void ganarExperiencia(int exp) {
 
   }

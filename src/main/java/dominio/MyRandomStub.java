@@ -41,7 +41,7 @@ public class MyRandomStub extends MyRandom {
     return resultado;
   }
   */
-  
+
   /**
    * Metodo que devuelve un entero el cual es el mismo con el que se
      * construyo el metodo.

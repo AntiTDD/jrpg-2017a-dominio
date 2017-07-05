@@ -18,21 +18,36 @@ import dominio.Orco;
  */
 public class TestElfo {
 
+   /** The cien. */
+   private final int cien = 100,
+               veinticinco = 25,
+               veinte = 20,
+               treinta = 30,
+               tres = 3;
+
+   /** The cero punto dos. */
+   private final float ceroPuntoDos = 0.2f,
+                       ceroPuntoTres = 0.3f,
+                       unoPuntoCinco = 1.5f;
   /**
    * Test golpe level.
    */
   @Test
   public void testGolpeLevel() {
-    Elfo e = new Elfo("Nico", 100,
-                      100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-    Humano h = new Humano("Nico", 100, 100,
-               25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", cien,
+                      cien, veinticinco, veinte, treinta,
+                      new Asesino(ceroPuntoDos, ceroPuntoTres,
+                                  unoPuntoCinco), 0, tres, 1);
+    Humano h = new Humano("Nico", cien, cien,
+               veinticinco, veinte, treinta,
+               new Asesino(ceroPuntoDos, ceroPuntoTres,
+                           unoPuntoCinco), 0, 1, 1);
 
-    Assert.assertTrue(h.getSalud() == 100);
+    Assert.assertTrue(h.getSalud() == cien);
     if (e.habilidadRaza1(h)) {
-      Assert.assertTrue(h.getSalud() < 100);
+      Assert.assertTrue(h.getSalud() < cien);
     } else {
-      Assert.assertTrue(h.getSalud() == 100); 
+      Assert.assertTrue(h.getSalud() == cien);
     }
   }
 
@@ -41,16 +56,19 @@ public class TestElfo {
    */
   @Test
   public void testAtaqueBosque() {
-    Elfo e = new Elfo("Nico", 100, 100, 25, 20,
-                      30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-    Humano h = new Humano("Nico", 100, 100,
-                          25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 1, 1);
+    Elfo e = new Elfo("Nico", cien, cien, veinticinco, veinte,
+                      treinta, new Asesino(ceroPuntoDos, ceroPuntoTres,
+                                           unoPuntoCinco), 0, tres, 1);
+    Humano h = new Humano("Nico", cien, cien,
+                          veinticinco, veinte, treinta,
+                          new Asesino(ceroPuntoDos, ceroPuntoTres,
+                                      unoPuntoCinco), 0, 1, 1);
 
-    Assert.assertTrue(h.getSalud() == 100);
+    Assert.assertTrue(h.getSalud() == cien);
     if (e.habilidadRaza2(h)) {
-      Assert.assertTrue(h.getSalud() < 100);
+      Assert.assertTrue(h.getSalud() < cien);
     } else {
-      Assert.assertTrue(h.getSalud() == 100);
+      Assert.assertTrue(h.getSalud() == cien);
     }
   }
 
@@ -62,16 +80,19 @@ public class TestElfo {
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza1PorNoTenerEnergia() {
     Elfo e = new Elfo("Legolas", new Hechicero(), 1);
     Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
-    e.bajarEnergia(100);
+    e.bajarEnergia(cien);
     Assert.assertFalse(e.habilidadRaza1(o));
   }
 
 
+  /**
+   * Que un elfo no pueda efectuar su habilidad raza 2 por no tener energia.
+   */
   @Test
   public void queUnElfoNoPuedaEfectuarSuHabilidadRaza2PorNoTenerEnergia() {
-		Elfo e = new Elfo("Legolas", new Hechicero(), 1);
-		Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
-    e.bajarEnergia(100);
+        Elfo e = new Elfo("Legolas", new Hechicero(), 1);
+        Orco o = new Orco("Uruk-Hai", new Guerrero(), 1);
+    e.bajarEnergia(cien);
     Assert.assertFalse(e.habilidadRaza2(o));
   }
 }

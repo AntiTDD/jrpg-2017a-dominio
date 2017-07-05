@@ -92,7 +92,7 @@ public class Hechicero extends Casta {
             caster.calcularPuntosDeMagia() / 2);
         caster.serEnergizado(energiaRobada);
         caster.serCurado(saludRobada);
-        return true; 
+        return true;
       }
     }
     return false;
