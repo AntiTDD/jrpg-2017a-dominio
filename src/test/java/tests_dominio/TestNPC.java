@@ -1,6 +1,9 @@
 package tests_dominio;
 
+import dominio.Asesino;
 import dominio.Guerrero;
+import dominio.Humano;
+import dominio.Item;
 import dominio.MyRandomStub;
 import dominio.NonPlayableCharacter;
 import dominio.Orco;
@@ -156,4 +159,75 @@ public class TestNPC {
     npc.setAtaque(cienmil);
     Assert.assertEquals(cienmil, npc.getAtaque());
   }
+  
+  
+  @Test
+  public void bajarFuerzaYQueEstaQuedeMayorACero()
+  {
+	  NonPlayableCharacter npc = new NonPlayableCharacter(
+              "Elrond recien nacido", 3, 2);
+      Assert.assertEquals(50, npc.getFuerza());
+      npc.bajarFuerza(10);
+      Assert.assertEquals(40, npc.getFuerza());
+  }
+  
+  
+  @Test
+  public void bajarFuerzaYQueEstaQuedeIgualACero()
+  {
+	  NonPlayableCharacter npc = new NonPlayableCharacter(
+              "Elrond recien nacido", 3, 2);
+      Assert.assertEquals(50, npc.getFuerza());
+      npc.bajarFuerza(100);
+      Assert.assertEquals(0, npc.getFuerza());
+  }
+  
+  
+  @Test
+  public void esPersonajeIgualAFalse()
+  {
+	  NonPlayableCharacter npc = new NonPlayableCharacter(
+              "Elrond recien nacido", 3, 2);
+	  Assert.assertFalse(npc.esPersonaje());
+  }
+  
+  
+  
+  @Test
+  public void testMetodoObtenerAleatorioMenorQue()
+  {
+	  MyRandomStub mrs = new MyRandomStub(100);
+	  Assert.assertEquals(100, mrs.obtenerEnteroAleatorioMenorQue(1239812983));
+  }
+  
+  
+  @Test
+  public void testActualizarALaSubaAtributoPorItem()
+  {
+	  NonPlayableCharacter e1 = new NonPlayableCharacter("Lagertha", 1,1);
+	  Item valhalla = new Item(1,1);
+	  valhalla.agregarBonus("defensa", 100);
+	  valhalla.agregarBonus("ataque", 100);
+	  
+	  e1.actualizarALaSubaAtributosPorItem(valhalla);
+	  Assert.assertEquals(105, e1.getDefensa());
+	  Assert.assertEquals(120, e1.getAtaque());
+	 
+  }
+  
+  
+  @Test
+  public void testActualizarALaBajaAtributoPorItem()
+  {
+	  NonPlayableCharacter e1 = new NonPlayableCharacter("Lagertha", 1,1);
+	  Item valhalla = new Item(1,1);
+	  valhalla.agregarBonus("defensa", 100);
+	  valhalla.agregarBonus("ataque", 100);
+	  
+	  e1.actualizarALaBajaAtributosPorItem(valhalla);
+	  Assert.assertEquals(0, e1.getDefensa());
+	  Assert.assertEquals(0, e1.getAtaque());
+	  
+  }
+  
 }

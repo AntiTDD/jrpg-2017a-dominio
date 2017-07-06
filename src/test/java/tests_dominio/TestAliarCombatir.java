@@ -1,6 +1,9 @@
 package tests_dominio;
 
 import dominio.*;
+
+import java.util.LinkedList;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -56,6 +59,17 @@ public class TestAliarCombatir {
 		h.aliar(e);
 		e.salirDeAlianza();
 		Assert.assertNull(e.getClan());
+	}
+	
+	
+	@Test
+	public void testGetAliados()
+	{
+		Alianza al = new Alianza("Vikingos");
+		Humano h = new Humano("Torstein", new Asesino(), 1);
+		al.añadirPersonaje(h);
+		LinkedList<Personaje> ll = new LinkedList<Personaje>(al.getAliados());
+		Assert.assertEquals("Torstein", ll.get(0).getNombre());
 	}
 
 }

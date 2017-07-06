@@ -101,16 +101,17 @@ public abstract class PersonajePadre implements Peleable {
     return true;
   }
 
-  public void soltarItem(Integer id) {
+  public boolean soltarItem(Integer id) {
     Iterator<Item> items = inventario.iterator();
     while (items.hasNext()) {
       Item aux = items.next();
       if (aux.getId() == id) {
         inventario.remove(aux);
         actualizarALaBajaAtributosPorItem(aux);
-        break;
+        return true;
       }
     }
+    return false;
   }
 
 }

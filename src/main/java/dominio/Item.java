@@ -9,11 +9,7 @@ import java.util.Map;
  * The Class Item se utiliza para manejar.
  *  todos los items creados en el juego
  */
-public class Item { /* PREGUNTAR: Asumo que un
- item no modifica "fuerza", sino "ataque".
- Y en caso de que un NPC tenga equipado un item con modificacion
-  de "ataque", le subo la fuerza ya que en éstos
- la fuerza es proporcional al "ataque".*/
+public class Item {
 
   /** The id. */
  private int id;
@@ -29,6 +25,7 @@ public class Item { /* PREGUNTAR: Asumo que un
    */
   public Item() {
       id = 0;
+      this.bonus = new HashMap<String, Integer>();
       ubicEnElCuerpo = 0;
   }
   /**
@@ -58,6 +55,7 @@ public class Item { /* PREGUNTAR: Asumo que un
   */
   public Item(Integer id, Integer ubicEnElCuerpo) {
     this.id = id;
+    this.bonus = new HashMap<String, Integer>();
     this.ubicEnElCuerpo = ubicEnElCuerpo;
   }
 
@@ -141,12 +139,14 @@ public class Item { /* PREGUNTAR: Asumo que un
     }
   }
 
-  /*// NO BORRAR. La dejo comentada porque no estoy
-   *  seguro que se pueda modificar el bonus de los atributos. //
+  /**
+   * Metodo que sirve para modificar el bonus de un atributo de este objeto.
+   * @param atributo String que menciona el atributo a ser modificado.
+   * @param cant Integer que es el valor por el cual va a cambiar el parametor "atributo".
+   */
   public void modificarBonus(String atributo, Integer cant) {
     bonus.replace(atributo, cant);
   }
-  */
 
   /**
    * Metodo que sirve para saber si este objeto ya contiene cierto atributo.

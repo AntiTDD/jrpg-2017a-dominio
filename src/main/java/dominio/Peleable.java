@@ -108,5 +108,5 @@ public interface Peleable {
      * de su inventario.
    * @param id Integer el cual identifica el item a eliminar de su inventario.
    */
-  public void soltarItem(Integer id);
+  public boolean soltarItem(Integer id);
 }

@@ -1,5 +1,7 @@
 package tests_dominio;
 
+import java.util.HashMap;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,6 +10,7 @@ import dominio.Elfo;
 import dominio.Guerrero;
 import dominio.Hechicero;
 import dominio.Humano;
+import dominio.Item;
 import dominio.MyRandomStub;
 import dominio.Orco;
 
@@ -386,4 +389,234 @@ public class TestPersonaje {
     e2.salirDeAlianza();
     Assert.assertNull(e2.getClan());
   }
+  
+  
+  @Test
+  public void subir100DeAtaque()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getAtaque());
+	  e1.subirAtaque(100);
+	  Assert.assertEquals(115, e1.getAtaque());
+  }
+  
+  
+  @Test
+  public void bajarAtaqueYQueQuedeMayorACero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getAtaque());
+	  e1.bajarAtaque(5);
+	  Assert.assertEquals(10, e1.getAtaque());
+  }
+  
+  
+  @Test
+  public void bajarAtaqueYQueQuedeEnCero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getAtaque());
+	  e1.bajarAtaque(100);
+	  Assert.assertEquals(0, e1.getAtaque());
+  }
+  
+  
+  @Test
+  public void subir100DeMagia()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getMagia());
+	  e1.subirMagia(5);
+	  Assert.assertEquals(20, e1.getMagia());
+  }
+  
+  
+  @Test
+  public void bajarMagiaYQueQuedeMayorACero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getMagia());
+	  e1.bajarMagia(5);
+	  Assert.assertEquals(10, e1.getMagia());
+  }
+  
+  
+  @Test
+  public void bajarMagiaYQueQuedeEnCero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getMagia());
+	  e1.bajarMagia(100);
+	  Assert.assertEquals(0, e1.getMagia());
+  }
+  
+  
+  @Test
+  public void subir100DeDestreza()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getDestreza());
+	  e1.subirDestreza(100);
+	  Assert.assertEquals(115, e1.getDestreza());
+  }
+  
+  
+  @Test
+  public void subir100DeSaludTope()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getSaludTope());
+	  e1.subirSaludTope(100);
+	  Assert.assertEquals(200, e1.getSaludTope());
+  }
+  
+  
+  @Test
+  public void bajarSaludTopeYQueQuedeMayorACero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getSaludTope());
+	  e1.bajarSaludTope(50);
+	  Assert.assertEquals(50, e1.getSaludTope());
+  }
+  
+  
+  @Test
+  public void bajarSaludTopeYQueQuedeEnCero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getSaludTope());
+	  e1.bajarSaludTope(101);
+	  Assert.assertEquals(0, e1.getSaludTope());
+  }
+  
+  
+  @Test
+  public void bajarEnergiaTopeYQueQuedeMayorACero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getEnergiaTope());
+	  e1.bajarEnergiaTope(50);
+	  Assert.assertEquals(50, e1.getEnergiaTope());
+  }
+  
+  
+  @Test
+  public void bajarEnergiaTopeYQueQuedeEnCero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getEnergiaTope());
+	  e1.bajarEnergiaTope(101);
+	  Assert.assertEquals(0, e1.getEnergiaTope());
+  }
+  
+  
+  @Test
+  public void actualizarAtributoPersonaje()
+  {
+	  HashMap<String,Integer> atributos = new HashMap<String,Integer>();
+	  atributos.put("salud", 20);
+	  atributos.put("energia", 20);
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getSalud());
+	  e1.actualizarAtributosPersonaje(atributos);
+	  Assert.assertEquals(20, e1.getSalud());
+	  Assert.assertEquals(20, e1.getEnergia());
+  }
+  
+  
+  @Test
+  public void restablecerEnergia()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  e1.bajarEnergia(10);
+	  Assert.assertEquals(90, e1.getEnergia());
+	  e1.restablecerEnergia();
+	  Assert.assertEquals(100, e1.getEnergia());
+  }
+  
+  
+  @Test
+  public void queLaSaludRobadaSeaMayorALaSaludActual()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(100, e1.getSalud());
+	  e1.serRobadoSalud(200);
+	  Assert.assertEquals(0, e1.getSalud());
+  }
+  
+  
+  @Test
+  public void bajarDefensaYQueQuedeEnCero()
+  {
+	  Elfo e1 = new Elfo("Legolas", new Asesino(), 1);
+	  Assert.assertEquals(15, e1.getDefensa());
+	  e1.bajarDefensa(100);
+	  Assert.assertEquals(0, e1.getDefensa());
+  }
+  
+  
+  @Test
+  public void testAgregarItem()
+  {
+	  Humano e1 = new Humano("Lagertha", new Asesino(), 1);
+	  Item casco = new Item(1,1);
+	  Item pechera1 = new Item(2,2);
+	  Item pechera2 = new Item(3,2);
+	  Assert.assertTrue(e1.agregarItem(casco));
+	  Assert.assertTrue(e1.agregarItem(pechera1));
+	  Assert.assertFalse(e1.agregarItem(pechera2));	  
+  }
+  
+  
+  @Test
+  public void testSoltarItem()
+  {
+	  Humano e1 = new Humano("Lagertha", new Asesino(), 1);
+	  Item casco = new Item(1,1);
+	  e1.agregarItem(casco);
+	  Assert.assertFalse(e1.soltarItem(3));
+	  Assert.assertTrue(e1.soltarItem(1));
+	  Assert.assertFalse(e1.soltarItem(3));
+  }
+  
+  
+  @Test
+  public void testActualizarALaSubaAtributoPorItem()
+  {
+	  Humano e1 = new Humano("Lagertha", new Asesino(), 1);
+	  Item valhalla = new Item(1,1);
+	  valhalla.agregarBonus("defensa", 100);
+	  valhalla.agregarBonus("ataque", 100);
+	  valhalla.agregarBonus("magia", 100);
+	  valhalla.agregarBonus("saludTope", 100);
+	  valhalla.agregarBonus("energiaTope", 100);
+	  e1.actualizarALaSubaAtributosPorItem(valhalla);
+	  Assert.assertEquals(115, e1.getDefensa());
+	  Assert.assertEquals(115, e1.getAtaque());
+	  Assert.assertEquals(115, e1.getMagia());
+	  Assert.assertEquals(205, e1.getSaludTope());
+	  Assert.assertEquals(205, e1.getEnergiaTope());
+  }
+  
+  
+  @Test
+  public void testActualizarALaBajaAtributoPorItem()
+  {
+	  Humano e1 = new Humano("Lagertha", new Asesino(), 1);
+	  Item valhalla = new Item(1,1);
+	  valhalla.agregarBonus("defensa", 100);
+	  valhalla.agregarBonus("ataque", 100);
+	  valhalla.agregarBonus("magia", 100);
+	  valhalla.agregarBonus("saludTope", 100);
+	  valhalla.agregarBonus("energiaTope", 100);
+	  e1.actualizarALaBajaAtributosPorItem(valhalla);
+	  Assert.assertEquals(0, e1.getDefensa());
+	  Assert.assertEquals(0, e1.getAtaque());
+	  Assert.assertEquals(0, e1.getMagia());
+	  Assert.assertEquals(5, e1.getSaludTope());
+	  Assert.assertEquals(5, e1.getEnergiaTope());
+  }
+  
+  
 }
